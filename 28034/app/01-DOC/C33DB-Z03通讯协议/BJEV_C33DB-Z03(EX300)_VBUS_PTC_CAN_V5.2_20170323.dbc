@@ -1,0 +1,357 @@
+VERSION ""
+
+
+NS_ : 
+        NS_DESC_
+        CM_
+        BA_DEF_
+        BA_
+        VAL_
+        CAT_DEF_
+        CAT_
+        FILTER
+        BA_DEF_DEF_
+        EV_DATA_
+        ENVVAR_DATA_
+        SGTYPE_
+        SGTYPE_VAL_
+        BA_DEF_SGTYPE_
+        BA_SGTYPE_
+        SIG_TYPE_REF_
+        VAL_TABLE_
+        SIG_GROUP_
+        SIG_VALTYPE_
+        SIGTYPE_VALTYPE_
+        BO_TX_BU_
+        BA_DEF_REL_
+        BA_REL_
+        BA_DEF_DEF_REL_
+        BU_SG_REL_
+        BU_EV_REL_
+        BU_BO_REL_
+        SG_MUL_VAL_
+
+BS_:
+
+BU_: DCDC EAS ECC EPS ICM PTC RMS Tester VCU VSP 
+
+
+BO_ 1200 PTC_0x4B0: 8 PTC
+ SG_ PTC_4B0_INIT : 0|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_STA : 2|2@0+ (1,0) [0|3] "" VCU,RMS,ECC
+ SG_ PTC_4B0_LEVEL : 6|4@0+ (1,0) [0|12] "" RMS,ECC
+ SG_ PTC_4B0_TEMP : 15|8@0+ (1,-48) [-48|206] "" RMS,ECC
+ SG_ PTC_4B0_CUR : 23|16@0+ (0.001,0) [0|65.534] "" RMS,ECC
+ SG_ PTC_4B0_HV_CHECK_FIN_FLG : 32|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_LV_OFF_REQ : 33|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_PTC_A_CORE_SHORT : 40|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_PTC_B_CORE_SHORT : 41|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_CAN_COM_ERR : 48|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_CUR_ERR : 49|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_TEMP_SEN_OPEN : 50|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_TEMP_SEN_SHORT : 51|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_TEMP_HIGH : 52|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_IGBT_TEMP_HIGH : 53|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_IGBT_A_FAULT : 54|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_IGBT_B_FAULT : 55|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_HV_LESS : 56|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_PTC_A_CORE_OPEN : 57|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_PTC_B_CORE_OPEN : 58|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_TEMP_SEN_ERR : 59|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_IGBT_A_OPEN : 60|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_IGBT_B_OPEN : 61|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_IGBT_A_SHORT : 62|1@0+ (1,0) [0|1] "" RMS,ECC
+ SG_ PTC_4B0_IGBT_B_SHORT : 63|1@0+ (1,0) [0|1] "" RMS,ECC
+
+BO_ 1248 ECC_0x4E0: 8 ECC
+ SG_ ECC_4E0_WIND_MODE : 4|3@0+ (1,0) [0|4] "" RMS,PTC
+ SG_ ECC_4E0_CYCLE_STA : 5|1@0+ (1,0) [0|1] "" RMS,PTC
+ SG_ ECC_4E0_FAN_REQ : 7|2@0+ (1,0) [0|3] "" VCU,RMS,PTC
+ SG_ ECC_4E0_WIND_SPD_STA : 11|4@0+ (1,0) [0|8] "" RMS,PTC
+ SG_ ECC_4E0_HEATING_COOLING_STAGE : 15|4@0+ (1,0) [0|8] "" RMS,PTC
+ SG_ ECC_4E0_OUT_TEMP : 23|8@0+ (1,-48) [-48|206] "℃" RMS,PTC
+ SG_ ECC_4E0_WIND_MODE_VALID : 24|1@0+ (1,0) [0|1] "" RMS,PTC
+ SG_ ECC_4E0_WIND_SPD_STA_VALID : 25|1@0+ (1,0) [0|1] "" RMS,PTC
+ SG_ ECC_4E0_HEATING_COOLING_VALID : 26|1@0+ (1,0) [0|1] "" RMS,PTC
+ SG_ ECC_4E0_OUT_TEMP_VALID : 27|1@0+ (1,0) [0|1] "" RMS,PTC
+ SG_ ECC_4E0_PIPE_P_HL_STA : 28|1@0+ (1,0) [0|1] "" RMS,PTC
+ SG_ ECC_4E0_PIPE_P_M_STA : 29|1@0+ (1,0) [0|1] "" RMS,PTC
+ SG_ ECC_4E0_PTC_EA : 52|1@0+ (1,0) [0|1] "" VCU,RMS,PTC
+
+BO_ 1559 VCU_0x617: 8 VCU
+ SG_ VCU_617_VEH_SPD : 23|16@0+ (0.01,0) [0|655.35] "km/h" EPS,EAS,ECC,PTC,DCDC,ICM,VSP
+
+BO_ 1727 PTC_0x6BF: 8 PTC
+ SG_ PTC_6BF_CAL_VERS : 15|8@0+ (1,0) [0|255] "" RMS,ECC
+ SG_ PTC_6BF_PART_VERS : 23|32@0+ (1,0) [0|4294967295] "" RMS,ECC
+ SG_ PTC_6BF_HW_VERS : 55|8@0+ (1,0) [1|50] "" RMS,ECC
+ SG_ PTC_6BF_SW_VERS : 63|8@0+ (1,0) [51|255] "" RMS,ECC
+
+BO_ 532 VCU_0x214: 8 VCU
+ SG_ VCU_214_VEH_STATE : 7|16@0+ (1,0) [0|65535] "" EAS,ECC,PTC,ICM,VSP
+
+BO_ 2015 Diag_FUN_Req: 8 EAS
+
+BO_ 2036 Diag_PTC_Req: 8 Tester
+
+BO_ 2044 Diag_PTC_Resp: 8 PTC
+
+
+BO_TX_BU_ 2015 : EAS,Tester;
+
+
+CM_ "Version:V1.0 , Date:2016/2/5 , Author:王道静 , Review: , Approval: , Description:
+1、C33DB-Z01EX项目FP阶段VBUS网段报文设计；
+ ;
+Version:V1.0 , Date:2016/2/16 , Author:王道静 , Review: , Approval: , Description:
+2、删除0x458帧“动力电池当前充电类型信号”，增加0x61D帧“充电状态”信号；
+3、增加0x322帧，删除0x470、0x67F帧（EPS相关报文）
+4、ABS节点不再接收VCU相关报文；
+ ;
+Version:V1.0 , Date:2016/2/18 , Author:王道静 , Review: , Approval: , Description:
+5、取消PTC节点接收0x211帧报文（娄建勋反馈）；
+ ;
+Version:V1.0 , Date:2016/3/18 , Author:王道静 , Review: , Approval: , Description:
+6、增加0x61B、0x6D8、0x6D9、0x6DF帧CMU相关报文；
+7、0x61F报文中删除“制冷模式指令”“制热模式指令”“除霜模式指令”，增加“空调模式指令”；
+8、删除VCU_0x214帧中的“远程开关当前状态”信号；（涉变节点VCU、BMS、ICM、TBOX\RMS节点）(变更来源：远程慢充功能定义变更_王娅荣)；
+ ;
+Version:V1.0 , Date:2016/3/24 , Author:王道静 , Review: , Approval: , Description:
+9、在0x61D帧中增加“电子锁控制命令”(充电新国标)
+10、在CMU_0x6D9帧中增加“交流充电插座温度传感器故障”；（CMU、VCU、RMS\TBOX）(充电新国标)
+11、将0x61B帧报文的周期由100ms改为20ms;(充电新国标)；
+12、0x214帧中的“整车State状态（状态机编码）”信号增加接收CMU节点；(充电新国标)；
+ ;
+Version:V2.0 , Date:2016/3/28 , Author:王道静 , Review: , Approval: , Description:
+13、在0x6D8帧中增加“CMU状态信息”和“VCU唤醒信号”；(充电新国标) ;
+Version:V2.0 , Date:2016/3/29 , Author:王道静 , Review: , Approval: , Description:
+14、0x611帧1byte7bit增加“充电故障指示”信号；
+15、0x4F0报文中删除“远程制冷模式请求”“远程制热模式请求”“远程除霜模式请求”，增加“远程空调模式请求”;
+16、0x4F0报文中删除“远程动力电池加热模式请求”信号；
+17、删除0x6D0帧报文；
+18、取消VCU接收0x6DF、0x720、0x521、0x520、0x6E0、0x4B0、0x490帧报文；
+19、0x69F、0x6BF、0x6E0、0x720帧增加软件次版本；
+
+ ;
+Version:V2.0 , Date:2016/4/8 , Author:王道静 , Review: , Approval: , Description:
+20、取消VCU接收0x640、0x650帧；
+21、增加VCU接收0x4B0帧“PTC当前工作状态”0x490帧“EAS当前状态”0x520帧“DC/DC输入端电压”；
+22、取消VCU接收0x6AF、0x6BF、0x69F帧控制器软硬件版本报文；
+23、增加VCU接收0x4E0帧“风扇开启请求”信号；
+24、增加RMS节点接收0x211帧，0x617帧“驱动电机输出功率百分比”
+ ;
+Version:V2.0 , Date:2016/4/9 , Author:王道静 , Review: , Approval: , Description:
+25、0x4F0帧增加“后台请求开启远程刷新模式”“远程刷新完成状态”； ;
+Version:V2.0 , Date:2016/4/12 , Author:王道静 , Review: , Approval: , Description:
+26、0x4F0帧增加“远程充电控制设置需求”
+ ;
+Version:V3.0 , Date:2016/4/14 , Author:王道静 , Review: , Approval: , Description:
+26、0x61D帧增加“动力电池保温状态”“动力电池加热状态”（VCU、ICM、RMS）；
+ ;
+Version:V3.0 , Date:2016/4/20 , Author:王道静 , Review: , Approval: , Description:
+27、删除0x61B、0x6D8、0x6D9、0x6DF帧（CMU节点移至EVBUS网段）；
+28、新增0x618帧“策略挡位信号”；（VSP节点接收）
+29、新增VSP节点接收“READY灯”、“车速信号”、“整车state状态”；
+ ;
+Version:V3.0 , Date:2016/4/25 , Author:王道静 , Review: , Approval: , Description:
+30、删除0x61D帧“动力电池加热继电器指令”
+31、删除0x617帧“动力电池加热状态”（VCU、ICM）
+ ;
+Version:V3.0 , Date:2016/6/15 , Author:王道静 , Review: , Approval: , Description:
+32、0x611帧增加“请踩刹车启动(N3)”（VCU、RMS、ICM）
+33、0x611帧“整车平均能量消耗”移至0x615帧； ;
+Version:V4.0 , Date:2016/9/2 , Author:王道静 , Review: , Approval: , Description:
+34、0x611帧增加“请挂 N档启动(N4)”（VCU、RMS、ICM）
+35、将0x4F0帧中的“远程DC/DC启动请求”信号名称变更为“DCDC智能充电请求”；（VCU、RMS）
+36、删除0x4F0帧“远程充电控制设置需求”；（VCU、RMS）
+37、增加VCU接收0x4E0帧“ECC当前状态”；（VCU）
+38、增加VCU接收0x4A0帧“Status of hood switch”“Status of trunk switch”“Status of the other three door lock switch”“Status of the driver door lock switch”；
+39、0x4F0帧新增“后台远程刷新模式选择反馈”； ;
+Version:V4.1 , Date:2016/9/22 , Author:王道静 , Review: , Approval: , Description:
+40、0x615帧新增“电量低提醒”;
+ ;
+Version:V4.1 , Date:2016/10/12 , Author:王道静 , Review: , Approval: , Description:
+41、增加VCU接收0x520帧“DCDC温度”信号；
+ ;
+Version:V5.0 , Date:2016/11/11 , Author:王道静 , Review: , Approval: , Description:
+42、沿用C33DB-Z03项目2016/10/12版协议；
+ ;
+Version:V5.0 , Date:2017/3/3 , Author:王道静 , Review: , Approval: , Description:
+新增PEPS、ESCL节点，需要VCU模拟部分EMS、TCU发送的报文，同时接收PEPS、ESCL相关报文；
+43、新增0x280、0x3E0、0x55、0x72、0x73、0x570、0x50、0x75、0x77帧
+ ;
+Version:V5.1 , Date:2017/3/4 , Author:王道静 , Review: , Approval: , Description:新增定速巡航功能
+44、0x611帧新增“定速巡航状态”“定速巡航目标车速”（VCU、ICM、RMS） ;
+Version:V5.2 , Date:2017/3/23 , Author:王道静 , Review: , Approval: , Description:
+45、0x4E0帧报文周期由500ms修改为100ms；
+ ; ";
+
+CM_ SG_ 1200 PTC_4B0_INIT "PTC初始化状态";
+CM_ SG_ 1200 PTC_4B0_STA "PTC当前工作状态";
+CM_ SG_ 1200 PTC_4B0_LEVEL "PTC当前工作等级";
+CM_ SG_ 1200 PTC_4B0_TEMP "PTC当前工作温度";
+CM_ SG_ 1200 PTC_4B0_CUR "PTC当前工作电流";
+CM_ SG_ 1200 PTC_4B0_HV_CHECK_FIN_FLG "电动暖风系统高压检测完成标志位";
+CM_ SG_ 1200 PTC_4B0_LV_OFF_REQ "电动暖风系统低压下电请求";
+CM_ SG_ 1200 PTC_4B0_PTC_A_CORE_SHORT "PTC_A热芯短路故障";
+CM_ SG_ 1200 PTC_4B0_PTC_B_CORE_SHORT "PTC_B热芯短路故障";
+CM_ SG_ 1200 PTC_4B0_CAN_COM_ERR "CAN通讯故障";
+CM_ SG_ 1200 PTC_4B0_CUR_ERR "PTC 电流异常故障";
+CM_ SG_ 1200 PTC_4B0_TEMP_SEN_OPEN "PTC温度传感器断路故障";
+CM_ SG_ 1200 PTC_4B0_TEMP_SEN_SHORT "PTC温度传感器短路故障";
+CM_ SG_ 1200 PTC_4B0_TEMP_HIGH "PTC本体温度过高故障";
+CM_ SG_ 1200 PTC_4B0_IGBT_TEMP_HIGH "IGBT温度过高故障";
+CM_ SG_ 1200 PTC_4B0_IGBT_A_FAULT "IGBT_A 驱动芯片故障";
+CM_ SG_ 1200 PTC_4B0_IGBT_B_FAULT "IGBT_B 驱动芯片故障";
+CM_ SG_ 1200 PTC_4B0_HV_LESS "PTC 高压欠故障";
+CM_ SG_ 1200 PTC_4B0_PTC_A_CORE_OPEN "PTC_A热芯未连接故障";
+CM_ SG_ 1200 PTC_4B0_PTC_B_CORE_OPEN "PTC_B热芯未连接故障";
+CM_ SG_ 1200 PTC_4B0_TEMP_SEN_ERR "IGBT温度传感器故障";
+CM_ SG_ 1200 PTC_4B0_IGBT_A_OPEN "IGBT_A断路故障";
+CM_ SG_ 1200 PTC_4B0_IGBT_B_OPEN "IGBT_B断路故障";
+CM_ SG_ 1200 PTC_4B0_IGBT_A_SHORT "IGBT_A短路故障";
+CM_ SG_ 1200 PTC_4B0_IGBT_B_SHORT "IGBT_B短路故障";
+CM_ SG_ 1727 PTC_6BF_CAL_VERS "PTC次软件版本号后两位";
+CM_ SG_ 1727 PTC_6BF_PART_VERS "PTC零部件号";
+CM_ SG_ 1727 PTC_6BF_HW_VERS "PTC硬件版本号后两位";
+CM_ SG_ 1727 PTC_6BF_SW_VERS "PTC软件版本号后两位";
+CM_ SG_ 1248 ECC_4E0_WIND_MODE "出风模式";
+CM_ SG_ 1248 ECC_4E0_CYCLE_STA "循环状态";
+CM_ SG_ 1248 ECC_4E0_FAN_REQ "风扇开启请求";
+CM_ SG_ 1248 ECC_4E0_WIND_SPD_STA "风速状态";
+CM_ SG_ 1248 ECC_4E0_HEATING_COOLING_STAGE "冷暖程度需求状态";
+CM_ SG_ 1248 ECC_4E0_OUT_TEMP "车外环境温度";
+CM_ SG_ 1248 ECC_4E0_WIND_MODE_VALID "出风模式有效性";
+CM_ SG_ 1248 ECC_4E0_WIND_SPD_STA_VALID "风速状态有效性";
+CM_ SG_ 1248 ECC_4E0_HEATING_COOLING_VALID "冷暖程度需求状态有效性";
+CM_ SG_ 1248 ECC_4E0_OUT_TEMP_VALID "车外环境温度有效性";
+CM_ SG_ 1248 ECC_4E0_PIPE_P_HL_STA "管路压力高/低压状态";
+CM_ SG_ 1248 ECC_4E0_PIPE_P_M_STA "管路压力中压状态";
+CM_ SG_ 1248 ECC_4E0_PTC_EA "PTC使能指令";
+CM_ SG_ 532 VCU_214_VEH_STATE "整车State状态（状态机编码）";
+CM_ SG_ 1559 VCU_617_VEH_SPD "车速信号";
+
+
+BA_DEF_ BO_  "NmMessage" ENUM "No","Yes";
+BA_DEF_ BO_  "DiagState" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagRequest" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagResponse" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cycle","NoSendType","IfActive";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "cycle","OnChange","OnWrite","IfActive","OnChangeWithRepetition","OnWriteWithRepetition","IfActiveWithRepetition";
+BA_DEF_ SG_  "GenSigStartValue" INT 0 0;
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 0;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 0;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 0;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 0;
+BA_DEF_  "DBName" STRING ;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ SG_  "GenSigTimeoutValue" INT 0 1000000000;
+BA_DEF_ BO_  "GenMsgCycleTimeActive" INT 0 0;
+BA_DEF_ BU_  "ILUsed" ENUM  "No","Yes";
+BA_DEF_ BU_  "DiagStationAddress" HEX 0 255;
+BA_DEF_ BU_  "NmNode" ENUM  "Not","Yes";
+BA_DEF_ BU_  "NmStationAddress" HEX 0 65535;
+BA_DEF_ BU_  "NmCAN" INT 0 2;
+BA_DEF_  "Manufacturer" STRING ;
+BA_DEF_  "NmType" STRING ;
+BA_DEF_  "NmMessageCount" INT 0 255;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v3_0" INT 0 0;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v2_3" INT 0 0;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v3_1" INT 0 0;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v2_2" INT 0 0;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v2_1" INT 0 0;
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 65535;
+BA_DEF_  "BusType" STRING ;
+
+
+BA_DEF_DEF_  "NmMessage" "No";
+BA_DEF_DEF_  "DiagState" "No";
+BA_DEF_DEF_  "DiagRequest" "No";
+BA_DEF_DEF_  "DiagResponse" "No";
+BA_DEF_DEF_  "GenMsgSendType" "cycle";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenSigSendType" "cycle";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "DBName" "";
+BA_DEF_DEF_  "NodeLayerModules" "CANoeILNLVector.dll";
+BA_DEF_DEF_  "GenSigTimeoutValue" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeActive" 0;
+BA_DEF_DEF_  "ILUsed" "No";
+BA_DEF_DEF_  "DiagStationAddress" 0;
+BA_DEF_DEF_  "NmNode" "Not";
+BA_DEF_DEF_  "NmStationAddress" 0;
+BA_DEF_DEF_  "NmCAN" 0;
+BA_DEF_DEF_  "Manufacturer" "";
+BA_DEF_DEF_  "NmType" "";
+BA_DEF_DEF_  "NmMessageCount" 128;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v3_0" 0;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v2_3" 0;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v3_1" 0;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v2_2" 0;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v2_1" 0;
+BA_DEF_DEF_  "GenMsgILSupport" "No";
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "BusType" "CAN";
+BA_ "DBName" "VBUS";
+BA_ "GenMsgCycleTime" BO_ 1200 100;
+BA_ "GenSigStartValue" SG_ 1200 PTC_4B0_TEMP 48;
+BA_ "GenMsgCycleTime" BO_ 1248 100;
+BA_ "GenSigStartValue" SG_ 1248 ECC_4E0_OUT_TEMP 48;
+BA_ "GenMsgCycleTime" BO_ 1559 100;
+BA_ "GenMsgCycleTime" BO_ 1727 1000;
+BA_ "GenSigStartValue" SG_ 1727 PTC_6BF_HW_VERS 1;
+BA_ "GenSigStartValue" SG_ 1727 PTC_6BF_SW_VERS 51;
+BA_ "GenMsgCycleTime" BO_ 532 10;
+BA_ "DiagState" BO_ 2015 1;
+BA_ "DiagRequest" BO_ 2015 1;
+BA_ "GenMsgSendType" BO_ 2015 1;
+BA_ "DiagState" BO_ 2036 1;
+BA_ "DiagRequest" BO_ 2036 1;
+BA_ "GenMsgSendType" BO_ 2036 1;
+BA_ "DiagState" BO_ 2044 1;
+BA_ "DiagResponse" BO_ 2044 1;
+BA_ "GenMsgSendType" BO_ 2044 1;
+VAL_ 1200 PTC_4B0_INIT 1 "初始化已完成；" 0 "初始化未完成；" ;
+VAL_ 1200 PTC_4B0_STA 3 "Void" 2 "故障状态；" 1 "工作状态 ；" 0 "待机状态 ；" ;
+VAL_ 1200 PTC_4B0_LEVEL 12 "工作等级 _12 ；" 11 "工作等级 _11；" 10 "工作等级 _10 ；" 9 "工作等级 _9 ；" 8 "工作等级 _8 ；" 7 "工作等级 _7 ；" 6 "工作等级 _6 ；" 5 "工作等级 _5 ；" 4 "工作等级 _4 ；" 3 "工作等级 _3 ；" 2 "工作等级 _2 ；" 1 "工作等级 _1 ；" 0 "未工作状态；" ;
+VAL_ 1200 PTC_4B0_TEMP 255 "Invalid" ;
+VAL_ 1200 PTC_4B0_CUR 65535 "Invalid" ;
+VAL_ 1200 PTC_4B0_HV_CHECK_FIN_FLG 1 "已完成 ；" 0 "未完成 ；" ;
+VAL_ 1200 PTC_4B0_LV_OFF_REQ 1 "请求下电 ；" 0 "未请求 ；" ;
+VAL_ 1200 PTC_4B0_PTC_A_CORE_SHORT 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_PTC_B_CORE_SHORT 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_CAN_COM_ERR 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_CUR_ERR 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_TEMP_SEN_OPEN 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_TEMP_SEN_SHORT 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_TEMP_HIGH 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_IGBT_TEMP_HIGH 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_IGBT_A_FAULT 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_IGBT_B_FAULT 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_HV_LESS 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_PTC_A_CORE_OPEN 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_PTC_B_CORE_OPEN 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_TEMP_SEN_ERR 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_IGBT_A_OPEN 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_IGBT_B_OPEN 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_IGBT_A_SHORT 1 "异常" 0 "正常" ;
+VAL_ 1200 PTC_4B0_IGBT_B_SHORT 1 "异常" 0 "正常" ;
+VAL_ 1248 ECC_4E0_WIND_MODE 4 "除霜模式" 3 "吹足/除霜模式" 2 "吹足模式" 1 "吹面/吹足模式" 0 "吹面模式" ;
+VAL_ 1248 ECC_4E0_CYCLE_STA 1 "外循环状态" 0 "内循环状态" ;
+VAL_ 1248 ECC_4E0_FAN_REQ 3 "Void" 2 "风扇高速请求" 1 "风扇低速请求" 0 "风扇无请求" ;
+VAL_ 1248 ECC_4E0_WIND_SPD_STA 8 "风速八挡" 7 "风速七挡" 6 "风速六挡" 5 "风速五挡" 4 "风速四挡" 3 "风速三挡" 2 "风速二挡" 1 "风速一挡" 0 "无风挡位" ;
+VAL_ 1248 ECC_4E0_HEATING_COOLING_STAGE 8 "九挡（最热挡）" 7 "八挡" 6 "七挡" 5 "六挡" 4 "五挡" 3 "四挡" 2 "三挡" 1 "二挡" 0 "一挡（最冷挡）" ;
+VAL_ 1248 ECC_4E0_OUT_TEMP 255 "Invalid" ;
+VAL_ 1248 ECC_4E0_WIND_MODE_VALID 1 "INVALID" 0 "VALID" ;
+VAL_ 1248 ECC_4E0_WIND_SPD_STA_VALID 1 "INVALID" 0 "VALID" ;
+VAL_ 1248 ECC_4E0_HEATING_COOLING_VALID 1 "INVALID" 0 "VALID" ;
+VAL_ 1248 ECC_4E0_OUT_TEMP_VALID 1 "INVALID" 0 "VALID" ;
+VAL_ 1248 ECC_4E0_PIPE_P_HL_STA 1 "INVALID" 0 "VALID" ;
+VAL_ 1248 ECC_4E0_PIPE_P_M_STA 1 "INVALID" 0 "VALID" ;
+VAL_ 1248 ECC_4E0_PTC_EA 1 "Enable" 0 "Disable" ;

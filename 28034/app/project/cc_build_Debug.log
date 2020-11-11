@@ -1,0 +1,56 @@
+---------------------------  C50DaYang.pjt - Debug  ---------------------------
+[CAN.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -k -q -ss -as -o0 -fr"../obj/" -fs"../obj/" -i"../include" -i"../" -i"../../include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../project/Debug.lkf" "CAN.c"
+
+[CANProtocal.C] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -k -q -ss -as -o0 -fr"../obj/" -fs"../obj/" -i"../include" -i"../" -i"../../include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../project/Debug.lkf" "CANProtocal.C"
+
+[CodeStartBranch.asm] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -k -q -ss -as -o0 -fr"../obj/" -fs"../obj/" -i"../include" -i"../" -i"../../include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../project/Debug.lkf" "CodeStartBranch.asm"
+
+[Command.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -k -q -ss -as -o0 -fr"../obj/" -fs"../obj/" -i"../include" -i"../" -i"../../include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../project/Debug.lkf" "Command.c"
+
+[DelayUs.asm] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -k -q -ss -as -o0 -fr"../obj/" -fs"../obj/" -i"../include" -i"../" -i"../../include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../project/Debug.lkf" "DelayUs.asm"
+
+[DSP2803x_DefaultIsr.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -k -q -ss -as -o0 -fr"../obj/" -fs"../obj/" -i"../include" -i"../" -i"../../include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../project/Debug.lkf" "DSP2803x_DefaultIsr.c"
+
+[DSP2803x_GlobalVariableDefs.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -k -q -ss -as -o0 -fr"../obj/" -fs"../obj/" -i"../include" -i"../" -i"../../include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../project/Debug.lkf" "DSP2803x_GlobalVariableDefs.c"
+
+[EepromManage.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -k -q -ss -as -o0 -fr"../obj/" -fs"../obj/" -i"../include" -i"../" -i"../../include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../project/Debug.lkf" "EepromManage.c"
+
+[Error.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -k -q -ss -as -o0 -fr"../obj/" -fs"../obj/" -i"../include" -i"../" -i"../../include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../project/Debug.lkf" "Error.c"
+
+[Ev72main.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -k -q -ss -as -o0 -fr"../obj/" -fs"../obj/" -i"../include" -i"../" -i"../../include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../project/Debug.lkf" "Ev72main.c"
+
+[FunctionManage.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -k -q -ss -as -o0 -fr"../obj/" -fs"../obj/" -i"../include" -i"../" -i"../../include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../project/Debug.lkf" "FunctionManage.c"
+
+[KeyBoard.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -k -q -ss -as -o0 -fr"../obj/" -fs"../obj/" -i"../include" -i"../" -i"../../include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../project/Debug.lkf" "KeyBoard.c"
+
+[KeyBoard_Sci.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -k -q -ss -as -o0 -fr"../obj/" -fs"../obj/" -i"../include" -i"../" -i"../../include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../project/Debug.lkf" "KeyBoard_Sci.c"
+
+[Passwords.asm] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -k -q -ss -as -o0 -fr"../obj/" -fs"../obj/" -i"../include" -i"../" -i"../../include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../project/Debug.lkf" "Passwords.asm"
+
+[SpeedFunc.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -k -q -ss -as -o0 -fr"../obj/" -fs"../obj/" -i"../include" -i"../" -i"../../include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../project/Debug.lkf" "SpeedFunc.c"
+
+[SysCtrl.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -k -q -ss -as -o0 -fr"../obj/" -fs"../obj/" -i"../include" -i"../" -i"../../include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../project/Debug.lkf" "SysCtrl.c"
+
+[Linking...] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -@"Debug.lkf"
+<Linking>
+
+COFF2BIN.bat
+
+F:\Drive0X\trunk\16-PEU11C33\03-C33M07-ABS\app\project>cd debug 
+
+F:\Drive0X\trunk\16-PEU11C33\03-C33M07-ABS\app\project\Debug>C:\CCStudio_v3.3\C2000\cgtools\bin\hex2000.exe -romwidth 16 -memwidth 16 -i -o C50DaYang.hex C50DaYang.out 
+Translating to Intel format...
+   "C50DaYang.out"   ==> bootstart
+   "C50DaYang.out"   ==> .text
+   "C50DaYang.out"   ==> .econst
+   "C50DaYang.out"   ==> .text_int
+   "C50DaYang.out"   ==> .cinit
+   "C50DaYang.out"   ==> ramfuncs
+   "C50DaYang.out"   ==> IQmath
+   "C50DaYang.out"   ==> csm_rsvd
+   "C50DaYang.out"   ==> codestart
+   "C50DaYang.out"   ==> csmpasswds
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.
+  Please view the build output for errors and warnings for any custom steps.

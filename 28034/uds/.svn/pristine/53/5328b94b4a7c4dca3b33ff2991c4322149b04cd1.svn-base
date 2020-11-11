@@ -1,0 +1,191 @@
+/****************************************************************************
+ 	@Module       
+ 	@Filename      uds_srv22_readdatabyidentifier.c
+ 	@Project       BQApp
+----------------------------------------------------------------------------
+ 	@Controller    TI 28034
+
+ 	@Compiler      V5.211
+
+ 	@Codegenerator CCS 3.3
+
+ 	@Description   
+
+----------------------------------------------------------------------------
+	 @Date          12/19/2014
+
+******Copyright Auto Group , Shenzhen Megmeet Drive Technology Co.,LTD*****
+
+****************************************************************************/
+
+
+
+#include "MAIN.h"
+#include "uds_target.h"
+#include "uds_confpriv.h"
+#include "uds_confdefs.h"
+#include "uds_priv.h"
+#include "uds_inf.h"
+
+
+
+
+
+#ifdef UDS_ENABLE_READDATABYIDENTIFIER
+
+#define SNAP_DATA_ST_ORDER_AT_DDT_AT22     9
+#define SNAP_DATA_END_ORDER_AT_DDT_AT22    32
+
+
+
+static Std_UdsReturnType UDS_FN_TYPE UdsApp_22RdDatByDid_ReadData(Uds_APduData_t* pAPduInd, 
+                                                               Uds_APduData_t* pAPduResp );
+
+
+
+/* NRC for ReadDataByIdentifier
+ * 	0x13	UDS_NRC_INCORRECTMESSAGELENGTHORINVALIDFORMAT
+ * 	0x22	UDS_NRC_CONDITIONSNOTCORRECT
+ * 	0x31	UDS_NRC_REQUESTOUTOFRANGE
+ *	0x33	UDS_NRC_SECUTITYACCESSDENIED
+ */
+
+Std_UdsReturnType UDS_FN_TYPE UdsApp_ReadDataByIdentifier(Uds_APduData_t* pAPduInd, 
+                                                       Uds_APduData_t* pAPduResp )
+{
+   uint8_t lub_error = UDS_POSITIVE_RESPONSE;
+
+   if (0x02u                             > pAPduInd->msgLength  ||
+       UDS_C_RD_DAT_BY_DID_MAX_REQ_LEN   < pAPduInd->msgLength  ||    
+       0x00u !=   ((pAPduInd->msgLength - 0x01u) % 0x02u) )
+   {
+	     lub_error = UDS_NRC_INCORRECTMESSAGELENGTHORINVALIDFORMAT ;
+   }
+   else
+   {
+       lub_error = UdsApp_22RdDatByDid_ReadData(pAPduInd, 
+                                             pAPduResp );
+   }
+
+   return lub_error;
+} /* end of Uds_ReadDataByIdentifier()  */
+
+
+static Std_UdsReturnType UDS_FN_TYPE UdsApp_22RdDatByDid_ReadData(Uds_APduData_t* pAPduInd, 
+                                                               Uds_APduData_t* pAPduResp )
+{
+   uint8_t  lub_response           = UDS_POSITIVE_RESPONSE;
+   uint8_t  lub_indexID            = UDS_C_IDX_NOT_IN_TBL;
+   uint8_t  lub_tmpInputPidNum     = 0x00u;
+   uint8_t  lub_tmpInputPidIndex   = 0x00u;
+   uint16_t luw_tmpInDid2Rd        = 0x0000u;
+   uint8_t* p_lub_InPtrDid         = NULL;
+   uint8_t* p_lub_OutPtrDid        = NULL;  
+   uint8_t  lub_CurrActiveSession  = UDS_APP_ITF_IMP_GET_CURR_ACTIVE_SESSION();  
+   uint8_t  luw_tmpOutAllPidDatLen = 0x0000u;
+    
+    
+   lub_tmpInputPidNum =  (uint8_t)((pAPduInd->msgLength - 0x01u) /0x02u);
+   p_lub_InPtrDid  = (&(pAPduInd->pduData[0x01u]));
+   p_lub_OutPtrDid = (&(pAPduResp->pduData[0x01u]));
+   lub_tmpInputPidIndex = 0x00u;
+
+   while (lub_tmpInputPidNum > 0x00u)
+   {   
+	   luw_tmpInDid2Rd  = (uint16_t)((p_lub_InPtrDid[lub_tmpInputPidIndex]) << 0x08u);
+	   luw_tmpInDid2Rd |= (uint16_t)(p_lub_InPtrDid[lub_tmpInputPidIndex + 0x01u]);
+	   lub_indexID = Uds_Generic_DatMgr_SearchTblByKey(luw_tmpInDid2Rd , 
+	                                                   KeyTypeIsUINT16,
+	                                                   (uint8_t *)&(Uds_g_DidDataTable[0x00u].dataIdentifier),
+									                   sizeof(Uds_g_DidDataTable[0x00u]));
+                                      
+       if (lub_indexID == UDS_C_IDX_NOT_IN_TBL)
+       {
+           lub_response = UDS_NRC_REQUESTOUTOFRANGE ;
+           return lub_response;  
+       }    
+ 	   else  /* if (lub_indexID != UDS_C_IDX_NOT_IN_TBL) */
+	   {
+         if ( ( (Uds_g_DidDataTable[lub_indexID].AccessAttribute) & 
+                UDS_C_DID_ATR_ENA_RD
+              ) != UDS_C_DID_ATR_ENA_RD
+            )
+         {
+              lub_response = UDS_NRC_REQUESTOUTOFRANGE;
+              return lub_response; 
+         }
+         else
+         {                
+         }
+
+               
+         if (( ( ((Uds_g_DidDataTable[lub_indexID].AccessAttribute) & UDS_C_DID_ATR_RD_SAL11) == 
+                 UDS_C_DID_ATR_RD_SAL11
+               ) &&
+               (!UdsApp_27SecuAcc_IsSpecifiedSALHasUnlocked(UDS_C_SECU_ACC_SECU_LEVEL11))
+             )         
+            )                        
+         {
+               lub_response = UDS_NRC_SECUTITYACCESSDENIED;
+               return lub_response;                     
+         }
+         else
+         {                
+         }
+       
+         // Did
+         p_lub_OutPtrDid[luw_tmpOutAllPidDatLen] = p_lub_InPtrDid[lub_tmpInputPidIndex];
+         luw_tmpOutAllPidDatLen++; 
+         p_lub_OutPtrDid[luw_tmpOutAllPidDatLen] = p_lub_InPtrDid[(lub_tmpInputPidIndex + 0x01u)];
+         luw_tmpOutAllPidDatLen++;
+         
+	         /* clear the diagnostic buffer */           
+         Uds_MemClear(&p_lub_OutPtrDid[luw_tmpOutAllPidDatLen],
+                      Uds_g_DidDataTable[lub_indexID].DataSize);
+         
+         //
+         if ((Uds_g_DidDataTable[lub_indexID].pFuncPtrToReadData) != NULL) 
+         {
+          
+             (*(Uds_g_DidDataTable[lub_indexID].pFuncPtrToReadData))(Uds_g_DidDataTable[lub_indexID].pDataBuf);
+         } 
+         else 
+         {
+          
+         }
+	   	    
+	     if ((lub_indexID >= SNAP_DATA_ST_ORDER_AT_DDT_AT22) && (lub_indexID <= SNAP_DATA_END_ORDER_AT_DDT_AT22)) {
+          	GetDataFlowInfo();
+	   	    //
+	   	    Uds_MemCopyDataFlow(&p_lub_OutPtrDid[luw_tmpOutAllPidDatLen],
+	   	                        Uds_g_DidDataTable[lub_indexID].pDataBuf,
+	   						    Uds_g_DidDataTable[lub_indexID].DataSize);
+	     }
+	     else {
+	   	    /* copy 1 or more bytes */
+	   	    Uds_MemCopy(&p_lub_OutPtrDid[luw_tmpOutAllPidDatLen], 
+	   	                Uds_g_DidDataTable[lub_indexID].pDataBuf,
+	   	                Uds_g_DidDataTable[lub_indexID].DataSize);
+	     }
+
+		       /* compute the length */
+         luw_tmpOutAllPidDatLen = luw_tmpOutAllPidDatLen + Uds_g_DidDataTable[lub_indexID].DataSize ;
+           
+	   } /* end of else of if (lub_indexID != UDS_C_IDX_NOT_IN_TBL) */
+	
+       lub_tmpInputPidNum--;
+       lub_tmpInputPidIndex = lub_tmpInputPidIndex + 0x02u;
+       
+   } /* end of while (lub_tmpInputPidNum > 0x00u) */
+
+   pAPduResp->msgLength = (uint16_t)(luw_tmpOutAllPidDatLen + 0x01u);    
+
+   return lub_response ;
+}  /* end of Uds_22RdDatByDid_ReadData() */
+
+
+
+#endif /* UDS_ENABLE_READDATABYIDENTIFIER */
+/******************************************************************************
+*                               end of file                                   *
+******************************************************************************/

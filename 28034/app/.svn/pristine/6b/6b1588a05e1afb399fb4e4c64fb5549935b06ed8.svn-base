@@ -1,0 +1,514 @@
+//****************************************************************************/
+// @Module       
+// @Filename      Ev72main.c
+// @Project       BQApp
+//----------------------------------------------------------------------------
+// @Controller    TI 28034
+//
+// @Compiler      V5.211
+//
+// @Codegenerator CCS 3.3
+//
+// @Description   
+//
+//----------------------------------------------------------------------------
+// @Date          12/19/2014
+//
+//******Copyright Auto Group , Shenzhen Megmeet Drive Technology Co.,LTD*****
+
+/****************************************************************************/
+#include "AppDefine.h"
+#include "Typedefs.h"
+#include "main.h"
+#include "Ev72ctrl.h"   
+#include "GlobalVariables.h"
+#include "FunctionManage.h"
+#include "KeyBoard.h"
+#include "KeyBoard_Extypes.h"
+#include "KeyBoard_Sci.h"
+#include "FunctionCode.h"
+#include "DrivePublicVar.h"
+#include "Error.h"
+#include "EepromManage.h"
+#include "TorqFunc.h"
+#include "SpeedFunc.h"
+#include "const.h"
+#include "CANProtocal.h"
+#include "CAN.h"
+#include "Task.h"
+#include "Uds_priv.h"
+#include "IOFunc.h"
+#include "DrivePublicVar.h"
+#include "SysCtrl.h"
+#include "DriveLib.h"
+#include "FblMgr.h"
+//=========================================================================================================================
+
+extern   Uint16  RamfuncsLoadStart;
+extern   Uint16  RamfuncsLoadEnd;
+extern   Uint16  RamfuncsRunStart;
+extern   unsigned long MotorRatedSpeed;
+extern long lAbsSpeedActFlt;
+extern int UtRef;
+extern int UmRef;
+extern int Udc,Sliding;
+extern void Enc1Run(void);
+
+unsigned int RetData;
+uint16	  RelucTorqThta;
+
+extern short AI1Voltage;
+
+extern unsigned int    Ibase;
+
+
+extern long TorqLmtFlt;
+extern unsigned int  Param_AmpIxtAct,CurrentScaling;
+
+
+
+
+#define SQRT3_2				0x6EDA							          // sqrt(3)/2 = 28378 in Q15
+
+//#define PWM_PERIOD_8KHZ		3750L					                  // (60M/8K/2)=3750
+#define PWM_PERIOD_4KHZ		7500L					                  // beiqi4k, (60M/4K/2)=7500
+#define	PR_SQRT3_2          ((PWM_PERIOD_4KHZ * SQRT3_2) >> 15)	      // Q0,    beiqi4k
+
+#define	INVPR_SQRT3_2	    (0x1000000L / PR_SQRT3_2)			      // Q24
+
+
+void InitDrivVariables(void);
+void GetAllVersion(void);
+extern unsigned long divu64d32 (unsigned long factor1, unsigned long factor2, unsigned long divisor);
+extern long DV3232_32(long,unsigned long,unsigned long);   // !!!
+extern void KeyBoard_SetValue(Uint16 x, Uint32 y);
+extern int CalSin2(int Angle);
+void InitFuncodeParameter(void);
+uint16 GetPrValue(uint16 address);
+extern void EnableDog(void);
+extern void KickDog(void);
+extern void BackUpPI(void);
+extern void IdIqLim (void);
+extern void Check_Module(void); 
+
+unsigned int 	K4_PrSqrt3by2;
+unsigned int    K4_InvPrSqrt3by2;
+extern int FrqCarry;
+
+long   PosNegId00001[2]; 					  //plus a. minus 0x7FFF 
+uint16 SessionDelay,SessionRstStep,ResetDog;
+Uint16 ClrErrLogTmr;
+extern Uint16 StEcuReset;
+extern const unsigned int AutoVersion;
+extern const int LibVer;
+
+uint8_t 	  VIN[17];			/*F190*/
+const uint8_t PartNumber[] = {'E','0','0','1','0','3','0','6','3'};
+uint8_t 	  SW_Finger[9];
+const uint8_t SuppID[] = {'A','0','1','0','E','0','0','6','5','6'};
+const uint8_t HW_VER[] = {' ',' ',' ',' ',' ','H','0','0','2'}; //{'E','1','0','0','0','0','0','0','1'};
+const uint8_t SW_VER[] = {' ','S',UDS_SoftVerSion1,UDS_SoftVerSion2,UDS_SoftVerSion3,'C','0',UDS_MCUCALVER1,UDS_MCUCALVER2}; //{'E','1','0','0','0','0',UDS_SoftVerSion1,UDS_SoftVerSion2,UDS_SoftVerSion3};				
+const uint8_t PRO_DATA[3] = {UDS_PRO_Date_YY2,UDS_PRO_Date_MM,UDS_PRO_Date_DD};
+uint8_t 	  ECUBootDataVersion[10];
+extern int DecFrq;
+uint8_t		  MotCode[30];
+uint16_t tempdata;
+
+
+//=========================================================================================================================
+void main(void)
+{
+	DisableDog();
+	InitMem();
+	InitFinish = 0;
+	InitSysCtrl(); 
+    InitGpio();	
+	LED = 0;
+    InitPieCtrl();
+	
+    //--- Copy all Flash sections that need to run from RAM (use memcpy() from RTS library)
+    // Section secureRamFuncs contains user defined code that runs from CSM secured RAM    
+    memcpy(	&RamfuncsRunStart,
+    		&RamfuncsLoadStart,
+    		&RamfuncsLoadEnd - &RamfuncsLoadStart);
+     
+    //--- Initialize the Flash and OTP
+    InitFlash();
+    //--- Peripheral Initialization
+    CAN_vInit();
+    InitSci();
+    InitEPwm();
+    InitAdc();
+    InitEeprom();
+	//POSSPEED_Init();    
+	
+#ifdef DA_EN	
+	//InitSpi();
+#endif
+
+	DINT;
+	DelayUs(30000);    // 30ms
+	LED = 1;
+	FuncManage_ReadParameters();
+	Check_Module();   //c50模块版本和程序版本上电自检测 450A 600A
+	
+	//CAN_vInit();
+	
+#ifdef UDS_ENABLE	
+	FblTp_Init();
+	FblMgr_Init();
+	FblUds_Initialize();
+#endif
+	J1939_Initialization();
+
+	LED = 0;
+	
+	CtrlInit();
+
+//	Funcode.DisPr3.value = 0;
+	
+	// Initialize variables
+	SensorlessSM_Init();
+	InitDrivVariables();
+	Enc1Init();				//Encoder1Ctrl
+	MotSearchAngInit();    // 同步机寻找初始安装角	SmInitAngle
+	CalParameter();
+	InitFuncodeParameter();
+//	Calc_LpIxtIGBT();
+	BackUpPI();
+
+	FuncManage_L4ms_Init_Torque();
+	GetAllVersion();
+	asm("  EALLOW");
+	EPwm5Regs.TZCLR.bit.OST = 1;    // 清除OST, 解除封锁		
+	asm(" EDIS");
+    EPwm5Regs.TBPRD=30000/800+1; //800k
+
+    for(EPwm5Regs.CMPA.half.CMPA=EPwm5Regs.TBPRD-1;EPwm5Regs.CMPA.half.CMPA>EPwm5Regs.TBPRD/2+9;EPwm5Regs.CMPA.half.CMPA--) //deadtime=18/60=300us
+      {
+ 
+        EPwm5Regs.CMPB=EPwm5Regs.TBPRD-EPwm5Regs.CMPA.half.CMPA;
+        DelayUs(500);
+      }
+
+
+    DelayUs(2000);
+
+    EPwm5Regs.CMPA.half.CMPA = (30000/660+9);
+
+	EPwm5Regs.TBPRD=30000/330;
+
+	EPwm5Regs.CMPB=30000/330-EPwm5Regs.CMPA.half.CMPA;
+
+	DecFrq=0x88aa;
+	
+
+
+	DelayUs(20000);	
+	LED = 1;
+	//----------------------------------------------	
+	EALLOW; 		
+	PieCtrlRegs.PIEIFR1.bit.INTx4 = 0;		
+	PieVectTable.XINT1 = &OverCurrent;	
+	PieVectTable.EPWM7_INT = &Epwm7Int_isr;	
+	EDIS;		
+	IER |= M_INT1;	
+	IER |= M_INT3;
+
+	        		
+	PieCtrlRegs.PIEIER1.bit.INTx4 = 1;    // XINT1	
+	PieCtrlRegs.PIEIER3.bit.INTx7 = 1;    // EPWM7_INT		
+	//----------------------------------------------	
+	//DelayUs(30000);	
+	
+	EINT;	// Enable Global interrupt INTM
+	ERTM;   // Enable Global realtime interrupt DBGM
+	EnableDog( );	
+	CMP0 = 3750;   // beiqi4k
+	CMP1 = 3750;   // beiqi4k
+	CMP2 = 3750;   // beiqi4k
+
+	LED = 0;
+	InitFinish = 1;
+	 
+	for(;;)
+	{
+		if ((FblUds_SimpleSesnMgr_GetActiveSession() == UDS_PROGRAMMING_SESSION) || (StEcuReset == TRUE))
+	    {
+			if (SessionRstStep==0)
+			{
+				if (SessionDelay>=3) 
+                {
+				    DINT;
+				    SessionRstStep = 1;
+                }
+				
+				KickDog();
+			}
+			else if(SessionRstStep == 1)	
+			{
+                if (FblUds_SimpleSesnMgr_GetActiveSession() == UDS_PROGRAMMING_SESSION)
+                {
+                    //Store flag to eeprom
+				    if(WriteBootPara(UDS_PROGRAMMING_SESSION) == 1)
+				    {
+					    SessionRstStep = 2;
+				    }
+				    else	
+				    {
+                        //Write Eeprom error
+				    }
+				}
+				else if (StEcuReset == TRUE)
+				{
+				    SessionRstStep = 2;
+				}	
+
+				KickDog();
+				
+			}
+			else if(SessionRstStep == 2)	
+			{
+				//Wait WatchDog Reset				
+			}
+	    }
+	    else
+	    {
+		    KickDog();
+	    }
+
+		InitFuncodeParameter();
+		DealEpData();
+		//CheckEEprom();
+        //GetDataFlowInfo();
+	} 
+}
+
+int index4ms;
+//**************************************************************************************************************************
+void Task4msLoop(void)
+{
+
+	
+	if ((FblUds_SimpleSesnMgr_GetActiveSession() == UDS_PROGRAMMING_SESSION) || (StEcuReset == TRUE))
+	{
+		SessionDelay++;
+	}
+	else
+	{
+		SessionDelay = 0;
+		KickDog( );
+	}
+
+	SetSwitchFreq( );
+	UsSquare = (long)US_ALPHA * US_ALPHA + (long)US_BETA * US_BETA;    // Q28
+	VoltOut = sqrtu16(UsSquare);  // Q14	
+	ValueLong_MaxOutFrq = 10L*Funcode.MaxOutFrq.value;
+	
+	CalMotorParameter();
+	FuncManage_L4ms();
+	ResolverSignal();
+	FuncManage_MotorTempDetect();
+	FuncManage_TempDetect();
+	FuncManage_IGBTUDetect();
+	FuncManage_IGBTVDetect();
+	FuncManage_IGBTWDetect();
+	//if((index4ms++ % 2) == 0)
+	//{
+//		LT_It_handlePt1();
+	//}
+
+	//J1939_Poll(4);
+
+
+	//Funcode.DisPr1.value = GetPrValue(Funcode.Pr1.value);
+	//Funcode.DisPr2.value = GetPrValue(Funcode.Pr2.value);
+	//Funcode.DisPr3.value = GetPrValue(Funcode.Pr3.value);
+	//Funcode.DisPr4.value = GetPrValue(Funcode.Pr4.value);
+	//Funcode.DisPr5.value = GetPrValue(Funcode.Pr5.value);
+
+}
+
+
+//=========================================================================================================================
+// 初始化与电机控制相关的变量
+
+void InitDrivVariables(void)
+{
+	SinTab = (long *)0x03fe000;  // TMS320F28023 Boot ROM 里放置 _IQsinTable 表的首地址(详见 .map 文件)
+	
+	PosNeg00007FFF[0] = 0x7FFF;
+	PosNegId00001[0] = 0x0;
+//fix bug 
+	PosNegId00001[1] = -0x7fff;
+	PosNeg00007FFF[1] = -0x7FFF;
+		
+	PosNeg7FFFFFFF[0] = 0x7FFFFFFF;
+	PosNeg7FFFFFFF[1] = 0x0;
+	PosNeg7FFFFFFF[2] = -0x7FFFFFFF;
+	PosNeg7FFFFFFF[3] = -0x1;
+	//lAbsSpeedActFlt=0;
+	ZeroLimit = 0x0;
+
+	
+	//Nmax = 8000;                                        // 用于内部速度的定标
+	Nmax = 12000; 
+	FrqCarry=7500;
+	
+	Imax = Funcode.Imax.value;                          // 用于内部电流的定标
+	ImaxPeak = ((long)Imax * 46341L + 16384L) >> 15;      
+	Ibase = ImaxPeak;	                                // 相对于内部定标电流的相电流峰值
+	
+	udc_rated = 400;                                    // 用于内部电压的定标, beiqi, 改为 400
+
+	
+	Uphase = 163;       // Uphase = [udc_rated / sqrt(6)]
+	
+	IqULimitGen[0] = 0x3FFF; 
+	IqULimitGen[1] = -0x3FFF; 
+
+	Param_SpeedSet_ULim = 0x3FFFFFFF;    //  (2^30 - 1)
+	Param_SpeedSet_LLim = -0x3FFFFFFF;   // -(2^30 - 1)
+	
+	Param_TrqDirectULim = 0x3FFF;      // in Q14
+	Param_TrqDirectLLim = -0x3FFF;     // in Q14
+	
+	Param_IqULimit = 0x3FFF;    // in Q14
+	Param_IqLLimit = -0x3FFF;   // in Q14
+	
+	Param_VdqLimit = 0x7FFF;
+//	Param_VdqLimit = 22000;		//28000
+	
+	K4_InvPrSqrt3by2 = INVPR_SQRT3_2;
+	K4_PrSqrt3by2 = PR_SQRT3_2;
+	
+	SampleTimeILoop = 1250;
+	
+	Param_Reg_ctrl = 0;          // REG_CTRL
+	Param_AutotuningCtrl = 0;    // AutotuningCtrl		
+//	CurrLimitPH = 0x4000;
+//	CurrLimitPL = 0x0000;	
+	TorqLmtFlt = 0x10000000;	
+
+	//RatedCurLimit = divu64d32(_IQ28(1), Funcode.M1RatedCurrent.value, Imax);
+
+	//
+	CurrLimitPH = 0;
+	CurrLimitPL = 0;
+}
+
+
+void LoadDefPara(const unsigned int *def)
+{
+	int i,offset,index;
+		i = 0;
+		offset = 0;
+		index = 0;
+		while(*(def+index)!=0xffff)
+		{
+			while(*(def+index)!=NumGroup[i])
+			{
+				offset+=NumFunc[i+1];
+				i++;
+			}
+
+			KeyBoard_SetValue(offset+*(def+index+1),*(def+index+2));
+			index = index + 3;
+		}	
+}
+
+
+
+
+
+
+
+// TaskMain1ms called by 1ms
+void TaskMain1ms()
+{
+		FuncManage_L1ms();
+		SCITIMECHK();
+		READTOSEND();
+		
+		Enc1Run();
+	
+		J1939_Poll(1);
+        Anti_Slip(1);
+		
+#ifdef UDS_ENABLE		
+		CanDrv_RxTxMsgPollingMode(); 					//本来  while(1)
+		
+		Os_Sys_Timer_1000us_task_MainEntryPoint();
+#endif
+		Diagnosis_poll(1);
+		EcanIntHdl();
+
+        if (StClrErrLog == TRUE) {
+            ClrErrLogTmr++;
+            if (ClrErrLogTmr >= 5000) {
+                ClrErrLogTmr = 0;
+                StClrErrLog = FALSE;
+            }
+        }
+        else {
+            ClrErrLogTmr = 0;
+        }	
+}
+
+
+void GetAllVersion()
+{
+	uint16 *pr = (uint16 *)0x003F7EC0;
+	uint16 i;
+
+	Funcode.AppDate.value = SrcLinkDate;
+	Funcode.DriveVer.value = LibVer;
+
+	/*Boot Version*/
+	if((pr[0] == 'V')||(pr[1] == 'E')||(pr[2] == 'R'))
+	{
+		Funcode.BootVer.value  =  100*(pr[3]-0x30);
+		Funcode.BootVer.value  +=  10*(pr[4]-0x30);
+		Funcode.BootVer.value  +=  (pr[5]-0x30);
+
+		for(i = 6;i<16;i++)
+		{
+			ECUBootDataVersion[i-6] = pr[i];
+		}
+	}
+	else
+	{
+		Funcode.BootVer.value = 0xFFFF;
+
+		for(i = 6;i<16;i++)
+		{
+			ECUBootDataVersion[i-6] = 0xFFu;
+		}
+	}
+}
+
+
+
+
+//================================================================================================================
+// AdPoint, test only
+/*
+interrupt void ADC_INT1_ISR(void)
+{
+	AdcRegs.ADCINTFLGCLR.bit.ADCINT1 = 1;
+	PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
+//	EALLOW;
+//	GpioDataRegs.GPATOGGLE.bit.GPIO20 = 1;
+//	EDIS;
+}
+
+interrupt void ADC_INT2_ISR(void)
+{
+	AdcRegs.ADCINTFLGCLR.bit.ADCINT2 = 1;
+	PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
+	//EALLOW;
+	GpioDataRegs.GPATOGGLE.bit.GPIO21 = 1;
+	//EDIS;
+}
+*/
+//================================================================================================================

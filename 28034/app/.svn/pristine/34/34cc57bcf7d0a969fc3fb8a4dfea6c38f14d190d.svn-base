@@ -1,0 +1,217 @@
+VERSION ""
+
+
+NS_ : 
+        NS_DESC_
+        CM_
+        BA_DEF_
+        BA_
+        VAL_
+        CAT_DEF_
+        CAT_
+        FILTER
+        BA_DEF_DEF_
+        EV_DATA_
+        ENVVAR_DATA_
+        SGTYPE_
+        SGTYPE_VAL_
+        BA_DEF_SGTYPE_
+        BA_SGTYPE_
+        SIG_TYPE_REF_
+        VAL_TABLE_
+        SIG_GROUP_
+        SIG_VALTYPE_
+        SIGTYPE_VALTYPE_
+        BO_TX_BU_
+        BA_DEF_REL_
+        BA_REL_
+        BA_DEF_DEF_REL_
+        BU_SG_REL_
+        BU_EV_REL_
+        BU_BO_REL_
+        SG_MUL_VAL_
+
+BS_:
+
+BU_: DCDC EAS ECC EPS ICM PTC RMS VCU 
+
+
+BO_ 1312 DCDC_0x520: 8 DCDC
+ SG_ DCDC_520_INIT : 0|1@0+ (1,0) [0|1] "" RMS
+ SG_ DCDC_520_STA : 2|2@0+ (1,0) [0|3] "" RMS
+ SG_ DCDC_520_OUTPUT_VOLT : 15|8@0+ (0.2,0) [0|51] "V" RMS
+ SG_ DCDC_520_OUTPUT_CUR : 23|16@0+ (0.01,0) [0|150] "A" RMS
+ SG_ DCDC_520_INPUT_VOLT : 39|16@0+ (0.02,0) [0|1310.68] "V" RMS
+ SG_ DCDC_520_INPUT_CUR : 55|8@0+ (0.1,0) [0|25.4] "A" RMS
+ SG_ DCDC_520_TEMP : 63|8@0+ (1,-48) [-48|206] "℃" RMS
+
+BO_ 1313 DCDC_0x521: 8 DCDC
+ SG_ DCDC_521_INPUT_VOLT_HIGH : 0|1@0+ (1,0) [0|1] "" RMS
+ SG_ DCDC_521_INPUT_VOLT_LOW : 1|1@0+ (1,0) [0|1] "" RMS
+ SG_ DCDC_521_OUTPUT_VOLT_HIGH : 2|1@0+ (1,0) [0|1] "" RMS
+ SG_ DCDC_521_OUTPUT_VOLT_LOW : 3|1@0+ (1,0) [0|1] "" RMS
+ SG_ DCDC_521_HD_FAULT : 4|1@0+ (1,0) [0|1] "" RMS
+ SG_ DCDC_521_TEMP_OVER_FAULT : 5|1@0+ (1,0) [0|1] "" RMS
+ SG_ DCDC_521_CUR_LIMIT_PROTE : 6|1@0+ (1,0) [0|1] "" RMS
+ SG_ DCDC_521_INPUT_CUR_OVER_FAULT : 7|1@0+ (1,0) [0|1] "" RMS
+
+BO_ 1559 VCU_0x617: 8 VCU
+ SG_ VCU_617_VEH_SPD : 23|16@0+ (0.01,0) [0|655.35] "km/h" EPS,EAS,ECC,PTC,DCDC,ICM
+
+BO_ 1824 DCDC_0x720: 8 DCDC
+ SG_ DCDC_720_CAL_VERS : 15|8@0+ (1,0) [0|255] "" RMS
+ SG_ DCDC_720_PART_VERS : 23|32@0+ (1,0) [0|4294967295] "" RMS
+ SG_ DCDC_720_HW_VERS : 55|8@0+ (1,0) [1|50] "" RMS
+ SG_ DCDC_720_SW_VERS : 63|8@0+ (1,0) [51|255] "" RMS
+
+BO_ 2043 Diag_DCDC_Resp: 8 DCDC
+
+
+CM_ "Version:V1.0 , Date:2016/2/5 , Author:王道静 , Review: , Approval: , Description:
+1、C33DB-Z01EX项目FP阶段VBUS网段报文设计；
+ ;
+Version:V1.0 , Date:2016/2/16 , Author:王道静 , Review: , Approval: , Description:
+2、删除0x458帧“动力电池当前充电类型信号”，增加0x61D帧“充电状态”信号；
+3、增加0x322帧，删除0x470、0x67F帧（EPS相关报文）
+4、ABS节点不再接收VCU相关报文；
+ ;
+Version:V1.0 , Date:2016/2/18 , Author:王道静 , Review: , Approval: , Description:
+5、取消PTC节点接收0x211帧报文（娄建勋反馈）；
+ ;
+Version:V1.0 , Date:2016/3/18 , Author:王道静 , Review: , Approval: , Description:
+6、增加0x61B、0x6D8、0x6D9、0x6DF帧CMU相关报文；
+7、0x61F报文中删除“制冷模式指令”“制热模式指令”“除霜模式指令”，增加“空调模式指令”；
+8、删除VCU_0x214帧中的“远程开关当前状态”信号；（涉变节点VCU、BMS、ICM、TBOX\RMS节点）(变更来源：远程慢充功能定义变更_王娅荣)；
+ ;
+Version:V1.0 , Date:2016/3/24 , Author:王道静 , Review: , Approval: , Description:
+9、在0x61D帧中增加“电子锁控制命令”(充电新国标)
+10、在CMU_0x6D9帧中增加“交流充电插座温度传感器故障”；（CMU、VCU、RMS\TBOX）(充电新国标)
+11、将0x61B帧报文的周期由100ms改为20ms;(充电新国标)；
+12、0x214帧中的“整车State状态（状态机编码）”信号增加接收CMU节点；(充电新国标)；
+ ;
+Version:V2.0 , Date:2016/3/28 , Author:王道静 , Review: , Approval: , Description:
+13、在0x6D8帧中增加“CMU状态信息”和“VCU唤醒信号”；(充电新国标) ;
+Version:V2.0 , Date:2016/3/29 , Author:王道静 , Review: , Approval: , Description:
+14、0x611帧1byte7bit增加“充电故障指示”信号；
+15、0x4F0报文中删除“远程制冷模式请求”“远程制热模式请求”“远程除霜模式请求”，增加“远程空调模式请求”;
+16、0x4F0报文中删除“远程动力电池加热模式请求”信号；
+17、删除0x6D0帧报文；
+18、取消VCU接收0x6DF、0x720、0x521、0x520、0x6E0、0x4B0、0x490帧报文；
+19、0x69F、0x6BF、0x6E0、0x720帧增加软件次版本；
+
+ ; ";
+
+CM_ SG_ 1312 DCDC_520_INIT "DCDC初始化状态";
+CM_ SG_ 1312 DCDC_520_STA "DCDC当前状态";
+CM_ SG_ 1312 DCDC_520_OUTPUT_VOLT "DC/DC输出端电压";
+CM_ SG_ 1312 DCDC_520_OUTPUT_CUR "DC/DC输出端电流";
+CM_ SG_ 1312 DCDC_520_INPUT_VOLT "DC/DC输入端电压";
+CM_ SG_ 1312 DCDC_520_INPUT_CUR "DC/DC输入端电流";
+CM_ SG_ 1312 DCDC_520_TEMP "DC/DC温度";
+CM_ SG_ 1313 DCDC_521_INPUT_VOLT_HIGH "DC/DC输入端过压故障";
+CM_ SG_ 1313 DCDC_521_INPUT_VOLT_LOW "DC/DC输入端欠压故障";
+CM_ SG_ 1313 DCDC_521_OUTPUT_VOLT_HIGH "DC/DC输出端过压故障";
+CM_ SG_ 1313 DCDC_521_OUTPUT_VOLT_LOW "DC/DC输出端欠压故障";
+CM_ SG_ 1313 DCDC_521_HD_FAULT "DC/DC硬件故障";
+CM_ SG_ 1313 DCDC_521_TEMP_OVER_FAULT "DC/DC过温故障";
+CM_ SG_ 1313 DCDC_521_CUR_LIMIT_PROTE "DC/DC限流保护";
+CM_ SG_ 1313 DCDC_521_INPUT_CUR_OVER_FAULT "DC/DC输入端过流故障";
+CM_ SG_ 1824 DCDC_720_CAL_VERS "DCDC次软件版本号后两位";
+CM_ SG_ 1824 DCDC_720_PART_VERS "DC/DC零部件号";
+CM_ SG_ 1824 DCDC_720_HW_VERS "DCDC硬件版本号后两位";
+CM_ SG_ 1824 DCDC_720_SW_VERS "DCDC软件版本号后两位";
+CM_ SG_ 1559 VCU_617_VEH_SPD "车速信号";
+
+
+BA_DEF_ BO_  "NmMessage" ENUM "No","Yes";
+BA_DEF_ BO_  "DiagState" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagRequest" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagResponse" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cycle","NoSendType","IfActive";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "cycle","OnChange","OnWrite","IfActive","OnChangeWithRepetition","OnWriteWithRepetition","IfActiveWithRepetition";
+BA_DEF_ SG_  "GenSigStartValue" INT 0 0;
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 0;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 0;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 0;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 0;
+BA_DEF_  "DBName" STRING ;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ SG_  "GenSigTimeoutValue" INT 0 1000000000;
+BA_DEF_ BO_  "GenMsgCycleTimeActive" INT 0 0;
+BA_DEF_ BU_  "ILUsed" ENUM  "No","Yes";
+BA_DEF_ BU_  "DiagStationAddress" HEX 0 255;
+BA_DEF_ BU_  "NmNode" ENUM  "Not","Yes";
+BA_DEF_ BU_  "NmStationAddress" HEX 0 65535;
+BA_DEF_ BU_  "NmCAN" INT 0 2;
+BA_DEF_  "Manufacturer" STRING ;
+BA_DEF_  "NmType" STRING ;
+BA_DEF_  "NmMessageCount" INT 0 255;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v3_0" INT 0 0;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v2_3" INT 0 0;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v3_1" INT 0 0;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v2_2" INT 0 0;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v2_1" INT 0 0;
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 65535;
+BA_DEF_  "BusType" STRING ;
+
+
+BA_DEF_DEF_  "NmMessage" "No";
+BA_DEF_DEF_  "DiagState" "No";
+BA_DEF_DEF_  "DiagRequest" "No";
+BA_DEF_DEF_  "DiagResponse" "No";
+BA_DEF_DEF_  "GenMsgSendType" "cycle";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenSigSendType" "cycle";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "DBName" "";
+BA_DEF_DEF_  "NodeLayerModules" "CANoeILNLVector.dll";
+BA_DEF_DEF_  "GenSigTimeoutValue" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeActive" 0;
+BA_DEF_DEF_  "ILUsed" "No";
+BA_DEF_DEF_  "DiagStationAddress" 0;
+BA_DEF_DEF_  "NmNode" "Not";
+BA_DEF_DEF_  "NmStationAddress" 0;
+BA_DEF_DEF_  "NmCAN" 0;
+BA_DEF_DEF_  "Manufacturer" "";
+BA_DEF_DEF_  "NmType" "";
+BA_DEF_DEF_  "NmMessageCount" 128;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v3_0" 0;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v2_3" 0;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v3_1" 0;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v2_2" 0;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v2_1" 0;
+BA_DEF_DEF_  "GenMsgILSupport" "No";
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "BusType" "CAN";
+BA_ "DBName" "VBUS";
+BA_ "GenMsgCycleTime" BO_ 1312 100;
+BA_ "GenSigStartValue" SG_ 1312 DCDC_520_TEMP 48;
+BA_ "GenMsgCycleTime" BO_ 1313 100;
+BA_ "GenMsgCycleTime" BO_ 1559 100;
+BA_ "GenMsgCycleTime" BO_ 1824 1000;
+BA_ "GenSigStartValue" SG_ 1824 DCDC_720_HW_VERS 1;
+BA_ "GenSigStartValue" SG_ 1824 DCDC_720_SW_VERS 51;
+BA_ "DiagState" BO_ 2043 1;
+BA_ "DiagResponse" BO_ 2043 1;
+BA_ "GenMsgSendType" BO_ 2043 1;
+VAL_ 1312 DCDC_520_INIT 1 "初始化已完成" 0 "初始化未完成" ;
+VAL_ 1312 DCDC_520_STA 3 "Void" 2 "故障状态" 1 "工作状态" 0 "待机状态" ;
+VAL_ 1312 DCDC_520_OUTPUT_VOLT 255 "Invalid" ;
+VAL_ 1312 DCDC_520_OUTPUT_CUR 65535 "Invalid" ;
+VAL_ 1312 DCDC_520_INPUT_VOLT 65535 "Invalid" ;
+VAL_ 1312 DCDC_520_INPUT_CUR 255 "Invalid" ;
+VAL_ 1312 DCDC_520_TEMP 255 "Invalid" ;
+VAL_ 1313 DCDC_521_INPUT_VOLT_HIGH 1 "异常" 0 "正常" ;
+VAL_ 1313 DCDC_521_INPUT_VOLT_LOW 1 "异常" 0 "正常" ;
+VAL_ 1313 DCDC_521_OUTPUT_VOLT_HIGH 1 "异常" 0 "正常" ;
+VAL_ 1313 DCDC_521_OUTPUT_VOLT_LOW 1 "异常" 0 "正常" ;
+VAL_ 1313 DCDC_521_HD_FAULT 1 "异常" 0 "正常" ;
+VAL_ 1313 DCDC_521_TEMP_OVER_FAULT 1 "异常" 0 "正常" ;
+VAL_ 1313 DCDC_521_CUR_LIMIT_PROTE 1 "异常" 0 "正常" ;
+VAL_ 1313 DCDC_521_INPUT_CUR_OVER_FAULT 1 "异常" 0 "正常" ;

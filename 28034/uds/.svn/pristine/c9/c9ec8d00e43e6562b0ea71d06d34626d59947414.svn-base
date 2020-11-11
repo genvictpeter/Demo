@@ -1,0 +1,46 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="E:\AME\BQapp\C33\03-src\C33_Sw\Uds\UdsLib\"
+ProjectType=Library
+CPUFamily=TMS320C28XX
+Tool="Archiver"
+Tool="Compiler"
+Tool="CustomBuilder"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="..\src\FblMgr.c"
+Source="..\src\FblSimpleUds.c"
+Source="..\src\FblTp.c"
+Source="..\src\Task.c"
+Source="..\src\uds_callbacks.c"
+Source="..\src\uds_srv10_diagsessioncontrol.c"
+Source="..\src\uds_srv11_ecureset.c"
+Source="..\src\uds_srv14_cleardiaginformation.c"
+Source="..\src\uds_srv19_readdtcinformation.c"
+Source="..\src\uds_srv22_readdatabyidentifier.c"
+Source="..\src\uds_srv27_securityaccess.c"
+Source="..\src\uds_srv28_comcontrol.c"
+Source="..\src\uds_srv2e_writedatabyidentifier.c"
+Source="..\src\uds_srv2f_iocontrolbyidentifier.c"
+Source="..\src\uds_srv31_routinecontrol.c"
+Source="..\src\uds_srv3e_testerpresent.c"
+Source="..\src\uds_srv85_controldtcsetting.c"
+Source="..\src\uds_srvX_ISO_15031_5_Read.c"
+Source="..\src\uds_svc_dataMngr.c"
+Source="..\src\uds_target.c"
+
+["Archiver" Settings: "Debug"]
+Options=-r -o"..\..\app\lib\UdsLib.lib"
+
+["Archiver" Settings: "Release"]
+Options=-r -o".\Release\UdsLib.lib"
+
+["Compiler" Settings: "Debug"]
+Options=-g -pdsw225 -o0 -fr"$(Proj_dir)\Debug" -i"..\..\app\include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28
+
+["Compiler" Settings: "Release"]
+Options=-pdsw225 -o3 -fr"$(Proj_dir)\Release" -d"LARGE_MODEL" -ml -v28
+

@@ -1,0 +1,4041 @@
+******************************************************************************
+             TMS320C2000 Linker PC v5.2.1                      
+******************************************************************************
+>> Linked Wed Jul 24 10:06:14 2019
+
+OUTPUT FILE NAME:   <./Debug/C50DaYang.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 003f0ab1
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+PAGE 0:
+  RAML0                 00008100   00000100  0000001f  000000e1  RWIX
+  OTP                   003d7800   00000400  00000000  00000400  RWIX
+  FLASHINIT             003e8000   00000020  00000008  00000018  RWIX
+  FLASH                 003e8100   0000af00  0000a8cb  00000635  RWIX
+  CSM_RSVD              003f7f80   00000076  00000076  00000000  RWIX
+  BEGIN                 003f7ff6   00000002  00000002  00000000  RWIX
+  CSM_PWL_P0            003f7ff8   00000008  00000008  00000000  RWIX
+  IQTABLES              003fe000   00000b50  00000b50  00000000  RWIX
+  IQTABLES2             003feb50   0000008c  00000000  0000008c  RWIX
+  IQTABLES3             003febdc   000000aa  00000000  000000aa  RWIX
+  ROM                   003ff27c   00000d44  00000000  00000d44  RWIX
+  RESET                 003fffc0   00000002  00000000  00000002  RWIX
+  VECTORS               003fffc2   0000003e  00000000  0000003e  RWIX
+
+PAGE 1:
+  BOOT_RSVD             00000000   00000050  00000000  00000050  RWIX
+  RAMM1                 00000400   00000400  00000400  00000000  RWIX
+  DEV_EMU               00000880   00000105  00000004  00000101  RWIX
+  SYS_PWR_CTL           00000985   00000003  00000003  00000000  RWIX
+  FLASH_REGS            00000a80   00000060  00000008  00000058  RWIX
+  CSM                   00000ae0   00000010  00000010  00000000  RWIX
+  ADC_RESULT            00000b00   00000020  00000020  00000000  RWIX
+  CPU_TIMER0            00000c00   00000008  00000008  00000000  RWIX
+  CPU_TIMER1            00000c08   00000008  00000008  00000000  RWIX
+  CPU_TIMER2            00000c10   00000008  00000008  00000000  RWIX
+  PIE_CTRL              00000ce0   00000020  0000001a  00000006  RWIX
+  PIE_VECT              00000d00   00000100  00000100  00000000  RWIX
+  CLA1                  00001400   00000080  00000040  00000040  RWIX
+  ECANA                 00006000   00000040  00000034  0000000c  RWIX
+  ECANA_LAM             00006040   00000040  00000040  00000000  RWIX
+  ECANA_MOTS            00006080   00000040  00000040  00000000  RWIX
+  ECANA_MOTO            000060c0   00000040  00000040  00000000  RWIX
+  ECANA_MBOX            00006100   00000100  00000100  00000000  RWIX
+  COMP1                 00006400   00000020  00000014  0000000c  RWIX
+  COMP2                 00006420   00000020  00000014  0000000c  RWIX
+  COMP3                 00006440   00000020  00000014  0000000c  RWIX
+  EPWM1                 00006800   00000040  00000040  00000000  RWIX
+  EPWM2                 00006840   00000040  00000040  00000000  RWIX
+  EPWM3                 00006880   00000040  00000040  00000000  RWIX
+  EPWM4                 000068c0   00000040  00000040  00000000  RWIX
+  EPWM5                 00006900   00000040  00000040  00000000  RWIX
+  EPWM6                 00006940   00000040  00000040  00000000  RWIX
+  EPWM7                 00006980   00000040  00000040  00000000  RWIX
+  ECAP1                 00006a00   00000020  00000020  00000000  RWIX
+  HRCAP1                00006ac0   00000020  00000020  00000000  RWIX
+  HRCAP2                00006ae0   00000020  00000020  00000000  RWIX
+  EQEP1                 00006b00   00000040  00000040  00000000  RWIX
+  LINA                  00006c00   00000080  0000004a  00000036  RWIX
+  GPIOCTRL              00006f80   00000040  00000040  00000000  RWIX
+  GPIODAT               00006fc0   00000020  00000020  00000000  RWIX
+  GPIOINT               00006fe0   00000020  0000000c  00000014  RWIX
+  SYSTEM                00007010   00000020  00000020  00000000  RWIX
+  SPIA                  00007040   00000010  00000010  00000000  RWIX
+  SCIA                  00007050   00000010  00000010  00000000  RWIX
+  NMIINTRUPT            00007060   00000010  00000010  00000000  RWIX
+  XINTRUPT              00007070   00000010  00000010  00000000  RWIX
+  ADC                   00007100   00000080  00000050  00000030  RWIX
+  SPIB                  00007740   00000010  00000010  00000000  RWIX
+  I2CA                  00007900   00000040  00000022  0000001e  RWIX
+  L0_ASM0               00008000   00000040  0000003d  00000003  RWIX
+  L0_ASM1               00008040   00000040  00000026  0000001a  RWIX
+  L0_ASM2               00008080   00000040  00000023  0000001d  RWIX
+  L0_ASM3               000080c0   00000040  0000003c  00000004  RWIX
+  RAML3                 00008200   00001e00  000013b2  00000a4e  RWIX
+  PARTID                003d7e80   00000001  00000001  00000000  RWIX
+  CSM_PWL               003f7ff8   00000008  00000008  00000000  RWIX
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.pinit     0    003e8100    00000000     UNINITIALIZED
+
+bootstart 
+*          0    003e8000    00000008     
+                  003e8000    00000008     CodeStartBranch.obj (bootstart)
+
+.text      0    003e8100    00008c25     
+                  003e8100    00001170     KeyBoard.obj (.text)
+                  003e9270    00000c0c     drive.lib : SenLessPhi.obj (.text)
+                  003e9e7c    00000bed     CANProtocal.obj (.text)
+                  003eaa69    00000bb6     Auto.lib : Ev72ctrl.obj (.text)
+                  003eb61f    0000092f     Error.obj (.text)
+                  003ebf4e    0000065f     FunctionManage.obj (.text)
+                  003ec5ad    000004ef     EepromManage.obj (.text)
+                  003eca9c    0000046f     SysCtrl.obj (.text)
+                  003ecf0b    00000464     SpeedFunc.obj (.text)
+                  003ed36f    00000441     CAN.obj (.text)
+                  003ed7b0    00000441     drive.lib : ParameterCal.obj (.text)
+                  003edbf1    0000040b     UdsLib.lib : uds_srv19_readdtcinformation.obj (.text)
+                  003edffc    000003f7                : FblTp.obj (.text)
+                  003ee3f3    000003bf                : FblSimpleUds.obj (.text)
+                  003ee7b2    0000039b     Auto.lib : NoSlide.obj (.text)
+                  003eeb4d    00000312     UdsLib.lib : uds_srv31_routinecontrol.obj (.text)
+                  003eee5f    00000287     Command.obj (.text)
+                  003ef0e6    00000282     Ev72main.obj (.text)
+                  003ef368    0000026e     UdsLib.lib : uds_srv27_securityaccess.obj (.text)
+                  003ef5d6    00000237     Auto.lib : TorqueFunc.obj (.text)
+                  003ef80d    000001ce     drive.lib : SmInitAngle.obj (.text)
+                  003ef9db    000001cd     KeyBoard_Sci.obj (.text)
+                  003efba8    000001c6     DSP2803x_DefaultIsr.obj (.text)
+                  003efd6e    000001ad     UdsLib.lib : FblMgr.obj (.text)
+                  003eff1b    00000178     drive.lib : Encoder1.obj (.text)
+                  003f0093    00000149               : Encoder1Ctrl.obj (.text)
+                  003f01dc    00000124               : PWMCalc.obj (.text)
+                  003f0300    0000011c     UdsLib.lib : uds_srv2f_iocontrolbyidentifier.obj (.text)
+                  003f041c    00000118     drive.lib : LoadObserver.obj (.text)
+                  003f0534    0000010e     UdsLib.lib : uds_srv28_comcontrol.obj (.text)
+                  003f0642    000000f3                : uds_srv2e_writedatabyidentifier.obj (.text)
+                  003f0735    000000f0     Auto.lib : dv64_32.obj (.text)
+                  003f0825    000000d9     UdsLib.lib : uds_srvX_ISO_15031_5_Read.obj (.text)
+                  003f08fe    000000cf                : uds_srv22_readdatabyidentifier.obj (.text)
+                  003f09cd    00000075                : uds_srv14_cleardiaginformation.obj (.text)
+                  003f0a42    0000006f                : uds_srv10_diagsessioncontrol.obj (.text)
+                  003f0ab1    00000044     rts2800_ml.lib : boot.obj (.text)
+                  003f0af5    00000041     UdsLib.lib : uds_srv85_controldtcsetting.obj (.text)
+                  003f0b36    00000039                : uds_svc_dataMngr.obj (.text)
+                  003f0b6f    00000037     Auto.lib : MotorTable.obj (.text)
+                  003f0ba6    00000036     UdsLib.lib : uds_srv11_ecureset.obj (.text)
+                  003f0bdc    0000002a                : uds_target.obj (.text)
+                  003f0c06    0000002a     rts2800_ml.lib : l_div.obj (.text)
+                  003f0c30    00000024     UdsLib.lib : uds_srv3e_testerpresent.obj (.text)
+                  003f0c54    00000022     rts2800_ml.lib : i_div.obj (.text)
+                  003f0c76    00000021                    : memcpy_ff.obj (.text)
+                  003f0c97    0000001e                    : ll_cmp.obj (.text)
+                  003f0cb5    0000001b                    : args_main.obj (.text)
+                  003f0cd0    00000019                    : exit.obj (.text)
+                  003f0ce9    00000011     UdsLib.lib : uds_callbacks.obj (.text)
+                  003f0cfa    00000010     DelayUs.obj (.text)
+                  003f0d0a    0000000b     rts2800_ml.lib : u_div.obj (.text)
+                  003f0d15    00000009                    : _lock.obj (.text)
+                  003f0d1e    00000007     UdsLib.lib : Task.obj (.text)
+
+.econst    0    003f0d26    000014f8     
+                  003f0d26    000007d0     Auto.lib : MotorTable.obj (.econst:_IdIqTable)
+                  003f14f6    000001ba     KeyBoard.obj (.econst:_UpLimit)
+                  003f16b0    00000118     UdsLib.lib : uds_svc_dataMngr.obj (.econst:_Uds_g_DidDataTable)
+                  003f17c8    00000102     drive.lib : Tables_N.obj (.econst)
+                  003f18ca    00000101     Auto.lib : Ev72ctrl.obj (.econst:_SinTabMV)
+                  003f19cb    00000001              : Ev72ctrl.obj (.econst)
+                  003f19cc    00000100     SysCtrl.obj (.econst)
+                  003f1acc    000000e8     UdsLib.lib : FblSimpleUds.obj (.econst:_Uds_ServiceTable)
+                  003f1bb4    000000dd     KeyBoard.obj (.econst:_OrgValue)
+                  003f1c91    000000dd     KeyBoard.obj (.econst:_Para)
+                  003f1d6e    00000096     Error.obj (.econst:_ErrorInfo)
+                  003f1e04    00000060     Error.obj (.econst:_AlarmInfo)
+                  003f1e64    00000060     UdsLib.lib : uds_svc_dataMngr.obj (.econst:_Uds_g_IoCtrlByDidMngtTable)
+                  003f1ec4    00000060     Error.obj (.econst:_WarnInfo)
+                  003f1f24    00000040     FunctionManage.obj (.econst:_TempPT1000)
+                  003f1f64    0000003f     KeyBoard.obj (.econst:_LEDDisData)
+                  003f1fa3    00000001     drive.lib : SenLessPhi.obj (.econst)
+                  003f1fa4    0000003c     UdsLib.lib : uds_srv19_readdtcinformation.obj (.econst:_SupportedDtcTbl)
+                  003f1fe0    00000032     Auto.lib : MotorTable.obj (.econst:_MaxTorqueTable450)
+                  003f2012    00000032              : MotorTable.obj (.econst:_MaxTorqueTable600)
+                  003f2044    00000032     UdsLib.lib : uds_svc_dataMngr.obj (.econst:_Uds_g_DidEepromDataTable)
+                  003f2076    0000002f     KeyBoard.obj (.econst:_DnNoZero)
+                  003f20a5    00000001     --HOLE-- [fill = 0]
+                  003f20a6    00000024     UdsLib.lib : uds_svc_dataMngr.obj (.econst:_Uds_g_RtnCtrlMngtDataTable)
+                  003f20ca    00000021     KeyBoard.obj (.econst:_SegGen)
+                  003f20eb    00000020     drive.lib : Encoder1Ctrl.obj (.econst:_CorTabSick)
+                  003f210b    00000001     --HOLE-- [fill = 0]
+                  003f210c    0000001e     UdsLib.lib : FblSimpleUds.obj (.econst:_capf_FblUdsPeriodicItfTable)
+                  003f212a    00000018                : uds_srvX_ISO_15031_5_Read.obj (.econst:_Read01RespMsg)
+                  003f2142    00000014     FunctionManage.obj (.econst:_TemperTabOld)
+                  003f2156    00000010     UdsLib.lib : uds_srvX_ISO_15031_5_Read.obj (.econst:_Char0904)
+                  003f2166    0000000f     KeyBoard.obj (.econst:_NumFunc)
+                  003f2175    0000000e     KeyBoard.obj (.econst:_NumGroup)
+                  003f2183    0000000a     KeyBoard.obj (.econst:_FuncGroup)
+                  003f218d    0000000a     Ev72main.obj (.econst:_SuppID)
+                  003f2197    0000000a     UdsLib.lib : uds_svc_dataMngr.obj (.econst:_Uds_g_IoCtrlByDidIdxTable)
+                  003f21a1    00000009     Ev72main.obj (.econst:_HW_VER)
+                  003f21aa    00000009     Ev72main.obj (.econst:_PartNumber)
+                  003f21b3    00000009     Ev72main.obj (.econst:_SW_VER)
+                  003f21bc    00000008     Auto.lib : MotorTable.obj (.econst)
+                  003f21c4    00000008     CAN.obj (.econst:_BootData)
+                  003f21cc    00000008     CAN.obj (.econst:_Data3EPos)
+                  003f21d4    00000008     CAN.obj (.econst:_TimeOutBootData)
+                  003f21dc    00000008     UdsLib.lib : FblMgr.obj (.econst:_rub_FblMgr_StayInBootSpecificMsg)
+                  003f21e4    00000006                : uds_srvX_ISO_15031_5_Read.obj (.econst:_Read09RespMsg)
+                  003f21ea    00000006                : uds_srv28_comcontrol.obj (.econst:_Srv28Key1)
+                  003f21f0    00000005                : uds_srv28_comcontrol.obj (.econst:_Srv28Key3)
+                  003f21f5    00000004                : uds_srvX_ISO_15031_5_Read.obj (.econst:_Char0906)
+                  003f21f9    00000004     Auto.lib : MotorTable.obj (.econst:_LdTable)
+                  003f21fd    00000004              : MotorTable.obj (.econst:_LqTable)
+                  003f2201    00000004     UdsLib.lib : uds_srv28_comcontrol.obj (.econst:_Srv28Key0)
+                  003f2205    00000004                : uds_srv28_comcontrol.obj (.econst:_Srv28Key2)
+                  003f2209    00000004     EepromManage.obj (.econst:_UdsParaEpAdr)
+                  003f220d    00000001     --HOLE-- [fill = 0]
+                  003f220e    00000004     UdsLib.lib : FblMgr.obj (.econst:_caul_AswVldOkFlag)
+                  003f2212    00000004                : FblMgr.obj (.econst:_caul_PendProgFlag)
+                  003f2216    00000003     Ev72main.obj (.econst:_PRO_DATA)
+                  003f2219    00000003     KeyBoard.obj (.econst:_UpRela)
+                  003f221c    00000002     KeyBoard.obj (.econst)
+
+.text_int 
+*          0    003f221e    0000060b     
+                  003f221e    000001e3     drive.lib : IController.obj (.text_int)
+                  003f2401    000001b1               : NCon.obj (.text_int)
+                  003f25b2    0000018f               : Fluxcon.obj (.text_int)
+                  003f2741    0000009f               : AsmAlgorithm_N.obj (.text_int)
+                  003f27e0    00000049               : Tables_N.obj (.text_int)
+
+.cinit     0    003f2829    00000142     
+                  003f2829    000000ec     KeyBoard_Sci.obj (.cinit)
+                  003f2915    00000013     drive.lib : Con_variables_N.obj (.cinit)
+                  003f2928    0000000d               : SenLessPhi.obj (.cinit)
+                  003f2935    0000000c               : Encoder1Ctrl.obj (.cinit)
+                  003f2941    0000000a     rts2800_ml.lib : _lock.obj (.cinit)
+                  003f294b    0000000a                    : exit.obj (.cinit)
+                  003f2955    00000008     EepromManage.obj (.cinit)
+                  003f295d    00000004     FunctionManage.obj (.cinit)
+                  003f2961    00000004     UdsLib.lib : uds_srv11_ecureset.obj (.cinit)
+                  003f2965    00000004                : uds_srv28_comcontrol.obj (.cinit)
+                  003f2969    00000002     --HOLE-- [fill = 0]
+
+ramfuncs   0    003f296b    0000001f     RUN ADDR = 00008100
+                  003f296b    0000001f     SysCtrl.obj (ramfuncs)
+
+IQmath     0    003f298a    00000042     
+                  003f298a    00000042     IQmath.lib : IQ24sqrt.obj (IQmath)
+
+csm_rsvd   0    003f7f80    00000076     
+                  003f7f80    00000076     Passwords.obj (csm_rsvd)
+
+codestart 
+*          0    003f7ff6    00000002     
+                  003f7ff6    00000002     CodeStartBranch.obj (codestart)
+
+csmpasswds 
+*          0    003f7ff8    00000008     
+                  003f7ff8    00000008     Passwords.obj (csmpasswds)
+
+IQmathTables 
+*          0    003fe000    00000b50     NOLOAD SECTION
+                  003fe000    00000b50     IQmath.lib : IQmathTables.obj (IQmathTables)
+
+.reset     0    003fffc0    00000002     DSECT
+                  003fffc0    00000002     rts2800_ml.lib : boot.obj (.reset)
+
+vectors    0    003fffc2    00000000     DSECT
+
+.stack     1    00000400    00000400     UNINITIALIZED
+                  00000400    00000400     --HOLE--
+
+DevEmuRegsFile 
+*          1    00000880    00000004     UNINITIALIZED
+                  00000880    00000004     DSP2803x_GlobalVariableDefs.obj (DevEmuRegsFile)
+
+SysPwrCtrlRegsFile 
+*          1    00000985    00000003     UNINITIALIZED
+                  00000985    00000003     DSP2803x_GlobalVariableDefs.obj (SysPwrCtrlRegsFile)
+
+FlashRegsFile 
+*          1    00000a80    00000008     UNINITIALIZED
+                  00000a80    00000008     DSP2803x_GlobalVariableDefs.obj (FlashRegsFile)
+
+CsmRegsFile 
+*          1    00000ae0    00000010     UNINITIALIZED
+                  00000ae0    00000010     DSP2803x_GlobalVariableDefs.obj (CsmRegsFile)
+
+AdcResultFile 
+*          1    00000b00    00000020     UNINITIALIZED
+                  00000b00    00000020     DSP2803x_GlobalVariableDefs.obj (AdcResultFile)
+
+CpuTimer0RegsFile 
+*          1    00000c00    00000008     UNINITIALIZED
+                  00000c00    00000008     DSP2803x_GlobalVariableDefs.obj (CpuTimer0RegsFile)
+
+CpuTimer1RegsFile 
+*          1    00000c08    00000008     UNINITIALIZED
+                  00000c08    00000008     DSP2803x_GlobalVariableDefs.obj (CpuTimer1RegsFile)
+
+CpuTimer2RegsFile 
+*          1    00000c10    00000008     UNINITIALIZED
+                  00000c10    00000008     DSP2803x_GlobalVariableDefs.obj (CpuTimer2RegsFile)
+
+PieCtrlRegsFile 
+*          1    00000ce0    0000001a     UNINITIALIZED
+                  00000ce0    0000001a     DSP2803x_GlobalVariableDefs.obj (PieCtrlRegsFile)
+
+PieVectTableFile 
+*          1    00000d00    00000100     UNINITIALIZED
+                  00000d00    00000100     DSP2803x_GlobalVariableDefs.obj (PieVectTableFile)
+
+EmuKeyVar 
+*          1    00000d00    00000001     UNINITIALIZED
+                  00000d00    00000001     DSP2803x_GlobalVariableDefs.obj (EmuKeyVar)
+
+EmuBModeVar 
+*          1    00000d01    00000001     UNINITIALIZED
+                  00000d01    00000001     DSP2803x_GlobalVariableDefs.obj (EmuBModeVar)
+
+FlashCallbackVar 
+*          1    00000d02    00000002     UNINITIALIZED
+                  00000d02    00000002     DSP2803x_GlobalVariableDefs.obj (FlashCallbackVar)
+
+FlashScalingVar 
+*          1    00000d04    00000002     UNINITIALIZED
+                  00000d04    00000002     DSP2803x_GlobalVariableDefs.obj (FlashScalingVar)
+
+Cla1RegsFile 
+*          1    00001400    00000040     UNINITIALIZED
+                  00001400    00000040     DSP2803x_GlobalVariableDefs.obj (Cla1RegsFile)
+
+ECanaRegsFile 
+*          1    00006000    00000034     UNINITIALIZED
+                  00006000    00000034     DSP2803x_GlobalVariableDefs.obj (ECanaRegsFile)
+
+ECanaLAMRegsFile 
+*          1    00006040    00000040     UNINITIALIZED
+                  00006040    00000040     DSP2803x_GlobalVariableDefs.obj (ECanaLAMRegsFile)
+
+ECanaMOTSRegsFile 
+*          1    00006080    00000040     UNINITIALIZED
+                  00006080    00000040     DSP2803x_GlobalVariableDefs.obj (ECanaMOTSRegsFile)
+
+ECanaMOTORegsFile 
+*          1    000060c0    00000040     UNINITIALIZED
+                  000060c0    00000040     DSP2803x_GlobalVariableDefs.obj (ECanaMOTORegsFile)
+
+ECanaMboxesFile 
+*          1    00006100    00000100     UNINITIALIZED
+                  00006100    00000100     DSP2803x_GlobalVariableDefs.obj (ECanaMboxesFile)
+
+Comp1RegsFile 
+*          1    00006400    00000014     UNINITIALIZED
+                  00006400    00000014     DSP2803x_GlobalVariableDefs.obj (Comp1RegsFile)
+
+Comp2RegsFile 
+*          1    00006420    00000014     UNINITIALIZED
+                  00006420    00000014     DSP2803x_GlobalVariableDefs.obj (Comp2RegsFile)
+
+Comp3RegsFile 
+*          1    00006440    00000014     UNINITIALIZED
+                  00006440    00000014     DSP2803x_GlobalVariableDefs.obj (Comp3RegsFile)
+
+EPwm1RegsFile 
+*          1    00006800    00000040     UNINITIALIZED
+                  00006800    00000040     DSP2803x_GlobalVariableDefs.obj (EPwm1RegsFile)
+
+EPwm2RegsFile 
+*          1    00006840    00000040     UNINITIALIZED
+                  00006840    00000040     DSP2803x_GlobalVariableDefs.obj (EPwm2RegsFile)
+
+EPwm3RegsFile 
+*          1    00006880    00000040     UNINITIALIZED
+                  00006880    00000040     DSP2803x_GlobalVariableDefs.obj (EPwm3RegsFile)
+
+EPwm4RegsFile 
+*          1    000068c0    00000040     UNINITIALIZED
+                  000068c0    00000040     DSP2803x_GlobalVariableDefs.obj (EPwm4RegsFile)
+
+EPwm5RegsFile 
+*          1    00006900    00000040     UNINITIALIZED
+                  00006900    00000040     DSP2803x_GlobalVariableDefs.obj (EPwm5RegsFile)
+
+EPwm6RegsFile 
+*          1    00006940    00000040     UNINITIALIZED
+                  00006940    00000040     DSP2803x_GlobalVariableDefs.obj (EPwm6RegsFile)
+
+EPwm7RegsFile 
+*          1    00006980    00000040     UNINITIALIZED
+                  00006980    00000040     DSP2803x_GlobalVariableDefs.obj (EPwm7RegsFile)
+
+ECap1RegsFile 
+*          1    00006a00    00000020     UNINITIALIZED
+                  00006a00    00000020     DSP2803x_GlobalVariableDefs.obj (ECap1RegsFile)
+
+HRCap1RegsFile 
+*          1    00006ac0    00000020     UNINITIALIZED
+                  00006ac0    00000020     DSP2803x_GlobalVariableDefs.obj (HRCap1RegsFile)
+
+HRCap2RegsFile 
+*          1    00006ae0    00000020     UNINITIALIZED
+                  00006ae0    00000020     DSP2803x_GlobalVariableDefs.obj (HRCap2RegsFile)
+
+EQep1RegsFile 
+*          1    00006b00    00000040     UNINITIALIZED
+                  00006b00    00000040     DSP2803x_GlobalVariableDefs.obj (EQep1RegsFile)
+
+LinaRegsFile 
+*          1    00006c00    0000004a     UNINITIALIZED
+                  00006c00    0000004a     DSP2803x_GlobalVariableDefs.obj (LinaRegsFile)
+
+GpioCtrlRegsFile 
+*          1    00006f80    00000040     UNINITIALIZED
+                  00006f80    00000040     DSP2803x_GlobalVariableDefs.obj (GpioCtrlRegsFile)
+
+GpioDataRegsFile 
+*          1    00006fc0    00000020     UNINITIALIZED
+                  00006fc0    00000020     DSP2803x_GlobalVariableDefs.obj (GpioDataRegsFile)
+
+GpioIntRegsFile 
+*          1    00006fe0    0000000c     UNINITIALIZED
+                  00006fe0    0000000c     DSP2803x_GlobalVariableDefs.obj (GpioIntRegsFile)
+
+SysCtrlRegsFile 
+*          1    00007010    00000020     UNINITIALIZED
+                  00007010    00000020     DSP2803x_GlobalVariableDefs.obj (SysCtrlRegsFile)
+
+SpiaRegsFile 
+*          1    00007040    00000010     UNINITIALIZED
+                  00007040    00000010     DSP2803x_GlobalVariableDefs.obj (SpiaRegsFile)
+
+SciaRegsFile 
+*          1    00007050    00000010     UNINITIALIZED
+                  00007050    00000010     DSP2803x_GlobalVariableDefs.obj (SciaRegsFile)
+
+NmiIntruptRegsFile 
+*          1    00007060    00000010     UNINITIALIZED
+                  00007060    00000010     DSP2803x_GlobalVariableDefs.obj (NmiIntruptRegsFile)
+
+XIntruptRegsFile 
+*          1    00007070    00000010     UNINITIALIZED
+                  00007070    00000010     DSP2803x_GlobalVariableDefs.obj (XIntruptRegsFile)
+
+AdcRegsFile 
+*          1    00007100    00000050     UNINITIALIZED
+                  00007100    00000050     DSP2803x_GlobalVariableDefs.obj (AdcRegsFile)
+
+SpibRegsFile 
+*          1    00007740    00000010     UNINITIALIZED
+                  00007740    00000010     DSP2803x_GlobalVariableDefs.obj (SpibRegsFile)
+
+I2caRegsFile 
+*          1    00007900    00000022     UNINITIALIZED
+                  00007900    00000022     DSP2803x_GlobalVariableDefs.obj (I2caRegsFile)
+
+PAR_ASM0   1    00008000    0000003d     UNINITIALIZED
+                  00008000    0000003c     drive.lib : Con_variables_N.obj (PAR_ASM0)
+                  0000803c    00000001               : IController.obj (PAR_ASM0)
+
+PAR_ASM1   1    00008040    00000026     UNINITIALIZED
+                  00008040    00000026     drive.lib : Con_variables_N.obj (PAR_ASM1)
+
+PAR_ASM2   1    00008080    00000023     UNINITIALIZED
+                  00008080    00000022     drive.lib : Con_variables_N.obj (PAR_ASM2)
+                  000080a2    00000001               : Encoder1.obj (PAR_ASM2)
+
+PAR_ASM3   1    000080c0    0000003c     UNINITIALIZED
+                  000080c0    0000003c     drive.lib : Con_variables_N.obj (PAR_ASM3)
+
+.ebss      1    00008200    000013ae     UNINITIALIZED
+                  00008200    000003ba     KeyBoard.obj (.ebss)
+                  000085ba    00000006     UdsLib.lib : uds_srv2e_writedatabyidentifier.obj (.ebss)
+                  000085c0    00000340     drive.lib : Encoder1Ctrl.obj (.ebss)
+                  00008900    0000019c     UdsLib.lib : FblSimpleUds.obj (.ebss)
+                  00008a9c    00000024     SpeedFunc.obj (.ebss)
+                  00008ac0    00000174     CAN.obj (.ebss)
+                  00008c34    0000000a     UdsLib.lib : uds_srv31_routinecontrol.obj (.ebss)
+                  00008c3e    00000002     Command.obj (.ebss)
+                  00008c40    000000f4     UdsLib.lib : FblTp.obj (.ebss)
+                  00008d34    00000008     SysCtrl.obj (.ebss)
+                  00008d3c    00000004     UdsLib.lib : uds_srv11_ecureset.obj (.ebss)
+                  00008d40    000000ee     KeyBoard_Sci.obj (.ebss)
+                  00008e2e    00000012     Auto.lib : NoSlide.obj (.ebss)
+                  00008e40    000000e2     drive.lib : SenLessPhi.obj (.ebss)
+                  00008f22    00000018               : LoadObserver.obj (.ebss)
+                  00008f3a    00000004     UdsLib.lib : uds_srv3e_testerpresent.obj (.ebss)
+                  00008f3e    00000002                : uds_svc_dataMngr.obj (.ebss)
+                  00008f40    000000ca     Error.obj (.ebss)
+                  0000900a    00000033     Auto.lib : MotorTable.obj (.ebss)
+                  0000903d    00000001     UdsLib.lib : uds_srv85_controldtcsetting.obj (.ebss)
+                  0000903e    00000002     --HOLE--
+                  00009040    000000c0     FunctionManage.obj (.ebss)
+                  00009100    000000a8     CANProtocal.obj (.ebss)
+                  000091a8    00000016     UdsLib.lib : uds_srv27_securityaccess.obj (.ebss)
+                  000091be    00000002     --HOLE--
+                  000091c0    000000a2     Auto.lib : Ev72ctrl.obj (.ebss)
+                  00009262    0000000e     drive.lib : SmInitAngle.obj (.ebss)
+                  00009270    0000000d               : PWMCalc.obj (.ebss)
+                  0000927d    00000003     --HOLE--
+                  00009280    0000007c     UdsLib.lib : uds_srv19_readdtcinformation.obj (.ebss)
+                  000092fc    00000004     rts2800_ml.lib : _lock.obj (.ebss)
+                  00009300    00000074     drive.lib : Con_variables_N.obj (.ebss)
+                  00009374    00000008     UdsLib.lib : uds_srv14_cleardiaginformation.obj (.ebss)
+                  0000937c    00000004     rts2800_ml.lib : exit.obj (.ebss)
+                  00009380    00000060     UdsLib.lib : FblMgr.obj (.ebss)
+                  000093e0    00000020     --HOLE--
+                  00009400    0000005e     EepromManage.obj (.ebss)
+                  0000945e    00000022     --HOLE--
+                  00009480    0000005e     Ev72main.obj (.ebss)
+                  000094de    00000022     --HOLE--
+                  00009500    0000003e     drive.lib : ParameterCal.obj (.ebss)
+                  0000953e    00000002     --HOLE--
+                  00009540    00000032     Auto.lib : TorqueFunc.obj (.ebss)
+                  00009572    0000000e     --HOLE--
+                  00009580    0000002e     UdsLib.lib : uds_srv28_comcontrol.obj (.ebss)
+
+.bss       1    000095ae    00000004     UNINITIALIZED
+                  000095ae    00000004     drive.lib : Encoder1.obj (.bss)
+
+PartIdRegsFile 
+*          1    003d7e80    00000001     UNINITIALIZED
+                  003d7e80    00000001     DSP2803x_GlobalVariableDefs.obj (PartIdRegsFile)
+
+CsmPwlFile 
+*          1    003f7ff8    00000008     UNINITIALIZED
+                  003f7ff8    00000008     DSP2803x_GlobalVariableDefs.obj (CsmPwlFile)
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address    name
+--------   ----
+000095ae   .bss
+003e8100   .text
+003f2821   ACTAN_SECT
+003f0cd0   C$$EXIT
+003f0c54   I$$DIV
+003f0c65   I$$MOD
+003f0c06   L$$DIV
+003f0c15   L$$MOD
+003f0c97   LL$$CMP
+003f0d0a   U$$DIV
+003f0d0f   U$$MOD
+003f0c23   UL$$DIV
+003f0c2a   UL$$MOD
+003f0ca9   ULL$$CMP
+003efc07   _ADCINT1_ISR
+003efc10   _ADCINT2_ISR
+003efcf8   _ADCINT3_ISR
+003efcfd   _ADCINT4_ISR
+003efd02   _ADCINT5_ISR
+003efd07   _ADCINT6_ISR
+003efd0c   _ADCINT7_ISR
+003efd11   _ADCINT8_ISR
+003efc2b   _ADCINT9_ISR
+0000925c   _AI_Sample
+000091f0   _AbsSpeedFed
+00008e9c   _AbsSpeedInRPM
+000091e5   _AbsSpeedRef
+00008aaa   _AccTime
+00007100   _AdcRegs
+00000b00   _AdcResult
+00008d47   _Address
+00008d4c   _Addressget
+00008e53   _AdjustAngle
+00008f42   _AlarmCode
+00008f43   _AlarmCodeBak
+003f1e04   _AlarmInfo
+00008003   _AngRestOld
+00009262   _AngSearchImax
+00008e86   _AngleSampleCnt
+003eaa64   _Anti_Slip
+003ebd73   _Asert_Alarm_Warn
+003f19cb   _AutoVersion
+0000910a   _BUS_CMD
+003eb612   _BackUpPI
+00008e8f   _BaseTrqAddValue
+003f21c4   _BootData
+00009127   _BootWaitTime
+0000913e   _BusOffResetTime
+00009140   _BusOffTime
+00009114   _CANControlMode
+00009108   _CANCtrlMode
+00009106   _CANCtrlModeBak
+0000912c   _CANDirect
+00009150   _CANError1
+0000912a   _CANErrorUpdate
+00009119   _CANMotorCmd
+00009133   _CANProtocol
+003ef9db   _CANREADTOSEND
+00009128   _CANRequestFreq
+00009126   _CANRequestTorque
+0000911a   _CANRequestTorque1
+00009142   _CANSpeed
+003efacc   _CANTIMECHK
+00008ace   _CANTRS
+00009144   _CANTorq
+0000914a   _CANTorqErr
+0000913a   _CANTorqFed
+0000914c   _CANTorqReal
+0000913c   _CANTorqRealDis
+003e9e7c   _CAN_Cfg1939Mail
+003ed445   _CAN_CfgUDSMail
+003ed4a7   _CAN_vGetMsgObj
+003ed376   _CAN_vInit
+003ed50c   _CAN_vTransmit
+003efd16   _CLA1_INT1_ISR
+003efd1b   _CLA1_INT2_ISR
+003efd20   _CLA1_INT3_ISR
+003efd25   _CLA1_INT4_ISR
+003efd2a   _CLA1_INT5_ISR
+003efd2f   _CLA1_INT6_ISR
+003efd34   _CLA1_INT7_ISR
+003efd39   _CLA1_INT8_ISR
+00009273   _CMP0
+00009274   _CMP1
+00009275   _CMP2
+00008e8e   _COMP_DELAY_TIME
+003eac45   _CalCurrentAdResult
+003eaea4   _CalFuncPara
+003eae5c   _CalMotorParameter
+003eae69   _CalParameter
+003eaaab   _CalSin2
+003eadb3   _CalVolAdResult
+003ed929   _Calc_Current_IGain
+003ed904   _Calc_Current_PGain
+003ed9b7   _Calc_DCLinkCtrlVoltSet
+003eda39   _Calc_IdUpLowLimit
+003edaaf   _Calc_MotorNomTrq
+003eda7d   _Calc_NormMotorSpeed
+003ed7d1   _Calc_Norm_LeakInduct
+003edbd4   _Calc_Norm_Paraters
+003edb57   _Calc_Norm_Psi
+003ed802   _Calc_Norm_dls
+003ed8a2   _Calc_Norm_dlsd
+003ed865   _Calc_Norm_dlsd_Psi
+003ed8d3   _Calc_Norm_dlsq
+003edb23   _Calc_Norm_lm
+003edb36   _Calc_Norm_rho2
+003ed7b0   _Calc_Norm_rs
+003edb8b   _Calc_Norm_speed
+003ed9cf   _Calc_PI_DCLinkCtrl
+003ed9ef   _Calc_PI_FieldWeak
+003eda19   _Calc_PI_FluxCtrl
+003f01dc   _Calc_PWM
+003ed957   _Calc_PWM_Tsample
+003ed997   _Calc_SpeedCtrl_ITime
+003ed975   _Calc_SpeedCtrl_PGain
+003edae9   _Calc_TimeRotorActValue
+003ed58a   _CanDrv_BootLoaderMsg
+003ed565   _CanDrv_GetTxMsgFinishedFlag
+003ed6f5   _CanDrv_ReadRxCanMsg
+003ed757   _CanDrv_RxFuncAddrChlByPollingMode
+003ed704   _CanDrv_RxPhyAddrChlByPollingMode
+003ed36f   _CanDrv_RxTxMsgPollingMode
+003ed57b   _CanDrv_SendDebugMsg1
+003ed580   _CanDrv_SendDebugMsg2
+003ed585   _CanDrv_SendDebugMsg3
+003ed56a   _CanDrv_TransmitMessageRequest
+003ed79b   _CanDrv_TxPhyAddrChlConfirmByPollingMode
+00009043   _Ch1
+00009042   _Ch2
+0000904d   _Ch3
+0000904c   _Ch4
+00008087   _ChangePWMFreqCnt
+003eaa69   _ChangePowerFrq
+0000920e   _ChargeClock
+003ec7a8   _CheckEEprom
+00008e38   _CheckEnterFwdSlideFreq
+00008e32   _CheckEnterRevSlideFreq
+003ee7b2   _CheckEnterSlide
+003eaa29   _CheckProgramCondition
+003ec58f   _Check_Module
+0000940e   _Checkdata
+00008c36   _CheckedPreprogConditonFlg
+00001400   _Cla1Regs
+003ec8c5   _ClearErrLog
+003eaaf1   _ClearTZ
+00009485   _ClrErrLogTmr
+0000940b   _ClrInsideErr
+000090ee   _CntTemp
+00009518   _Coff_Ld
+0000951d   _Coff_Lq
+00009097   _ComCardTorqRef
+00006400   _Comp1Regs
+00006420   _Comp2Regs
+00006440   _Comp3Regs
+00008e7d   _CompDelayIsOk
+00008f46   _ConPowerIsOK
+00009053   _ConPowerON
+000091d7   _ConVdc
+000091d8   _ConVdc15v
+00009213   _ConVdcFlt
+00008d49   _Contrastbak
+00008e41   _CoordinateIndex
+003eb9bd   _CopyLogToFuncode
+003f20eb   _CorTabSick
+00008e8a   _CoreFlag_CtrlMode
+00008efc   _CosOmegaT
+00009344   _CosRho_est
+000091f6   _Cosa
+003ed40e   _CpCoreBaudrate
+00008d34   _CpuTimer0
+00000c00   _CpuTimer0Regs
+00000c08   _CpuTimer1Regs
+00000c10   _CpuTimer2Regs
+003f7ff8   _CsmPwl
+00000ae0   _CsmRegs
+003eaacf   _CtrlInit
+0000912b   _CtrlMode
+00009581   _CurRxUdsMsgBuf
+003edfa2   _CurrDtcOccOrder
+0000933f   _CurrLimitPH
+00009333   _CurrLimitPL
+00009050   _CurrSensorIsOk
+00009554   _CurrTorqRef9
+00008aa6   _CurrentAcceleration
+00008f55   _CurrentErr
+00009219   _CurrentFedFlt
+000090c4   _CurrentFreq
+00008ea8   _CurrentLoopDelayCompen
+00008ab0   _CurrentOutputFreq
+0000955e   _CurrentOutputTorque
+000090d8   _CurrentRefFreq
+00009041   _CurrentSensorErr
+00008e70   _CurrentTorqGain
+000091ee   _CurrentZeroCount
+003eabc9   _CurrentZeroDrift
+0000921b   _CvdFlt
+0000905f   _DAShift1
+0000904a   _DAShift2
+003efbb2   _DATALOG_ISR
+000090be   _DCCur_Value
+000090bc   _DCCur_ValueFilter
+00008e83   _DQFilter
+003f075c   _DV3232_32
+003f0735   _DV32_16
+003f0744   _DV32_32
+003f074d   _DV48_32
+003f076e   _DV64_32
+003f21cc   _Data3EPos
+00008d5b   _Datacal
+00008d5e   _Dataorg
+0000802a   _DeadTimeInPules
+003ec5c2   _DealEpData
+00008ae4   _DebugData
+000091cd   _DecFrq
+00008aa2   _DecTime
+00008e3e   _DecTorqSet
+00008f5b   _DelayLow12V
+00008f60   _DelayOv12V
+003f0cfa   _DelayUs
+00008001   _DeltaIphaseU
+00008000   _DeltaIsBeta
+00009525   _DeltaMotorTemp2_1
+0000950b   _DeltaSlipFreByMotorTemp2_1
+0000952e   _DeltaSlipFrequency2_1
+00009348   _DeltaUd_est
+00009339   _DeltaUq_est
+00008043   _Delta_Flux
+00008050   _Delta_IdSet
+0000933a   _Delta_IdSetLLimit
+0000804b   _Delta_IdSetLimited
+0000933c   _Delta_IdSetULimit
+00008044   _Delta_Iq
+00008d64   _Deltatime
+003eb674   _Detect_Alaram
+003eb716   _Detect_Warn
+00000880   _DevEmuRegs
+00009105   _DgnsR_ID1
+00009101   _DgnsR_ID2
+00009104   _DgnsR_ID3
+00009102   _Dgns_ID
+003ea95d   _Diagnosis_Res1
+003eaa4f   _Diagnosis_poll
+00008e59   _Diff
+00008d50   _DisCount
+003eaa25   _DisNormComTx
+0000920c   _DisPr3
+0000920b   _DisPr4
+003ece23   _DisableDog
+003eb148   _Discharge
+0000951e   _DischargeCurrent
+003f2076   _DnNoZero
+00008d45   _Downerrtimes
+003e9e71   _DriveControl
+00009264   _DriveNomCurrent
+00009117   _DriveState
+0000914e   _DriveTorqLimit
+000092c0   _DtcOccHisOrder
+003efcee   _ECAN0INTA_ISR
+003efcf3   _ECAN1INTA_ISR
+003efca8   _ECAP1_INT_ISR
+00009497   _ECUBootDataVersion
+00006040   _ECanaLAMRegs
+000060c0   _ECanaMOTORegs
+00006080   _ECanaMOTSRegs
+00006100   _ECanaMboxes
+00006000   _ECanaRegs
+00006a00   _ECap1Regs
+003efd4d   _EMPTY_ISR
+003efbbc   _EMUINT_ISR
+003efc69   _EPWM1_INT_ISR
+003efc46   _EPWM1_TZINT_ISR
+003efc72   _EPWM2_INT_ISR
+003efc4b   _EPWM2_TZINT_ISR
+003efc7b   _EPWM3_INT_ISR
+003efc50   _EPWM3_TZINT_ISR
+003efc84   _EPWM4_INT_ISR
+003efc55   _EPWM4_TZINT_ISR
+003efc8d   _EPWM5_INT_ISR
+003efc5a   _EPWM5_TZINT_ISR
+003efc96   _EPWM6_INT_ISR
+003efc5f   _EPWM6_TZINT_ISR
+003efc9f   _EPWM7_INT_ISR
+003efc64   _EPWM7_TZINT_ISR
+00006800   _EPwm1Regs
+00006840   _EPwm2Regs
+00006880   _EPwm3Regs
+000068c0   _EPwm4Regs
+00006900   _EPwm5Regs
+00006940   _EPwm6Regs
+00006980   _EPwm7Regs
+003efcb7   _EQEP1_INT_ISR
+00006b00   _EQep1Regs
+003ea9ce   _EcanIntHdl
+00000d01   _EmuBMode
+00000d00   _EmuKey
+003eaa1e   _EnNormComTx
+00009116   _EnNormalTrans
+0000920f   _EnableDischarge
+003ece2b   _EnableDog
+00008080   _Enc1AbPhi
+00009303   _Enc1AmpErrCnt
+0000930b   _Enc1AmpErrTime
+00009312   _Enc1AmpErrTimer
+000085cc   _Enc1CorrectionValues
+000085d0   _Enc1DeltaPhiFiltered
+000085d4   _Enc1DeltaPhiFilteredForFluxCal
+003f0093   _Enc1Init
+00009314   _Enc1PosRevOvlAngle
+00009309   _Enc1PosRevOvlRev
+00008084   _Enc1QEPInit
+00009301   _Enc1QuadrantOffset
+00008081   _Enc1RemainOld
+00008089   _Enc1RestOld
+003f01ad   _Enc1Run
+00008800   _Enc1TrackATble
+00008600   _Enc1TrackBTble
+00008700   _Enc1TrackCnt
+0000808b   _EncxErrBitSet
+00008e30   _EnterSlideLmtFilterT
+003eb31e   _Epwm7Int_isr
+00008f80   _ErrLog
+00009440   _ErrLogStatus
+0000940d   _ErrSaveAdr
+00009414   _ErrShow
+00008f64   _ErrSubmit
+00008f50   _ErrorCode
+00008f4b   _ErrorCode1
+00008f4d   _ErrorCodeBak
+003f1d6e   _ErrorInfo
+00008f62   _ErrorList
+00008f53   _ErrorListIndex
+00009402   _ErrorNumber
+003eb73d   _Error_ErrClass
+00008d54   _Errortimes
+00008e8c   _ExcitationTime
+003ee9ce   _ExitFwdSilde
+003ee84a   _ExitRevSilde
+003efdc7   _FBLMgr_MainCyclicTaskEntryPoint
+00008aa8   _FX
+0000924c   _Fb
+003efd85   _FblMgr_CheckFblStayInBootSpecificMsg
+003efdbe   _FblMgr_ChkAppSwInFlash
+003efdb7   _FblMgr_ChkBootSwInRam
+003efddc   _FblMgr_ChkDnldSwPendProgFlgAndAswVldFlg_ForFlash
+003efe91   _FblMgr_ChkDnldSwPendProgFlgAndAswVldFlg_v2
+003efe92   _FblMgr_ChkDnldSwPendProgFlgAndAswVldFlg_v3
+003efdd6   _FblMgr_ChkIfProgFlgUpdateIsNeeded
+003efdaf   _FblMgr_CurrRunningSwImgCompare
+003efda4   _FblMgr_GetCurrSwImgRunningState
+003efd6e   _FblMgr_Init
+003efdd5   _FblMgr_InitMainEntrypoint
+003efdcf   _FblMgr_InitStartStayInBootTimer
+003efe95   _FblMgr_SetBootModeAswModeToggleFlg
+003efda8   _FblMgr_SetCurrSwImgRunningState
+003efe9a   _FblMgr_SetPendProgFlgOnAndAswVldFlgOff
+003efe97   _FblMgr_SetPendReProgFlag
+003efe99   _FblMgr_ToggleFromAppSwModeToBootSwMode
+003ee02a   _FblTp_CyclicTaskEntryPoint
+003ee033   _FblTp_GetReceivedCanMsg
+003ee397   _FblTp_GetTpTimer
+003ee3d6   _FblTp_Get_CurrRxReqChannel
+003edffc   _FblTp_Init
+003ee042   _FblTp_IsTxMessageSent
+003ee0af   _FblTp_L_Data_confirm
+003ee101   _FblTp_L_Data_indication
+003ee369   _FblTp_L_Data_request
+003ee0a5   _FblTp_N_USData_confirm
+003ee09e   _FblTp_N_USData_indication
+003ee046   _FblTp_N_USData_request
+003ee3cb   _FblTp_NotifyCBForEndOfTxRsp
+003ee39b   _FblTp_TickTpTimer
+003ee451   _FblUds_Initialize
+003ee470   _FblUds_MainTaskEntryPoint_CyclicTask
+003ee775   _FblUds_SimpleSesnMgr_ChangeSession
+003ee75a   _FblUds_SimpleSesnMgr_ChkSesnChangePreCndIsAllow
+003ee74b   _FblUds_SimpleSesnMgr_GetActiveSession
+003ee78b   _FblUds_SimpleSesnMgr_Reload_S3_SeverTimer
+003ee752   _FblUds_SimpleSesnMgr_SetActiveSession
+003ee790   _FblUds_SimpleSesnMgr_SetS3ServerTimerValue
+00008e6e   _FieldWeaken
+000091c9   _FieldWeakenSpeed
+00009408   _FirstPowerFlag
+00009403   _FlagClrErr
+00008f48   _FlagSaveErr
+00009404   _FlagShowErr
+00009407   _FlagUpdateErrorStatus
+00000a80   _FlashRegs
+00000d04   _Flash_CPUScaleFactor
+00000d02   _Flash_CallbackPtr
+000091c2   _FluxCurrent
+00008e78   _FluxForIqCalMin
+0000953c   _FluxReduceFiltered
+003f25b2   _Fluxcon
+0000924a   _Fn
+000090b2   _ForDriveJudge
+000090f2   _ForceAQFinished
+003eaadd   _ForceTZ
+00009069   _ForwardForbid
+00008aba   _FreqRef
+000091c3   _FrqCarry
+003f2183   _FuncGroup
+003eb76e   _FuncManage_AssertErr
+003ef0ce   _FuncManage_ClearRunStsAndCmd
+003ef0b9   _FuncManage_CmdClear
+003eb651   _FuncManage_DetectErr
+003eb63c   _FuncManage_Error
+003eb964   _FuncManage_ExFaultDetect
+003ed32c   _FuncManage_GetCurrFreq
+003ec35a   _FuncManage_IGBTUDetect
+003ec3d2   _FuncManage_IGBTVDetect
+003ec44a   _FuncManage_IGBTWDetect
+003ebf4e   _FuncManage_L1ms
+003ecf0b   _FuncManage_L1ms_Init_Speed
+003ec24f   _FuncManage_L4ms
+003ef5d6   _FuncManage_L4ms_Init_Torque
+003ef619   _FuncManage_L4ms_Torque
+003ed020   _FuncManage_MakeFreq
+003eee8a   _FuncManage_MakePara
+003ecf13   _FuncManage_MakeSetFreq
+003ec4c2   _FuncManage_MotorTempDetect
+003ebff3   _FuncManage_RUNSTOP
+003ec677   _FuncManage_ReadParameters
+003eb9cd   _FuncManage_RecordErr
+003eb99f   _FuncManage_ResetErr
+003ed159   _FuncManage_SPEED
+003eea9d   _FuncManage_SpdLmt
+003ef0e5   _FuncManage_StartStopMode
+003ec267   _FuncManage_TempDetect
+003ef61e   _FuncManage_TorqueRef
+003ef800   _FuncManage_enter_Torque
+003ef7ea   _FuncManage_enter_atomic_TORQUE
+003ec0ec   _FuncManage_enter_internal_PWMON
+003ed1d5   _FuncManage_enter_internal_SPEED
+003ec0ff   _FuncManage_exit_internal_PWMON
+003ed1c1   _FuncManage_exit_internal_SPEED
+003ef7fc   _FuncManage_exit_internal_TORQUE
+00008400   _Funcode
+00008d4b   _Funno
+00008e2e   _FwdForbidTimeOut
+003ee97b   _FwdSlide
+00008e34   _FwdSpdLmtQ14
+00009306   _G1deltaphi_Filtered
+003efb04   _GETKEY
+00009123   _Gear
+00008f2b   _GearTimer
+003ebedf   _GenMcuState2
+00009148   _GenTorqLimit
+00009122   _GeraErr
+003ef322   _GetAllVersion
+003ebc37   _GetDataFlowInfo
+003ebd65   _GetErrBuffer
+003ebd62   _GetErrInfo
+003ec9e4   _GetErrLog
+00009400   _GetErrOrderNum
+003eb7e9   _GetErrorCode
+003ec260   _GetMin
+003f2741   _GetStack
+003ebdc2   _Get_Error_Adr
+00006f80   _GpioCtrlRegs
+00006fc0   _GpioDataRegs
+00006fe0   _GpioIntRegs
+003efcad   _HRCAP1_INT_ISR
+003efcb2   _HRCAP2_INT_ISR
+00006ac0   _HRCap1Regs
+00006ae0   _HRCap2Regs
+003f21a1   _HW_VER
+003eb7f2   _HardwareFault
+003efcd0   _I2CINT1A_ISR
+003efcd5   _I2CINT2A_ISR
+00007900   _I2caRegs
+00009523   _ICoff
+003f221e   _IController
+00009212   _IFedOc
+00008e68   _IFeedVorCtrl
+00008e6a   _IFeedVorState
+003efbc6   _ILLEGAL_ISR
+00008e6d   _INJECT_MODE
+00008e6f   _INJECT_TORQUE
+003fead8   _IQ10mpyRndSatTable
+003feacc   _IQ11mpyRndSatTable
+003feac0   _IQ12mpyRndSatTable
+003feab4   _IQ13mpyRndSatTable
+003feaa8   _IQ14mpyRndSatTable
+003fea9c   _IQ15mpyRndSatTable
+003fea90   _IQ16mpyRndSatTable
+003fea84   _IQ17mpyRndSatTable
+003fea78   _IQ18mpyRndSatTable
+003fea6c   _IQ19mpyRndSatTable
+003feb44   _IQ1mpyRndSatTable
+003fea60   _IQ20mpyRndSatTable
+003fea54   _IQ21mpyRndSatTable
+003fea48   _IQ22mpyRndSatTable
+003fea3c   _IQ23mpyRndSatTable
+003fea30   _IQ24mpyRndSatTable
+003fea24   _IQ25mpyRndSatTable
+003fea18   _IQ26mpyRndSatTable
+003fea0c   _IQ27mpyRndSatTable
+003fea00   _IQ28mpyRndSatTable
+003fe9f4   _IQ29mpyRndSatTable
+003feb38   _IQ2mpyRndSatTable
+003fe9e8   _IQ30mpyRndSatTable
+003feb2c   _IQ3mpyRndSatTable
+003feb20   _IQ4mpyRndSatTable
+003feb14   _IQ5mpyRndSatTable
+003feb08   _IQ6mpyRndSatTable
+003feafc   _IQ7mpyRndSatTable
+003feaf0   _IQ8mpyRndSatTable
+003feae4   _IQ9mpyRndSatTable
+003fe824   _IQatan2HalfPITable
+003fe862   _IQatan2Table
+003fe9e8   _IQatan2TableEnd
+003fe100   _IQcosTable
+003fe502   _IQcosTableEnd
+003fe502   _IQdivRoundSatTable
+003fe510   _IQdivTable
+003fe712   _IQdivTableEnd
+003fe712   _IQisqrtRoundSatTable
+003fe722   _IQisqrtTable
+003fe824   _IQisqrtTableEnd
+003fe9e8   _IQmpyRndSatTable
+003feb50   _IQmpyRndSatTableEnd
+003fe000   _IQsinTable
+003fe400   _IQsinTableEnd
+003fe712   _IQsqrtRoundSatTable
+003fe722   _IQsqrtTable
+003fe824   _IQsqrtTableEnd
+000091e2   _Ibase
+000091d1   _IdControlMode
+00009337   _IdF_est
+0000934c   _IdHF_est
+003e93c1   _IdIqLim
+003e9d40   _IdIqLimByTable
+003f0d26   _IdIqTable
+00009236   _IdLong
+00008e46   _IdRefOpt
+0000804e   _IdSetEstimatedMinusIdAct
+00008e6b   _IdSetForRelucTorq
+0000805e   _IdSetNoLoad
+00008049   _IdSetOutput
+00008e42   _IdTiming
+00008ed4   _IdULimitFilter
+00008eb0   _IdUnlimited
+00009343   _Id_est
+00008062   _IdqSet
+00009246   _IfedAcc
+00009209   _ImError
+000091f1   _ImFed
+00009258   _ImFedFlt
+00009234   _ImFedFltAcc
+000091d9   _ImReal
+0000921f   _ImRef
+0000921d   _ImRefn
+00009208   _Imag
+00009201   _ImagRms
+00008e92   _Imax
+00008e88   _ImaxPeak
+00008056   _Imr
+003ece3d   _InitAdc
+003ed395   _InitCAN
+003eee5f   _InitCommand
+003e9d29   _InitControlPara
+003ef21b   _InitDrivVariables
+003ecc06   _InitEPwm
+003ec5ad   _InitEeprom
+00009040   _InitFinish
+00008100   _InitFlash
+003eb428   _InitFuncodeParameter
+003ecafd   _InitGpio
+003eae45   _InitMem
+003ecdf3   _InitPieCtrl
+003ecef7   _InitSci
+003eca9c   _InitSysCtrl
+003e9c68   _InitTorqComp
+00008e72   _InitTorqGain
+003eb61f   _Init_Alarm
+003eb62c   _Init_Error
+00008e67   _InitialId
+00008ab8   _InitialOutputFreq
+0000955a   _InitialOutputTorque
+00008ea2   _InitialVq
+00008e54   _InjectAngle
+00008e90   _InjectEndSpeed
+00008e91   _InjectStartSpeed
+00008e71   _InjectTorqPu
+000080f2   _IntDeltaSpeed
+00008edc   _IntSpeedHfI
+00008eda   _IntSpeedU
+0000805c   _Int_DCLink
+00008058   _Int_FieldWeak
+00008060   _Int_FluxCtrl
+00008098   _InternNormSpeeed
+000090fe   _InterruptCnt
+00008025   _InvPrSqrt3by2
+00009109   _InvStatus
+000091e0   _InverterCurrent
+000091fe   _InverterVoltage
+00008eb4   _IqAcc
+00008e8d   _IqAverage1
+00008ea1   _IqCoff
+00008ed2   _IqDirectLim
+00009336   _IqF_est
+00008f1a   _IqFilter
+00009349   _IqHF_est
+00009310   _IqHFborrar
+0000930f   _IqHFdem
+00009330   _IqHFdem_est
+00008045   _IqLLimitGen
+00008eb1   _IqLimit
+000091d3   _IqLimitByFuncode
+00009232   _IqLong
+00008e6c   _IqNewSetUnlim
+00008e97   _IqOpt
+00008f18   _IqRefOpt
+00008e9a   _IqRefOpt1
+00008ead   _IqSet1
+00008f0c   _IqSet1Flt
+00008ec0   _IqSetFilter
+00008064   _IqULimitGen
+00008ee8   _IqULimitGenLimit1
+00008e65   _IqUpLimit
+00008ec6   _IqUpLimitFilter
+0000934b   _Iq_est
+00009205   _Isa
+00009204   _Isb
+00009206   _ItError
+000091f2   _ItFed
+0000924e   _ItFedFlt
+0000922e   _ItFedFltAcc
+000091fb   _ItRef
+0000920d   _ItRefLim
+00009217   _Iu
+000091fc   _Iu1
+000091f5   _Iu2
+000091db   _IuError
+0000922c   _IuErrorAcc
+000091fd   _IuErrorK
+000091ec   _IuSample
+000091e8   _Iv
+000091f4   _Iv1
+000091da   _IvError
+0000922a   _IvErrorAcc
+000091f7   _IvErrorK
+000091ef   _IvSample
+000091e7   _Iw
+000091f9   _Iw1
+000091e1   _IwError
+00009238   _IwErrorAcc
+000091f8   _IwErrorK
+000091ea   _IwSample
+003ea0c6   _J1939_DequeueMessage
+003e9f27   _J1939_Initialization
+003e9f69   _J1939_Poll
+003ea06c   _J1939_ReceiveMessages
+00008f2f   _Jm
+00009484   _K4_InvPrSqrt3by2
+00009487   _K4_PrSqrt3by2
+003efb19   _KBCOMM
+00008380   _KeyBoard_DealWork
+003e8112   _KeyBoard_GetValue
+003e9104   _KeyBoard_KB
+003e8cfb   _KeyBoard_ParaInitD
+003e8cd1   _KeyBoard_ParaProtectD
+003e90b4   _KeyBoard_RatedVolt
+003e8e1d   _KeyBoard_RunLedParam1D
+003e8e97   _KeyBoard_RunLedParam2D
+003e826f   _KeyBoard_SetValue
+003e8d7a   _KeyBoard_StopLedParamD
+00008d51   _KeyCmdChannel
+00008d46   _KeyHoldtmr
+00009052   _KeyONDelay
+0000905c   _KeyOffDelay
+00008200   _KeyValue
+003ece33   _KickDog
+00008f2d   _Kp
+00008f32   _KpLoad
+0000908b   _L4ms_is_init_OK
+00008300   _LCDSeg
+00008d57   _LCDtestfinish
+00008d58   _LCDtestflag
+003efa4a   _LEDDISPLAY
+003f1f64   _LEDDisData
+0000821c   _LEDSeg
+003efce4   _LIN0INTA_ISR
+003efce9   _LIN1INTA_ISR
+003efd48   _LUF_ISR
+003efd43   _LVF_ISR
+000091de   _Lb
+003f21f9   _LdTable
+003f1fa3   _LibVer
+0000910f   _LifeSignalClick
+00009540   _LimitTorqDelay
+00006c00   _LinaRegs
+003ef2b0   _LoadDefPara
+003ec831   _LoadError
+003f041c   _LoadObserve
+00008f4c   _LogRead
+00008f54   _LogWrite
+000091d6   _Loop125usActive
+000091d4   _Loop1msActive
+000091c7   _Loop4msActive
+000091c8   _Loop56msActive
+00009129   _LostCount
+003f2743   _LowPassInt32
+003f21fd   _LqTable
+00008f5d   _LuDetectCount
+00008203   _M1Polars
+00008201   _M2Polars
+003f21bd   _MAXSPEED
+0000900a   _MAXTORQUE
+003f21bf   _MAXTORQUE450
+003f21c1   _MAXTORQUE600
+0000911f   _MCUBeat
+0000912d   _MCUEnable
+003ea1e0   _MCU_RES0
+003ea376   _MCU_RES1
+003ea737   _MCU_RES10
+003ea763   _MCU_RES11
+003ea788   _MCU_RES12
+003ea7b4   _MCU_RES13
+003ea7e0   _MCU_RES14
+003ea17e   _MCU_RES15
+003ea3b4   _MCU_RES2
+003ea3d5   _MCU_RES3
+003ea40c   _MCU_RES4
+003ea41d   _MCU_RES5
+003ea68c   _MCU_RES6
+003ea6b2   _MCU_RES7
+003ea6df   _MCU_RES8
+003ea70b   _MCU_RES9
+003f0795   _MP32_32
+00009272   _M_svm
+0000907b   _MagnetCurrOutPercent
+00009078   _MagnetCurrOutReal
+00009067   _MagnetCurrRefPercent
+00009064   _MagnetCurrRefReal
+000090da   _MainFreqRef
+003eca7f   _MakePreDtcStatus
+00008abc   _MaxOutputFreqScale
+0000912e   _MaxTorque
+00008e98   _MaxTorqueBak
+00008e9b   _MaxTorqueEnable
+00009146   _MaxTorqueFilt
+0000900b   _MaxTorqueTable
+003f1fe0   _MaxTorqueTable450
+003f2012   _MaxTorqueTable600
+00008e4d   _Max_TrqAddValue
+00009118   _McuState
+00008f3e   _Mcu_Configuration
+00009362   _ModelStator
+000080d9   _ModifiedKtFactor
+0000930e   _Modulation_tabindex
+000094c0   _MotCode
+003ef81d   _MotSearchAng
+003ef80d   _MotSearchAngInit
+00009202   _MotorCurrent
+00009510   _MotorDeltaLd
+00009228   _MotorFn
+00009514   _MotorInduceVolt
+0000950f   _MotorLeakInductD
+0000950c   _MotorLeakInductQ
+0000953a   _MotorNomTrq
+00009524   _MotorNomTrqCurrent
+0000921c   _MotorNp
+0000921e   _MotorNps
+00009502   _MotorOmegaNnenn
+0000908a   _MotorOutPutPower
+0000907e   _MotorPowerPercent
+00009252   _MotorRatedFreq
+00009256   _MotorRatedRotorFreq
+00009248   _MotorRatedSpeed
+00009254   _MotorRatedTorque
+000090ea   _MotorRealPower
+000090ec   _MotorRealPower_1
+000090e6   _MotorRealPower_2
+00009060   _MotorRealSpeed
+00009063   _MotorRealSpeedForTorqCal
+0000908f   _MotorTemp
+00009090   _MotorTempFilter
+000090ac   _MotorTempFilterACC
+00008f61   _MotorTempFilterLo
+00008f5e   _MotorTempLineOKTime
+00008f58   _MotorTempLineTime
+0000908c   _MotorTempPowerOnDelay
+00009536   _MotorTrqCoeff
+00009203   _MotorVoltage
+003ef984   _MotsearchAngCtrl
+003f2401   _NCotrller
+003efbc1   _NMI_ISR
+000080f0   _N_VOR_OLD_D
+00008e87   _Nmax
+00007060   _NmiIntruptRegs
+00008c3f   _NoErrorTime
+00009124   _NoSlide
+00008d41   _Nobacktimes
+00009507   _NomMagnetCurrent
+00009527   _NomSlipFrequency
+00008046   _NormActTsByTr
+00008034   _NormIs
+0000800a   _NormPsi
+0000951f   _NormTorq
+00008041   _Norm_ActRho2
+00008040   _Norm_ActTabTr
+0000804f   _Norm_OneByZp
+00008052   _Norm_Psi
+0000804c   _Norm_SigmaTr
+00008048   _Norm_TabSigmaTr
+0000804a   _Norm_TrByTab
+00009356   _Norm_is
+00009506   _Norm_tab_tr
+00009520   _Norm_ts_tr
+00009340   _Norm_us
+003ec9de   _NoticeClearError
+00008d53   _Num32
+003f2166   _NumFunc
+003f2175   _NumGroup
+00009529   _OL_SlipFrequency
+00008eb6   _OUTPUT_FREQ
+003f0512   _ObserveInit
+00008e51   _OffsetAngle
+00008e47   _OffsetAngleAdjusted
+00008efa   _OffsetAngleSum
+00008e55   _OffsetAngleTemp
+00008e48   _OldCurrent
+00008f2a   _OldGear
+00008e5c   _OldIdF
+00008e5a   _OldIqF
+00009508   _OldRho
+00008ebe   _OldSmoothDelta
+000091c1   _OldThta
+00008ecc   _OldTime
+00008ed6   _OldTime2
+00009550   _OldTorque
+00008e7a   _OneByPsiMax
+00008042   _OneByPsiRef
+00009154   _OneMessage
+003f1bb4   _OrgValue
+003f0d1e   _Os_Sys_Timer_1000us_task_MainEntryPoint
+00008f52   _OutVolErr
+0000909b   _OutputCurr
+000090d6   _OutputFreq
+00009093   _OutputVolt
+00008f5c   _OvSpeedTime
+003eaf07   _OverCurrent
+00008f49   _PG1Count
+00008f59   _PG2Count
+00008f5f   _PG2ErrCount
+003efd52   _PIE_RESERVED
+0000927a   _POT_ABC
+0000802d   _PRE_ISD
+0000802b   _PRE_ISQ
+0000802c   _PRE_SWITCH
+003f2216   _PRO_DATA
+003f1c91   _Para
+00008d62   _Para16
+00008d52   _Para16downok
+00008d4d   _Para16upok
+00008d48   _Para32
+00008d67   _Para32H
+00008d61   _Para32L
+00008d4e   _Para32upok
+00008d59   _ParaDownok
+00008d42   _ParaInit
+00008d56   _ParaUpok
+00008d4f   _ParaVerchk
+00008008   _Param_AmpActDCLinkVolt
+00009338   _Param_AngSearchPGainScale
+0000802e   _Param_AutotuningCtrl
+00009519   _Param_CalcMagnetCurrent
+00008007   _Param_CosRho
+00008023   _Param_CtrlOut_Uq
+00009515   _Param_CurrentCtrl_ITime
+0000950e   _Param_CurrentCtrl_PGain
+00008e77   _Param_CurrentDiffPST
+000080d0   _Param_CutOffFrequencyOrder2
+00009512   _Param_DCLinkCtrlVoltSet
+00009504   _Param_DCLinkCtrl_ITime
+00009517   _Param_DCLinkCtrl_PGain
+000080e4   _Param_Delta_phi_ref_D
+0000808c   _Param_Enc1ActAngle
+0000808e   _Param_Enc1ActRev
+00008094   _Param_Enc1ActSpeed
+00008096   _Param_Enc1ActSpeedForFluxCal
+000080db   _Param_Enc1AmpErrTimeLim
+00008092   _Param_Enc1DeltaPhi_D
+000080a0   _Param_Enc1MechAngle
+00009302   _Param_Enc1PulsesPerRev
+000080da   _Param_Enc1Sin2xUpperLimit
+00008086   _Param_Enc1TrackA
+0000808a   _Param_Enc1TrackB
+00008082   _Param_Enc1cntlt
+00008083   _Param_Enc1mask
+00008090   _Param_Enc1pos_D
+00008085   _Param_EncMode
+0000950a   _Param_FieldWeakCtrl_ITime
+00009503   _Param_FieldWeakCtrl_PGain
+00008047   _Param_FluxActValue
+00009500   _Param_FluxCtrl_ITime
+00009501   _Param_FluxCtrl_PGain
+0000800b   _Param_FluxSetValue
+0000809c   _Param_G1deltaphi_D
+0000809e   _Param_G1pos_D
+00008088   _Param_Geb_mode
+00008029   _Param_IdAct
+00008024   _Param_IdSetLimited
+00008009   _Param_IdSetUnlim
+000080e6   _Param_Int_FwdN_HD
+000080d6   _Param_Int_FwdN_L
+000080e8   _Param_Int_RevN_HD
+000080d1   _Param_Int_RevN_L
+00008030   _Param_Int_isd_D
+00008036   _Param_Int_isq_D
+000080ec   _Param_Int_n_HD
+000080c4   _Param_Int_n_L
+000080c6   _Param_InternalLimitStatus
+0000801d   _Param_IphaseU
+0000801e   _Param_IphaseV
+00008027   _Param_IphaseW
+00008028   _Param_IqAct
+000080ce   _Param_IqLLimit
+000080cf   _Param_IqSetBandwidth
+000080d5   _Param_IqSetFcenter
+00008015   _Param_IqSetLimited
+000080c3   _Param_IqSetUnlim
+000080d4   _Param_IqULimit
+00008020   _Param_Is_alpha
+00008021   _Param_Is_beta
+00008e75   _Param_MotorAngSearchMode
+00009522   _Param_MotorInitAngle
+00009511   _Param_MotorKeFactor
+0000951b   _Param_MotorMagnetCurrent
+00009516   _Param_MotorMutualInductance
+00009526   _Param_MotorNomCurrent
+0000952a   _Param_MotorNomFrequency
+00009533   _Param_MotorNomPower
+0000952b   _Param_MotorNomSpeed
+0000952d   _Param_MotorNomVolt
+00009300   _Param_MotorPolePairs
+00009531   _Param_MotorPowerFactor
+0000950d   _Param_MotorRotorLeakInduct
+00008e73   _Param_MotorSearchAngError
+00008e74   _Param_MotorSearchAngStatus
+00008e76   _Param_MotorSearchAngleStatus
+0000952f   _Param_MotorSlipFrequency2
+00009530   _Param_MotorStatorLeakInduct
+00009532   _Param_MotorStatorResist
+0000933e   _Param_OldRho
+00009311   _Param_PWMIndexMax
+000080cd   _Param_PWM_Frequency
+00008032   _Param_PsiAlpha
+00008038   _Param_PsiBeta
+00008012   _Param_Reg_ctrl
+0000801b   _Param_Reg_ctrl2
+00008014   _Param_Reg_ctrl3
+00008006   _Param_Rho
+00008e5e   _Param_SMsensLessCtrlStatus
+0000800e   _Param_SinRho
+0000803a   _Param_SpeedActValue
+000080d3   _Param_SpeedCtrlDev
+000080c0   _Param_SpeedCtrlOut
+00009513   _Param_SpeedCtrl_ITime
+00009528   _Param_SpeedCtrl_PGain
+000080e0   _Param_SpeedFeedFor
+000080c9   _Param_SpeedFwdCtrlDev
+000080d2   _Param_SpeedFwdCtrlOut
+000080f6   _Param_SpeedFwdLimit
+000080c2   _Param_SpeedRevCtrlDev
+000080d7   _Param_SpeedRevCtrlOut
+000080de   _Param_SpeedRevLimit
+000080f4   _Param_SpeedSetValue
+000080dc   _Param_SpeedSetValueAdd
+000080e2   _Param_SpeedSetValueTotal
+000080ee   _Param_SpeedSet_LLim
+000080ea   _Param_SpeedSet_ULim
+0000951c   _Param_TimeRotorActValue
+000080cc   _Param_TrqAddValue
+000080cb   _Param_TrqDirectLLim
+000080c8   _Param_TrqDirectULim
+000080c5   _Param_TrqFeedFor
+000080c7   _Param_TrqInertiaCompens
+000080ca   _Param_TrqRefValue
+000080c1   _Param_TrqSetValue
+00008002   _Param_Usalpha_ref
+00008005   _Param_Usbeta_ref
+00008022   _Param_VdSet
+00008f08   _Param_VdSet_Filter
+00009341   _Param_VdqLimit
+00008026   _Param_VemfSet
+0000801f   _Param_VqSet
+00008f0a   _Param_VqSet_Filter
+003d7e80   _PartIdRegs
+003f21aa   _PartNumber
+00008eaa   _PhaseDetectCnt
+00008e43   _PhiIndex
+00000ce0   _PieCtrlRegs
+00000d00   _PieVectTable
+003f19cc   _PieVectTableInit
+00009368   _PosNeg00007FFF
+0000936c   _PosNeg7FFFFFFF
+0000948a   _PosNegId00001
+00009305   _PosOvlFlags
+00009276   _PotAlphaBeta
+00008054   _PotAmpFiltered
+003eab52   _PowOnCurrDriftDetect
+00009352   _PowerElectric
+000090b8   _PowerFlt
+000090b4   _PowerFltAcc
+00008f44   _PowerIsOK
+0000906c   _PowerIsReady
+0000911d   _PowerOff12VDelay
+00009096   _PowerOffStep
+00008205   _PowerOnDelay
+000090b0   _PowerPu
+000090b6   _PowerReal
+00009354   _PowerRsAlpha
+00009360   _PowerRsBeta
+003eaf20   _PowerStep
+00008017   _PrSqrt3by2
+00008aa4   _PreAccTime
+00008aae   _PreDecTime
+00009290   _PreDtcStatus
+00008aac   _PreExictT1ms
+00008ab2   _PreExictTimer
+00009590   _PreRxUdsMsgBuf0
+00009586   _PreRxUdsMsgBuf1
+000095a4   _PreRxUdsMsgBuf2
+0000959a   _PreRxUdsMsgBuf3
+00008abe   _PreSetFreq
+0000910b   _PumbCustomId
+00009271   _PwmIndexLimit
+00008218   _RDfirstip
+0000821a   _RDfuncip
+003ef9f0   _READTOSEND
+000091dc   _RE_ATEXC
+0000820e   _RSfuncip
+003efbb7   _RTOSINT_ISR
+0000926c   _RT_MotSearchAng
+00009136   _RXHead
+00009180   _RXQueue
+00009130   _RXQueueCount
+00009131   _RXTail
+003f298a   _RamfuncsLoadEnd
+003f296b   _RamfuncsLoadStart
+00008100   _RamfuncsRunStart
+003ec73e   _Read2Para16Bit
+003eca6a   _ReadDtcOccHisOrder
+003ec615   _ReadEeprom
+0000940c   _ReadFisrtErr
+003eca29   _ReadUds
+00008adc   _RecData
+00008ad4   _RecData2
+00008ac2   _Recindex
+00008ac4   _Recindex2
+00009556   _RegDownLimit
+00009552   _RegUpLimit
+00009483   _RelucTorqThta
+003ea0dd   _Request_VCU
+0000906a   _ResAmp
+0000906b   _ResAmpError
+00009068   _ResAmpReal
+00009481   _ResetDog
+00009098   _ResolvCheckEnable
+0000906d   _ResolverInitOK
+00009062   _ResolverMechAngleInit
+003eb5eb   _ResolverSignal
+003ebab0   _ResolverSignalCheck
+0000904e   _Resolver_Cos
+0000904f   _Resolver_Sin
+00008f00   _ResonanceAngle
+00009486   _RetData
+00008e2f   _RevForbidTimeOut
+00008f4e   _RevLimit
+003ee7f7   _RevSlide
+00008e36   _RevSpdLmtQ14
+00008e7e   _ReverseDetect
+0000906e   _ReverseForbid
+0000805a   _Rho2
+00008ee6   _RhoHf
+00008f1c   _RhoHfMechanical
+00008ec4   _RhoI
+00009347   _Rho_PsiAlphaBeta
+0000934a   _Rho_est
+00008e40   _Rho_estMechanical
+00009410   _Rodata
+003eb004   _Rotate
+00008280   _RunData
+000091ca   _RunFreq
+003eab01   _RunInitial
+00009218   _RunStep
+0000921a   _RunStepOld
+00008d65   _RxReady
+00008d5c   _Rxcnt
+00008d5a   _Rxtimecnt
+00008d5d   _Rxtimetmp
+003efcda   _SCIRXINTA_ISR
+003efa94   _SCITIMECHK
+003efcdf   _SCITXINTA_ISR
+00008216   _SDfirstip
+00008214   _SDfuncip
+00009268   _SEARCH_INIT_ANGLE_FINISHED
+00008e85   _SM_StartFinish
+003f21c0   _SPEEDSTEP
+003efcbc   _SPIRXINTA_ISR
+003efcc6   _SPIRXINTB_ISR
+003efcc1   _SPITXINTA_ISR
+003efccb   _SPITXINTB_ISR
+00008e84   _SPeedCtrlOutAbs
+003f21bc   _STARTSPEED
+0000948e   _SW_Finger
+003f21b3   _SW_VER
+0000935a   _SamplePoint
+00008e8b   _SampleTimeILoop
+003ec7d0   _Save16Func
+003ec817   _SaveErrorIndex
+003ec861   _SaveErrorLog
+003ec92d   _SaveParameters
+0000803c   _Scaling2Or4kHz_S0
+00007050   _SciaRegs
+0000926a   _SearchAngControl
+003edfe9   _SearchCurrDtcSaveOrder
+00008e44   _SearchDownFinished
+00008e49   _SearchUpFinished
+003f20ca   _SegGen
+00008ed8   _SenLessFilter
+0000912f   _SendCount0
+00009137   _SendCount1
+00009134   _SendCount2
+00009135   _SendCount3
+00009132   _SendCount4
+00009125   _SendCount5
+0000910c   _SendCount6
+003ea98f   _SendOneMessage
+003e9383   _SensorlessSM_Init
+003e9345   _SensorlessSM_handle
+003e934a   _SensorlessSmCtrl
+00009307   _SerialAngleGx
+00009482   _SessionDelay
+00009480   _SessionRstStep
+003eb786   _SetError
+00008ab6   _SetFreq
+00008ab4   _SetFreqScale
+00008a9d   _SetFreqShiftR
+003f0b6f   _SetModuleTable
+003eb130   _SetSwitchFreq
+00009558   _SetTorqueScale
+0000932a   _Shadw_DCLinkCtrlVoltSet
+0000932c   _Shadw_I_DCLinkCtrl
+00009324   _Shadw_I_FieldWeak
+00009308   _Shadw_I_FluxCtrl
+00009329   _Shadw_I_is
+0000931b   _Shadw_I_n
+000091c4   _Shadw_I_nbak
+0000933d   _Shadw_IdLLimit
+00008eac   _Shadw_IdLLimitNew
+00008f0e   _Shadw_IdLLimitNew_Filter
+00009332   _Shadw_IdSetLLimit
+0000933b   _Shadw_IdULimit
+00008ea0   _Shadw_IdULimit1
+0000932d   _Shadw_NormMotorSpeed
+00008ee2   _Shadw_Norm_DlsdByTab
+00008ee0   _Shadw_Norm_DlsqByTab
+00009317   _Shadw_Norm_LeakInduct
+0000931e   _Shadw_Norm_dls
+00009320   _Shadw_Norm_dlsd
+00009319   _Shadw_Norm_dlsd_Psi
+0000931c   _Shadw_Norm_dlsq
+0000931d   _Shadw_Norm_emk
+00009325   _Shadw_Norm_lm
+0000932b   _Shadw_Norm_qls
+00009328   _Shadw_Norm_rho2
+00009321   _Shadw_Norm_rs
+00009364   _Shadw_Norm_speed
+00009313   _Shadw_Norm_tab_dls
+00009534   _Shadw_OneByNormEmk
+0000931a   _Shadw_PWM_Tsample
+0000932e   _Shadw_P_DCLinkCtrl
+00009323   _Shadw_P_FieldWeak
+00009326   _Shadw_P_FluxCtrl
+00009318   _Shadw_P_is
+0000935e   _Shadw_P_n
+00009230   _Shadw_P_nbak
+0000930a   _Shadw_Pt_enc1
+00009304   _Shadw_Pt_enc2
+003ec919   _ShowErrLog
+000091d0   _ShutPWM
+00009074   _SimDC
+00009076   _SimIu
+00009077   _SimIw
+0000904b   _SimMCUTemp
+00009048   _SimMotorTemp
+00009049   _SimSpeed
+00008ef2   _SinOmegaT
+00009345   _SinRho_est
+00009358   _SinTab
+003f18ca   _SinTabMV
+000091f3   _Sina
+00009406   _SizeErrLog
+00009210   _Sliding
+00008051   _Slip
+0000804d   _Slip1
+00009113   _SlipCut_counter
+00009103   _SlipCut_timer
+00009111   _SlipQuit_Clear_Counter
+00009115   _SlipQuit_flag
+00009505   _SmFieldWeakeningCurrent
+00009224   _SmoothDelta
+00008eb8   _SmoothDeltaAcc
+00008e94   _SmoothTimer
+00008f41   _SoftOCCount
+00008c3e   _SoftOCResetTime
+0000906f   _SoftOcCnt
+00008e3c   _SpdFwdLmtFilter
+003ee91a   _SpdLimitToNormal
+000090d2   _SpdLmtFreq1
+000090c8   _SpdLmtFreq2
+00008e3a   _SpdRevLmtFilter
+00009100   _Speed
+00008e79   _SpeedActValuePu
+00008ec8   _SpeedBy8
+00008e4b   _SpeedCosIndex
+00008ef4   _SpeedCosPhi
+00008f06   _SpeedCosPhiFilt
+00008e56   _SpeedCtrlOutFilt
+00008efe   _SpeedCtrlOutFiltAcc
+000091e4   _SpeedError
+000091e9   _SpeedFed
+00009220   _SpeedFedTorque
+00009075   _SpeedFltCnt
+000091ce   _SpeedFltCnt2
+00008ef0   _SpeedHfI
+00008eca   _SpeedI
+00008e60   _SpeedKp1
+00008e69   _SpeedKp2
+00008e61   _SpeedKpChanged
+00009244   _SpeedLedAcc
+003f21c2   _SpeedPoint
+000091ed   _SpeedRef
+000091e6   _SpeedRef1
+00008e63   _SpeedRegulatorOut
+00008f40   _SpeedRpm
+00008e52   _SpeedSinIndex
+00008f04   _SpeedSinPhi
+00008ede   _SpeedStart
+0000934e   _SpeedSum
+00008ee4   _SpeedSumFilt
+00008e58   _SpeedTi1
+00008e57   _SpeedTi2
+00008e5b   _SpeedU
+00008ef6   _Speed_daxis
+00008f20   _Speed_daxisFilt
+00008f14   _Speed_daxisFilt_Once
+00009366   _Speed_est
+00008f02   _Speed_qaxis
+00008f16   _Speed_qaxisFilt
+00008f1e   _Speed_qaxisFilt_Once
+00009331   _Speedh_est
+00007040   _SpiaRegs
+00007740   _SpibRegs
+00009405   _StClrErrLog
+00008d3c   _StEcuReset
+00009401   _StReadErrLog
+00008e4c   _StandardCosIndex
+00008e4e   _StandardSinIndex
+000091c5   _Start125usLoop
+000091c6   _Start1msLoop
+000091cb   _Start4msLoop
+000091cc   _Start56msLoop
+00008e50   _StartFreqHoldFinished
+00008e4f   _StartFreqStableStep
+00009099   _StartVoltDetect
+00009538   _StatorFrequencyAct
+00008eb2   _StepLossDetect
+00008eae   _StepLossJudge
+00008e5f   _Step_SSM_Start
+00008240   _StopData
+003f221c   _SumFunc
+0000925a   _SumI
+003f221d   _SumMsg
+003f218d   _SuppID
+003eaa1a   _Swap
+00007010   _SysCtrlRegs
+00000985   _SysPwrCtrlRegs
+0000955c   _TCurrentAcceleration
+00008eba   _TIMECOUNT_1MS
+003efc34   _TINT0_ISR
+003efba8   _TINT1_ISR
+003efbad   _TINT2_ISR
+00008f34   _TLAcc
+00008f25   _TLFilter
+00008f22   _TLFilterK
+00008f23   _TLFilterK_1
+00008f2e   _TLFilterK_2
+00008f28   _TLFilterPhase
+00008f26   _TLFilter_1
+00008f24   _TLFilter_2
+00008f2c   _TLest
+00008f30   _TLestK_1
+00008f27   _TLestK_2
+003f21be   _TORQUESTEP
+00008ea7   _TORQ_GAIN_LowLim
+00008ea6   _TORQ_GAIN_UpLim
+000090a1   _TW0
+000090a6   _TW1
+0000909e   _TW2
+00009094   _TW3
+0000956a   _TX
+000090a3   _TX0
+000090aa   _TX1
+000090a0   _TX2
+000090a4   _TY0
+003eb058   _Task125usLoop
+003eb1b6   _Task1msLoop
+003ef1dc   _Task4msLoop
+003ef2f7   _TaskMain1ms
+000091cf   _Tcal
+003f1f24   _TempPT1000
+00009265   _TempSearchAng
+00008ef8   _Temp_TrqAddValue
+00009056   _TemperReal
+000090d4   _TemperRealAcc
+0000905b   _TemperRealFlt
+000090ae   _TemperTab
+003f2142   _TemperTabOld
+00009055   _TemperUReal
+000090ce   _TemperURealAcc
+0000905e   _TemperURealFlt
+00009054   _TemperVReal
+000090d0   _TemperVRealAcc
+0000905d   _TemperVRealFlt
+00009051   _TemperVoltSample
+00009057   _TemperWReal
+000090ca   _TemperWRealAcc
+00009058   _TemperWRealFlt
+00009350   _Templong
+003f27dc   _TestCarry
+00008f45   _TestWarn
+0000800f   _Test_CosRho
+0000800d   _Test_IdAct
+00008010   _Test_IqAct
+00008004   _Test_Rho
+0000800c   _Test_SinRho
+000091fa   _Thta
+000090c6   _Time1msBase
+003f21d4   _TimeOutBootData
+000090c0   _TimerForPowerOn
+000090c2   _TimerOL
+0000907d   _ToqOutPercent
+00009222   _TorqAcc
+00009562   _TorqAccTime
+00009566   _TorqAccTimeBak
+00009542   _TorqCoff
+000091d2   _TorqComp
+00008f29   _TorqComp1
+00008e93   _TorqComp2
+00009065   _TorqCurrOutPercent
+00009072   _TorqCurrOutPercentTemp
+0000907a   _TorqCurrOutReal
+00009061   _TorqCurrRefPercent
+00009066   _TorqCurrRefReal
+00009568   _TorqDCLimit
+00009560   _TorqDecTime
+00009564   _TorqDecTimeBak
+003eb8e5   _TorqErrCheck
+00008f4f   _TorqErrCount
+00008ec2   _TorqGainAdjustCount
+00008e7c   _TorqGainAdjustDelayOK
+00008f10   _TorqGainAdjustTime
+0000907c   _TorqIqGcw
+00009110   _TorqLimitCount1
+0000910e   _TorqLimitCount2
+003ef7d0   _TorqLimitLine
+00009570   _TorqLmtFlt
+000090dc   _TorqLmtFwdNegPu
+000090e2   _TorqLmtFwdPosPu
+0000956e   _TorqMotorTempLimit
+000090f8   _TorqReal
+000090de   _TorqRefPercent
+00009544   _TorqSet
+00009546   _TorqSetFilter
+00008eab   _TorqSetFilter1
+00009547   _TorqSetFilterK
+00009549   _TorqSetFilterK_1
+0000954a   _TorqSetFilterK_2
+00009541   _TorqSetFilter_1
+00009543   _TorqSetFilter_2
+0000954b   _TorqSetK
+0000954d   _TorqSetK_1
+0000954f   _TorqSetK_2
+00009545   _TorqSetOffset
+0000954c   _TorqSetOffsetBak
+00008ece   _TorqTotalComp
+0000910d   _Torque
+00009548   _TorqueChange
+003ef708   _TorqueLimitSet
+003f21c3   _TorquePoint
+003e9c89   _TorqueReg
+0000954e   _TorqueTimer
+0000956c   _TroqLineLimit
+00008e82   _TrqAddAmp
+000090e4   _TrqCmdPercent
+00008e81   _TrqCnt
+000090e0   _TrqCurrCmdPercent
+00008e7f   _TrqIndex
+00008e80   _TrqIndexOld
+00008e7b   _TrqSearchAng
+000080d8   _TrqSetTotal
+00008d66   _TxReady
+00008d60   _Txnumber
+00008d63   _Txtimecnt
+00009085   _UCoreCmd
+00008ea3   _UD1
+00008e62   _UDMAX
+003f0789   _UDV48_32
+00008e9f   _UQ1
+00008e9e   _UQ2
+00008e64   _UQMAX
+00008016   _USD_IS
+00009346   _USD_est
+003efbf8   _USER10_ISR
+003efbfd   _USER11_ISR
+003efc02   _USER12_ISR
+003efbcb   _USER1_ISR
+003efbd0   _USER2_ISR
+003efbd5   _USER3_ISR
+003efbda   _USER4_ISR
+003efbdf   _USER5_ISR
+003efbe4   _USER6_ISR
+003efbe9   _USER7_ISR
+003efbee   _USER8_ISR
+003efbf3   _USER9_ISR
+00008011   _USQ_IS
+00009342   _USQ_est
+0000801a   _US_ALPHA
+00008013   _US_BETA
+00008f57   _UTempLinetime
+00008018   _UZK_INV
+000091df   _Ubase
+00009214   _Udc
+00009216   _Udc1
+00009215   _Udc1Flt
+00009211   _UdcFlt
+00009226   _UdcFltFilter
+00008f12   _UdcFltFilter1
+0000923c   _UdcFltFilter2
+000091eb   _UdcSample
+003f0a9b   _UdsApp_10Dsc_TriggerStartNewSessionActions
+003f0aa6   _UdsApp_10Dsc_generic_S3SeverTmrTimeoutEvtHandler
+003f0bc1   _UdsApp_11EcuRst_CyclicTskEntryPoint
+003f0a2b   _UdsApp_14ClrDiagInf_Pending
+003f0a0b   _UdsApp_14ClrDiagInfor_CyclicTskEntryPoint
+003f0a27   _UdsApp_14ClrDiagInfor_Init
+003f0a1c   _UdsApp_14ClrDiagInfor_Pend_Overtime
+003eddaf   _UdsApp_19reportDTCByStatusMask_Pending
+003ede3c   _UdsApp_19reportDTCSnapshotId_Pending
+003edd5a   _UdsApp_19reportNumOfDTCByStatusMask_Pending
+003edeaa   _UdsApp_19reportSnapshotRcdByDtcNum_Pending
+003ef4fb   _UdsApp_27SecuAcc_CyclicTskEntryPoint
+003ef561   _UdsApp_27SecuAcc_GetCurrSecurityLevelStatus
+003ef4d5   _UdsApp_27SecuAcc_Init
+003f0ce9   _UdsApp_27SecuAcc_IsSpecifiedSALHasUnlocked
+003ef536   _UdsApp_27SecuAcc_Pend_Overtime
+003ef535   _UdsApp_27SecuAcc_Pending
+003ef4ec   _UdsApp_27SecuAcc_SwitchDiagSessionInit
+003f05a4   _UdsApp_28ComCtrl_ExecuteCommControlAction
+003f05c8   _UdsApp_28ComCtrl_Init
+003f05cb   _UdsApp_28ComCtrl_Pending
+003f072f   _UdsApp_2eWtDatByDid_Init
+003f0723   _UdsApp_2eWtDatByDid_Pend_Overtime
+003f06fb   _UdsApp_2eWtDatByDid_Pending
+003f03fb   _UdsApp_2fIoCtrlByDid_ReturnAllCtrl2ECU
+003eec9e   _UdsApp_31RtnCtrl_Init
+003eedca   _UdsApp_31RtnCtrl_S3TmrTOHandler
+003eee4e   _UdsApp_31RtnCtrl_pend_overtime
+003eede4   _UdsApp_31RtnCtrl_pending
+00008f3a   _UdsApp_3eReqRxDebug_OK_Counter
+003f0b32   _UdsApp_85CtrlDtcSet_Get_CurrDtcSettingFlg
+003f0b2a   _UdsApp_85CtrlDtcSet_Init
+003f09cd   _UdsApp_ClearDiagnosticInformation
+003f0534   _UdsApp_ComControl
+003f0af5   _UdsApp_ControlDTCSetting
+003f0a42   _UdsApp_DiagSessionControl
+003f0ba6   _UdsApp_EcuReset
+003f0300   _UdsApp_IOControlByIdentifier
+003f0825   _UdsApp_ISO_15031_5_Read01
+003f088e   _UdsApp_ISO_15031_5_Read03
+003f0898   _UdsApp_ISO_15031_5_Read07
+003f08a2   _UdsApp_ISO_15031_5_Read09
+003edbf1   _UdsApp_ReadDTCInformation
+003f08fe   _UdsApp_ReadDataByIdentifier
+003eeb4d   _UdsApp_RoutineControl
+003ef368   _UdsApp_SecurityAccess
+003ee4ba   _UdsApp_ServiceUnknown
+003f0c30   _UdsApp_TesterPresent
+003f0642   _UdsApp_WriteDataByIdentifier
+003f2209   _UdsParaEpAdr
+003eee52   _Uds_31RtnCtrl_Get_IsRoutineAlreadyRunning
+003f0b45   _Uds_Generic_DatMgr_Init
+003f0b46   _Uds_Generic_DatMgr_SearchTblByKey
+003ee7b1   _Uds_Get_2ndIndRespBufPtrSet
+003f0be7   _Uds_MemClear
+003f0bdc   _Uds_MemCopy
+003f0bee   _Uds_MemCopyDataFlow
+003f1acc   _Uds_ServiceTable
+003f16b0   _Uds_g_DidDataTable
+003f2044   _Uds_g_DidEepromDataTable
+003f2197   _Uds_g_IoCtrlByDidIdxTable
+003f1e64   _Uds_g_IoCtrlByDidMngtTable
+003f20a6   _Uds_g_RtnCtrlMngtDataTable
+003ee514   _Uds_generic_IsAPrevReqAlreadyRunning
+003ee5a3   _Uds_generic_SendResp
+00008eea   _Uinput
+000091e3   _Ulbase
+0000920a   _UmRef
+000091ff   _Umag
+003f14f6   _UpLimit
+003f2219   _UpRela
+003ebe0b   _UpdateErrorStatus
+00008d40   _Uperrtimes
+0000907f   _Uphase
+00009045   _UphasePeak
+00008e66   _Uq_Uplimit
+00009278   _UsAlphaBeta_PWM
+0000905a   _UsAlphaRef
+00009059   _UsBetaRef
+000090e8   _UsSquare
+000090cc   _UsTemp
+00009200   _UtOut
+00009207   _UtRef
+00009138   _VCUCommand
+003ea7f5   _VCU_CMD_0
+003ea8f4   _VCU_CMD_2
+003ea90d   _VCU_CMD_4
+003ea91e   _VCU_CMD_7
+000094a1   _VIN
+00008f56   _VTempLinetime
+0000930d   _VaSetHF
+000090ba   _ValueLong_MaxOutFrq
+00009316   _VbSetHF
+003eb01d   _VcoRad
+00009107   _VcuGearGet
+00008eaf   _VdLimit
+0000930c   _VdSetHF
+003eb937   _VdcSensorCheck
+00008f51   _VdcSensorErrCounter
+0000932f   _Vemf_est
+00008ea5   _VibSpdLLimit
+00008ea9   _VibSpdULimit
+00008ea4   _VibrateSpeedBase
+00008eec   _VibrateSpeedBaseSquare
+00009112   _VmsLostDelay
+00009120   _VmsState
+00009095   _VoltDC
+000091d5   _VoltDCFlt
+0000801c   _VoltLsId
+00008019   _VoltLsIq
+00009334   _VoltMargin
+00009079   _VoltOut
+000091c0   _VoltPr1
+00009509   _VphaseNormVdc
+00009335   _VqSetLimByMargin
+003efc3d   _WAKEINT_ISR
+00008f5a   _WTempLinetime
+0000926e   _Wait10Second
+003f1ec4   _WarnInfo
+00008f47   _WarningCode
+00008f4a   _WarningCodeBak
+003ec729   _WriteBootPara
+003eca55   _WriteDtcOccHisOrder
+003ec5d1   _WriteEeprom
+003eb04c   _WriteFuncode
+003ec966   _WritePageEeprom
+000085bb   _WriteStep
+003ec9fb   _WriteUds
+003efc19   _XINT1_ISR
+003efc22   _XINT2_ISR
+003efd3e   _XINT3_ISR
+00007070   _XIntruptRegs
+000080f8   _Y1IqSet
+000080fa   _Y2IqSet
+000091dd   _Zb
+0000935c   _ZeroLimit
+003f298a   __IQ24sqrt
+00000800   __STACK_END
+00000400   __STACK_SIZE
+00000001   __TI_args_main
+ffffffff   ___binit__
+000095ae   ___bss__
+ffffffff   ___c_args__
+003f2829   ___cinit__
+000095b2   ___end__
+003f0d25   ___etext__
+003f0c76   ___memcpy_ff
+ffffffff   ___pinit__
+003e8100   ___text__
+003f0cb5   __args_main
+0000937c   __cleanup_ptr
+0000937e   __dtors_ptr
+000092fe   __lock
+003f0d1d   __nop
+003f0d19   __register_lock
+003f0d15   __register_unlock
+00008204   __sfEvent_KeyBoard_
+00000400   __stack
+000092fc   __unlock
+003f0cd0   _abort
+003f276e   _actan16
+000090f4   _aglVf
+000085c2   _bEnc1CorrectionStepInit
+003f0ab1   _c_int00
+003f220e   _caul_AswVldOkFlag
+003f2212   _caul_PendProgFlag
+003f0b36   _check_DID
+0000951a   _coffld
+00009521   _cofflq
+0000952c   _cofflq1
+00009044   _cosAgl
+00008202   _curRunData
+00008207   _curStopData
+00008d5f   _delay
+00008ebc   _delta_theta
+003f07c8   _div3216_TX1TX0TY0_TW2TW1
+003f279f   _divu16
+003f27aa   _divu32
+003f27b1   _divu64d32
+003eff1b   _encoder1
+0000911b   _err_level
+0000911c   _err_num
+003f0cd2   _exit
+00009327   _f_Modulation
+00008d6a   _firaddress
+00008210   _firstip
+0000820a   _funcip
+0000820c   _funcipTP
+00008212   _funcpointer
+00008a00   _g_FblUds_APduDataInd
+00008940   _g_FblUds_APduDataResp
+00009489   _index4ms
+003eb7ed   _isAlarmWarn
+00009121   _isBrake
+0000911e   _isUpdateMe
+0000909a   _is_CONTROL
+00008a9f   _is_LINE
+00009091   _is_PWMON
+0000909d   _is_READY
+00008aa0   _is_RUNNING
+00008a9e   _is_SPEED
+0000909c   _is_init_OK
+00009092   _itemper
+00008eee   _lAbsSpeedActFlt
+0000923e   _lSpeedFed
+00009240   _lSpeedRef
+00008d4a   _linex
+00009412   _longfuncpointer
+003ef0e6   _main
+00008e99   _maxtorqueindex
+0000908e   _mcu_TorqReal
+0000931f   _mess1
+00009322   _mess2
+00008e5d   _ms_count
+003f27d9   _mul32
+003f07b1   _mult1616_div16_2
+003f07df   _mult1632_TY0TX1TX0_TW3TW2TW1
+003f07f8   _mult1648_TY0TX2TX1TX0
+003f27d6   _mulu32
+003f27c3   _mulu32by32
+003f27c8   _mulu32x16
+00009270   _n_period_1
+00008d68   _nowaddress
+000090f0   _pDA1
+000090fc   _pDA2
+0000809a   _pEnc1CorTab
+00008ac8   _pul_CanDrvRxBufQueueMngtTblPtr
+00008ac6   _pul_CanDrvTxBufQueueMngtTblPtr
+00008908   _pul_FblUds_APduDataIndPtr
+00008906   _pul_FblUds_APduDataRespPtr
+00008c80   _raub_TP_buffer
+0000940a   _rdata
+00009250   _rlSpeedFed
+00008f36   _rlSpeedFedEst
+00008f38   _rlSpeedFedEstLo
+0000923a   _rlSpeedFedHigh
+000090fa   _rlSpeedFedLed
+000090f6   _rlSpeedFedLed1
+00009242   _rlSvcSpeedFed
+003efd57   _rsvd_ISR
+003efd5c   _rsvd_ISR1
+003efd65   _rsvd_ISR3
+0000903d   _rub_0x85CtrlDtcSetting_SubFunc
+000085ba   _rub_2eWtDatByDid_CurrUsingTblIndex
+000093a1   _rub_E2RamImg_BootAswModeMngt
+00009380   _rub_FblMgr_StayInBootMsgIsReceived
+003f21dc   _rub_FblMgr_StayInBootSpecificMsg
+00008903   _rub_FblUds_SimpleSesnMgr_CurrActiveSession
+00008c35   _rub_Rtype
+00008c37   _rub_SavedRtnCtrlSubFunc
+00008c38   _rub_diaSelfTestMode
+00008c3a   _rub_dirout_pending
+00008c3b   _rub_number
+00008c39   _rub_routineNb
+00008b40   _rul_CanDrvRxBufQueueMngtTbl
+00008bc0   _rul_CanDrvTxBufQueueMngtTbl
+00008c3c   _rul_Dirout_WaitFinishTmr
+00009392   _rul_FblMgr_ResetStayInBootWindowTimer
+00008c40   _rul_FblTp_Msg_Mngt_Dat
+00008aec   _rul_PhyAddrRxCanSwObj
+00008d8e   _rul_SDOCanSwObj
+00008c34   _ruw_routineID
+003ef569   _saGetKey
+003ef5b4   _saGetKeyL1
+00009046   _sinAgl
+00008e96   _speedindex
+003f2755   _sqrtu16
+00009073   _temp_AI_Sample_NTCU
+00009070   _temp_AI_Sample_NTCV
+00009071   _temp_AI_Sample_NTCW
+00009488   _tempdata
+00008d44   _testK
+00008d43   _testL
+00008d55   _timecnt
+00008e9d   _torque
+00008e95   _torqueindex
+00008a9c   _uAccDecFlag
+00009080   _uAlarmJudge
+00009086   _uControlCmd1
+00008206   _uKeyPara
+00008209   _uKeyPara1
+00009082   _uPermitAlarm
+00009081   _uRunStopCmd1
+00009088   _uRunStopCmd4
+00009087   _uRunStopCmd5
+00009083   _uRunStopCmdBK1
+0000908d   _uRunStopCmdBK2
+00009089   _uRunStopCmdBK3
+000090a7   _uRunStopStatus1
+000090a9   _uRunStopStatus2
+000090a5   _uRunStopStatus3
+000090a8   _uRunStopStatus4
+0000909f   _uRunStopStatus5
+000090a2   _uRunStopStatus6
+00009084   _uRunStopStatusBK1
+00009315   _u_Modulation
+00008e89   _udc_rated
+00009047   _udc_rated_Sqrt2
+00008208   _unnLEDLight
+00009409   _wdata
+003f27e0   atan_tab
+ffffffff   binit
+003f2829   cinit
+003f7ff6   code_start
+003f2801   cor_tab
+003f2811   cor_tab_fpga
+000095b2   end
+003f0d25   etext
+ffffffff   pinit
+003f27e0   sin_tab
+003f17c8   sqrt_tab
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address    name
+--------   ----
+00000001   __TI_args_main
+00000400   __STACK_SIZE
+00000400   __stack
+00000800   __STACK_END
+00000880   _DevEmuRegs
+00000985   _SysPwrCtrlRegs
+00000a80   _FlashRegs
+00000ae0   _CsmRegs
+00000b00   _AdcResult
+00000c00   _CpuTimer0Regs
+00000c08   _CpuTimer1Regs
+00000c10   _CpuTimer2Regs
+00000ce0   _PieCtrlRegs
+00000d00   _EmuKey
+00000d00   _PieVectTable
+00000d01   _EmuBMode
+00000d02   _Flash_CallbackPtr
+00000d04   _Flash_CPUScaleFactor
+00001400   _Cla1Regs
+00006000   _ECanaRegs
+00006040   _ECanaLAMRegs
+00006080   _ECanaMOTSRegs
+000060c0   _ECanaMOTORegs
+00006100   _ECanaMboxes
+00006400   _Comp1Regs
+00006420   _Comp2Regs
+00006440   _Comp3Regs
+00006800   _EPwm1Regs
+00006840   _EPwm2Regs
+00006880   _EPwm3Regs
+000068c0   _EPwm4Regs
+00006900   _EPwm5Regs
+00006940   _EPwm6Regs
+00006980   _EPwm7Regs
+00006a00   _ECap1Regs
+00006ac0   _HRCap1Regs
+00006ae0   _HRCap2Regs
+00006b00   _EQep1Regs
+00006c00   _LinaRegs
+00006f80   _GpioCtrlRegs
+00006fc0   _GpioDataRegs
+00006fe0   _GpioIntRegs
+00007010   _SysCtrlRegs
+00007040   _SpiaRegs
+00007050   _SciaRegs
+00007060   _NmiIntruptRegs
+00007070   _XIntruptRegs
+00007100   _AdcRegs
+00007740   _SpibRegs
+00007900   _I2caRegs
+00008000   _DeltaIsBeta
+00008001   _DeltaIphaseU
+00008002   _Param_Usalpha_ref
+00008003   _AngRestOld
+00008004   _Test_Rho
+00008005   _Param_Usbeta_ref
+00008006   _Param_Rho
+00008007   _Param_CosRho
+00008008   _Param_AmpActDCLinkVolt
+00008009   _Param_IdSetUnlim
+0000800a   _NormPsi
+0000800b   _Param_FluxSetValue
+0000800c   _Test_SinRho
+0000800d   _Test_IdAct
+0000800e   _Param_SinRho
+0000800f   _Test_CosRho
+00008010   _Test_IqAct
+00008011   _USQ_IS
+00008012   _Param_Reg_ctrl
+00008013   _US_BETA
+00008014   _Param_Reg_ctrl3
+00008015   _Param_IqSetLimited
+00008016   _USD_IS
+00008017   _PrSqrt3by2
+00008018   _UZK_INV
+00008019   _VoltLsIq
+0000801a   _US_ALPHA
+0000801b   _Param_Reg_ctrl2
+0000801c   _VoltLsId
+0000801d   _Param_IphaseU
+0000801e   _Param_IphaseV
+0000801f   _Param_VqSet
+00008020   _Param_Is_alpha
+00008021   _Param_Is_beta
+00008022   _Param_VdSet
+00008023   _Param_CtrlOut_Uq
+00008024   _Param_IdSetLimited
+00008025   _InvPrSqrt3by2
+00008026   _Param_VemfSet
+00008027   _Param_IphaseW
+00008028   _Param_IqAct
+00008029   _Param_IdAct
+0000802a   _DeadTimeInPules
+0000802b   _PRE_ISQ
+0000802c   _PRE_SWITCH
+0000802d   _PRE_ISD
+0000802e   _Param_AutotuningCtrl
+00008030   _Param_Int_isd_D
+00008032   _Param_PsiAlpha
+00008034   _NormIs
+00008036   _Param_Int_isq_D
+00008038   _Param_PsiBeta
+0000803a   _Param_SpeedActValue
+0000803c   _Scaling2Or4kHz_S0
+00008040   _Norm_ActTabTr
+00008041   _Norm_ActRho2
+00008042   _OneByPsiRef
+00008043   _Delta_Flux
+00008044   _Delta_Iq
+00008045   _IqLLimitGen
+00008046   _NormActTsByTr
+00008047   _Param_FluxActValue
+00008048   _Norm_TabSigmaTr
+00008049   _IdSetOutput
+0000804a   _Norm_TrByTab
+0000804b   _Delta_IdSetLimited
+0000804c   _Norm_SigmaTr
+0000804d   _Slip1
+0000804e   _IdSetEstimatedMinusIdAct
+0000804f   _Norm_OneByZp
+00008050   _Delta_IdSet
+00008051   _Slip
+00008052   _Norm_Psi
+00008054   _PotAmpFiltered
+00008056   _Imr
+00008058   _Int_FieldWeak
+0000805a   _Rho2
+0000805c   _Int_DCLink
+0000805e   _IdSetNoLoad
+00008060   _Int_FluxCtrl
+00008062   _IdqSet
+00008064   _IqULimitGen
+00008080   _Enc1AbPhi
+00008081   _Enc1RemainOld
+00008082   _Param_Enc1cntlt
+00008083   _Param_Enc1mask
+00008084   _Enc1QEPInit
+00008085   _Param_EncMode
+00008086   _Param_Enc1TrackA
+00008087   _ChangePWMFreqCnt
+00008088   _Param_Geb_mode
+00008089   _Enc1RestOld
+0000808a   _Param_Enc1TrackB
+0000808b   _EncxErrBitSet
+0000808c   _Param_Enc1ActAngle
+0000808e   _Param_Enc1ActRev
+00008090   _Param_Enc1pos_D
+00008092   _Param_Enc1DeltaPhi_D
+00008094   _Param_Enc1ActSpeed
+00008096   _Param_Enc1ActSpeedForFluxCal
+00008098   _InternNormSpeeed
+0000809a   _pEnc1CorTab
+0000809c   _Param_G1deltaphi_D
+0000809e   _Param_G1pos_D
+000080a0   _Param_Enc1MechAngle
+000080c0   _Param_SpeedCtrlOut
+000080c1   _Param_TrqSetValue
+000080c2   _Param_SpeedRevCtrlDev
+000080c3   _Param_IqSetUnlim
+000080c4   _Param_Int_n_L
+000080c5   _Param_TrqFeedFor
+000080c6   _Param_InternalLimitStatus
+000080c7   _Param_TrqInertiaCompens
+000080c8   _Param_TrqDirectULim
+000080c9   _Param_SpeedFwdCtrlDev
+000080ca   _Param_TrqRefValue
+000080cb   _Param_TrqDirectLLim
+000080cc   _Param_TrqAddValue
+000080cd   _Param_PWM_Frequency
+000080ce   _Param_IqLLimit
+000080cf   _Param_IqSetBandwidth
+000080d0   _Param_CutOffFrequencyOrder2
+000080d1   _Param_Int_RevN_L
+000080d2   _Param_SpeedFwdCtrlOut
+000080d3   _Param_SpeedCtrlDev
+000080d4   _Param_IqULimit
+000080d5   _Param_IqSetFcenter
+000080d6   _Param_Int_FwdN_L
+000080d7   _Param_SpeedRevCtrlOut
+000080d8   _TrqSetTotal
+000080d9   _ModifiedKtFactor
+000080da   _Param_Enc1Sin2xUpperLimit
+000080db   _Param_Enc1AmpErrTimeLim
+000080dc   _Param_SpeedSetValueAdd
+000080de   _Param_SpeedRevLimit
+000080e0   _Param_SpeedFeedFor
+000080e2   _Param_SpeedSetValueTotal
+000080e4   _Param_Delta_phi_ref_D
+000080e6   _Param_Int_FwdN_HD
+000080e8   _Param_Int_RevN_HD
+000080ea   _Param_SpeedSet_ULim
+000080ec   _Param_Int_n_HD
+000080ee   _Param_SpeedSet_LLim
+000080f0   _N_VOR_OLD_D
+000080f2   _IntDeltaSpeed
+000080f4   _Param_SpeedSetValue
+000080f6   _Param_SpeedFwdLimit
+000080f8   _Y1IqSet
+000080fa   _Y2IqSet
+00008100   _InitFlash
+00008100   _RamfuncsRunStart
+00008200   _KeyValue
+00008201   _M2Polars
+00008202   _curRunData
+00008203   _M1Polars
+00008204   __sfEvent_KeyBoard_
+00008205   _PowerOnDelay
+00008206   _uKeyPara
+00008207   _curStopData
+00008208   _unnLEDLight
+00008209   _uKeyPara1
+0000820a   _funcip
+0000820c   _funcipTP
+0000820e   _RSfuncip
+00008210   _firstip
+00008212   _funcpointer
+00008214   _SDfuncip
+00008216   _SDfirstip
+00008218   _RDfirstip
+0000821a   _RDfuncip
+0000821c   _LEDSeg
+00008240   _StopData
+00008280   _RunData
+00008300   _LCDSeg
+00008380   _KeyBoard_DealWork
+00008400   _Funcode
+000085ba   _rub_2eWtDatByDid_CurrUsingTblIndex
+000085bb   _WriteStep
+000085c2   _bEnc1CorrectionStepInit
+000085cc   _Enc1CorrectionValues
+000085d0   _Enc1DeltaPhiFiltered
+000085d4   _Enc1DeltaPhiFilteredForFluxCal
+00008600   _Enc1TrackBTble
+00008700   _Enc1TrackCnt
+00008800   _Enc1TrackATble
+00008903   _rub_FblUds_SimpleSesnMgr_CurrActiveSession
+00008906   _pul_FblUds_APduDataRespPtr
+00008908   _pul_FblUds_APduDataIndPtr
+00008940   _g_FblUds_APduDataResp
+00008a00   _g_FblUds_APduDataInd
+00008a9c   _uAccDecFlag
+00008a9d   _SetFreqShiftR
+00008a9e   _is_SPEED
+00008a9f   _is_LINE
+00008aa0   _is_RUNNING
+00008aa2   _DecTime
+00008aa4   _PreAccTime
+00008aa6   _CurrentAcceleration
+00008aa8   _FX
+00008aaa   _AccTime
+00008aac   _PreExictT1ms
+00008aae   _PreDecTime
+00008ab0   _CurrentOutputFreq
+00008ab2   _PreExictTimer
+00008ab4   _SetFreqScale
+00008ab6   _SetFreq
+00008ab8   _InitialOutputFreq
+00008aba   _FreqRef
+00008abc   _MaxOutputFreqScale
+00008abe   _PreSetFreq
+00008ac2   _Recindex
+00008ac4   _Recindex2
+00008ac6   _pul_CanDrvTxBufQueueMngtTblPtr
+00008ac8   _pul_CanDrvRxBufQueueMngtTblPtr
+00008ace   _CANTRS
+00008ad4   _RecData2
+00008adc   _RecData
+00008ae4   _DebugData
+00008aec   _rul_PhyAddrRxCanSwObj
+00008b40   _rul_CanDrvRxBufQueueMngtTbl
+00008bc0   _rul_CanDrvTxBufQueueMngtTbl
+00008c34   _ruw_routineID
+00008c35   _rub_Rtype
+00008c36   _CheckedPreprogConditonFlg
+00008c37   _rub_SavedRtnCtrlSubFunc
+00008c38   _rub_diaSelfTestMode
+00008c39   _rub_routineNb
+00008c3a   _rub_dirout_pending
+00008c3b   _rub_number
+00008c3c   _rul_Dirout_WaitFinishTmr
+00008c3e   _SoftOCResetTime
+00008c3f   _NoErrorTime
+00008c40   _rul_FblTp_Msg_Mngt_Dat
+00008c80   _raub_TP_buffer
+00008d34   _CpuTimer0
+00008d3c   _StEcuReset
+00008d40   _Uperrtimes
+00008d41   _Nobacktimes
+00008d42   _ParaInit
+00008d43   _testL
+00008d44   _testK
+00008d45   _Downerrtimes
+00008d46   _KeyHoldtmr
+00008d47   _Address
+00008d48   _Para32
+00008d49   _Contrastbak
+00008d4a   _linex
+00008d4b   _Funno
+00008d4c   _Addressget
+00008d4d   _Para16upok
+00008d4e   _Para32upok
+00008d4f   _ParaVerchk
+00008d50   _DisCount
+00008d51   _KeyCmdChannel
+00008d52   _Para16downok
+00008d53   _Num32
+00008d54   _Errortimes
+00008d55   _timecnt
+00008d56   _ParaUpok
+00008d57   _LCDtestfinish
+00008d58   _LCDtestflag
+00008d59   _ParaDownok
+00008d5a   _Rxtimecnt
+00008d5b   _Datacal
+00008d5c   _Rxcnt
+00008d5d   _Rxtimetmp
+00008d5e   _Dataorg
+00008d5f   _delay
+00008d60   _Txnumber
+00008d61   _Para32L
+00008d62   _Para16
+00008d63   _Txtimecnt
+00008d64   _Deltatime
+00008d65   _RxReady
+00008d66   _TxReady
+00008d67   _Para32H
+00008d68   _nowaddress
+00008d6a   _firaddress
+00008d8e   _rul_SDOCanSwObj
+00008e2e   _FwdForbidTimeOut
+00008e2f   _RevForbidTimeOut
+00008e30   _EnterSlideLmtFilterT
+00008e32   _CheckEnterRevSlideFreq
+00008e34   _FwdSpdLmtQ14
+00008e36   _RevSpdLmtQ14
+00008e38   _CheckEnterFwdSlideFreq
+00008e3a   _SpdRevLmtFilter
+00008e3c   _SpdFwdLmtFilter
+00008e3e   _DecTorqSet
+00008e40   _Rho_estMechanical
+00008e41   _CoordinateIndex
+00008e42   _IdTiming
+00008e43   _PhiIndex
+00008e44   _SearchDownFinished
+00008e46   _IdRefOpt
+00008e47   _OffsetAngleAdjusted
+00008e48   _OldCurrent
+00008e49   _SearchUpFinished
+00008e4b   _SpeedCosIndex
+00008e4c   _StandardCosIndex
+00008e4d   _Max_TrqAddValue
+00008e4e   _StandardSinIndex
+00008e4f   _StartFreqStableStep
+00008e50   _StartFreqHoldFinished
+00008e51   _OffsetAngle
+00008e52   _SpeedSinIndex
+00008e53   _AdjustAngle
+00008e54   _InjectAngle
+00008e55   _OffsetAngleTemp
+00008e56   _SpeedCtrlOutFilt
+00008e57   _SpeedTi2
+00008e58   _SpeedTi1
+00008e59   _Diff
+00008e5a   _OldIqF
+00008e5b   _SpeedU
+00008e5c   _OldIdF
+00008e5d   _ms_count
+00008e5e   _Param_SMsensLessCtrlStatus
+00008e5f   _Step_SSM_Start
+00008e60   _SpeedKp1
+00008e61   _SpeedKpChanged
+00008e62   _UDMAX
+00008e63   _SpeedRegulatorOut
+00008e64   _UQMAX
+00008e65   _IqUpLimit
+00008e66   _Uq_Uplimit
+00008e67   _InitialId
+00008e68   _IFeedVorCtrl
+00008e69   _SpeedKp2
+00008e6a   _IFeedVorState
+00008e6b   _IdSetForRelucTorq
+00008e6c   _IqNewSetUnlim
+00008e6d   _INJECT_MODE
+00008e6e   _FieldWeaken
+00008e6f   _INJECT_TORQUE
+00008e70   _CurrentTorqGain
+00008e71   _InjectTorqPu
+00008e72   _InitTorqGain
+00008e73   _Param_MotorSearchAngError
+00008e74   _Param_MotorSearchAngStatus
+00008e75   _Param_MotorAngSearchMode
+00008e76   _Param_MotorSearchAngleStatus
+00008e77   _Param_CurrentDiffPST
+00008e78   _FluxForIqCalMin
+00008e79   _SpeedActValuePu
+00008e7a   _OneByPsiMax
+00008e7b   _TrqSearchAng
+00008e7c   _TorqGainAdjustDelayOK
+00008e7d   _CompDelayIsOk
+00008e7e   _ReverseDetect
+00008e7f   _TrqIndex
+00008e80   _TrqIndexOld
+00008e81   _TrqCnt
+00008e82   _TrqAddAmp
+00008e83   _DQFilter
+00008e84   _SPeedCtrlOutAbs
+00008e85   _SM_StartFinish
+00008e86   _AngleSampleCnt
+00008e87   _Nmax
+00008e88   _ImaxPeak
+00008e89   _udc_rated
+00008e8a   _CoreFlag_CtrlMode
+00008e8b   _SampleTimeILoop
+00008e8c   _ExcitationTime
+00008e8d   _IqAverage1
+00008e8e   _COMP_DELAY_TIME
+00008e8f   _BaseTrqAddValue
+00008e90   _InjectEndSpeed
+00008e91   _InjectStartSpeed
+00008e92   _Imax
+00008e93   _TorqComp2
+00008e94   _SmoothTimer
+00008e95   _torqueindex
+00008e96   _speedindex
+00008e97   _IqOpt
+00008e98   _MaxTorqueBak
+00008e99   _maxtorqueindex
+00008e9a   _IqRefOpt1
+00008e9b   _MaxTorqueEnable
+00008e9c   _AbsSpeedInRPM
+00008e9d   _torque
+00008e9e   _UQ2
+00008e9f   _UQ1
+00008ea0   _Shadw_IdULimit1
+00008ea1   _IqCoff
+00008ea2   _InitialVq
+00008ea3   _UD1
+00008ea4   _VibrateSpeedBase
+00008ea5   _VibSpdLLimit
+00008ea6   _TORQ_GAIN_UpLim
+00008ea7   _TORQ_GAIN_LowLim
+00008ea8   _CurrentLoopDelayCompen
+00008ea9   _VibSpdULimit
+00008eaa   _PhaseDetectCnt
+00008eab   _TorqSetFilter1
+00008eac   _Shadw_IdLLimitNew
+00008ead   _IqSet1
+00008eae   _StepLossJudge
+00008eaf   _VdLimit
+00008eb0   _IdUnlimited
+00008eb1   _IqLimit
+00008eb2   _StepLossDetect
+00008eb4   _IqAcc
+00008eb6   _OUTPUT_FREQ
+00008eb8   _SmoothDeltaAcc
+00008eba   _TIMECOUNT_1MS
+00008ebc   _delta_theta
+00008ebe   _OldSmoothDelta
+00008ec0   _IqSetFilter
+00008ec2   _TorqGainAdjustCount
+00008ec4   _RhoI
+00008ec6   _IqUpLimitFilter
+00008ec8   _SpeedBy8
+00008eca   _SpeedI
+00008ecc   _OldTime
+00008ece   _TorqTotalComp
+00008ed2   _IqDirectLim
+00008ed4   _IdULimitFilter
+00008ed6   _OldTime2
+00008ed8   _SenLessFilter
+00008eda   _IntSpeedU
+00008edc   _IntSpeedHfI
+00008ede   _SpeedStart
+00008ee0   _Shadw_Norm_DlsqByTab
+00008ee2   _Shadw_Norm_DlsdByTab
+00008ee4   _SpeedSumFilt
+00008ee6   _RhoHf
+00008ee8   _IqULimitGenLimit1
+00008eea   _Uinput
+00008eec   _VibrateSpeedBaseSquare
+00008eee   _lAbsSpeedActFlt
+00008ef0   _SpeedHfI
+00008ef2   _SinOmegaT
+00008ef4   _SpeedCosPhi
+00008ef6   _Speed_daxis
+00008ef8   _Temp_TrqAddValue
+00008efa   _OffsetAngleSum
+00008efc   _CosOmegaT
+00008efe   _SpeedCtrlOutFiltAcc
+00008f00   _ResonanceAngle
+00008f02   _Speed_qaxis
+00008f04   _SpeedSinPhi
+00008f06   _SpeedCosPhiFilt
+00008f08   _Param_VdSet_Filter
+00008f0a   _Param_VqSet_Filter
+00008f0c   _IqSet1Flt
+00008f0e   _Shadw_IdLLimitNew_Filter
+00008f10   _TorqGainAdjustTime
+00008f12   _UdcFltFilter1
+00008f14   _Speed_daxisFilt_Once
+00008f16   _Speed_qaxisFilt
+00008f18   _IqRefOpt
+00008f1a   _IqFilter
+00008f1c   _RhoHfMechanical
+00008f1e   _Speed_qaxisFilt_Once
+00008f20   _Speed_daxisFilt
+00008f22   _TLFilterK
+00008f23   _TLFilterK_1
+00008f24   _TLFilter_2
+00008f25   _TLFilter
+00008f26   _TLFilter_1
+00008f27   _TLestK_2
+00008f28   _TLFilterPhase
+00008f29   _TorqComp1
+00008f2a   _OldGear
+00008f2b   _GearTimer
+00008f2c   _TLest
+00008f2d   _Kp
+00008f2e   _TLFilterK_2
+00008f2f   _Jm
+00008f30   _TLestK_1
+00008f32   _KpLoad
+00008f34   _TLAcc
+00008f36   _rlSpeedFedEst
+00008f38   _rlSpeedFedEstLo
+00008f3a   _UdsApp_3eReqRxDebug_OK_Counter
+00008f3e   _Mcu_Configuration
+00008f40   _SpeedRpm
+00008f41   _SoftOCCount
+00008f42   _AlarmCode
+00008f43   _AlarmCodeBak
+00008f44   _PowerIsOK
+00008f45   _TestWarn
+00008f46   _ConPowerIsOK
+00008f47   _WarningCode
+00008f48   _FlagSaveErr
+00008f49   _PG1Count
+00008f4a   _WarningCodeBak
+00008f4b   _ErrorCode1
+00008f4c   _LogRead
+00008f4d   _ErrorCodeBak
+00008f4e   _RevLimit
+00008f4f   _TorqErrCount
+00008f50   _ErrorCode
+00008f51   _VdcSensorErrCounter
+00008f52   _OutVolErr
+00008f53   _ErrorListIndex
+00008f54   _LogWrite
+00008f55   _CurrentErr
+00008f56   _VTempLinetime
+00008f57   _UTempLinetime
+00008f58   _MotorTempLineTime
+00008f59   _PG2Count
+00008f5a   _WTempLinetime
+00008f5b   _DelayLow12V
+00008f5c   _OvSpeedTime
+00008f5d   _LuDetectCount
+00008f5e   _MotorTempLineOKTime
+00008f5f   _PG2ErrCount
+00008f60   _DelayOv12V
+00008f61   _MotorTempFilterLo
+00008f62   _ErrorList
+00008f64   _ErrSubmit
+00008f80   _ErrLog
+0000900a   _MAXTORQUE
+0000900b   _MaxTorqueTable
+0000903d   _rub_0x85CtrlDtcSetting_SubFunc
+00009040   _InitFinish
+00009041   _CurrentSensorErr
+00009042   _Ch2
+00009043   _Ch1
+00009044   _cosAgl
+00009045   _UphasePeak
+00009046   _sinAgl
+00009047   _udc_rated_Sqrt2
+00009048   _SimMotorTemp
+00009049   _SimSpeed
+0000904a   _DAShift2
+0000904b   _SimMCUTemp
+0000904c   _Ch4
+0000904d   _Ch3
+0000904e   _Resolver_Cos
+0000904f   _Resolver_Sin
+00009050   _CurrSensorIsOk
+00009051   _TemperVoltSample
+00009052   _KeyONDelay
+00009053   _ConPowerON
+00009054   _TemperVReal
+00009055   _TemperUReal
+00009056   _TemperReal
+00009057   _TemperWReal
+00009058   _TemperWRealFlt
+00009059   _UsBetaRef
+0000905a   _UsAlphaRef
+0000905b   _TemperRealFlt
+0000905c   _KeyOffDelay
+0000905d   _TemperVRealFlt
+0000905e   _TemperURealFlt
+0000905f   _DAShift1
+00009060   _MotorRealSpeed
+00009061   _TorqCurrRefPercent
+00009062   _ResolverMechAngleInit
+00009063   _MotorRealSpeedForTorqCal
+00009064   _MagnetCurrRefReal
+00009065   _TorqCurrOutPercent
+00009066   _TorqCurrRefReal
+00009067   _MagnetCurrRefPercent
+00009068   _ResAmpReal
+00009069   _ForwardForbid
+0000906a   _ResAmp
+0000906b   _ResAmpError
+0000906c   _PowerIsReady
+0000906d   _ResolverInitOK
+0000906e   _ReverseForbid
+0000906f   _SoftOcCnt
+00009070   _temp_AI_Sample_NTCV
+00009071   _temp_AI_Sample_NTCW
+00009072   _TorqCurrOutPercentTemp
+00009073   _temp_AI_Sample_NTCU
+00009074   _SimDC
+00009075   _SpeedFltCnt
+00009076   _SimIu
+00009077   _SimIw
+00009078   _MagnetCurrOutReal
+00009079   _VoltOut
+0000907a   _TorqCurrOutReal
+0000907b   _MagnetCurrOutPercent
+0000907c   _TorqIqGcw
+0000907d   _ToqOutPercent
+0000907e   _MotorPowerPercent
+0000907f   _Uphase
+00009080   _uAlarmJudge
+00009081   _uRunStopCmd1
+00009082   _uPermitAlarm
+00009083   _uRunStopCmdBK1
+00009084   _uRunStopStatusBK1
+00009085   _UCoreCmd
+00009086   _uControlCmd1
+00009087   _uRunStopCmd5
+00009088   _uRunStopCmd4
+00009089   _uRunStopCmdBK3
+0000908a   _MotorOutPutPower
+0000908b   _L4ms_is_init_OK
+0000908c   _MotorTempPowerOnDelay
+0000908d   _uRunStopCmdBK2
+0000908e   _mcu_TorqReal
+0000908f   _MotorTemp
+00009090   _MotorTempFilter
+00009091   _is_PWMON
+00009092   _itemper
+00009093   _OutputVolt
+00009094   _TW3
+00009095   _VoltDC
+00009096   _PowerOffStep
+00009097   _ComCardTorqRef
+00009098   _ResolvCheckEnable
+00009099   _StartVoltDetect
+0000909a   _is_CONTROL
+0000909b   _OutputCurr
+0000909c   _is_init_OK
+0000909d   _is_READY
+0000909e   _TW2
+0000909f   _uRunStopStatus5
+000090a0   _TX2
+000090a1   _TW0
+000090a2   _uRunStopStatus6
+000090a3   _TX0
+000090a4   _TY0
+000090a5   _uRunStopStatus3
+000090a6   _TW1
+000090a7   _uRunStopStatus1
+000090a8   _uRunStopStatus4
+000090a9   _uRunStopStatus2
+000090aa   _TX1
+000090ac   _MotorTempFilterACC
+000090ae   _TemperTab
+000090b0   _PowerPu
+000090b2   _ForDriveJudge
+000090b4   _PowerFltAcc
+000090b6   _PowerReal
+000090b8   _PowerFlt
+000090ba   _ValueLong_MaxOutFrq
+000090bc   _DCCur_ValueFilter
+000090be   _DCCur_Value
+000090c0   _TimerForPowerOn
+000090c2   _TimerOL
+000090c4   _CurrentFreq
+000090c6   _Time1msBase
+000090c8   _SpdLmtFreq2
+000090ca   _TemperWRealAcc
+000090cc   _UsTemp
+000090ce   _TemperURealAcc
+000090d0   _TemperVRealAcc
+000090d2   _SpdLmtFreq1
+000090d4   _TemperRealAcc
+000090d6   _OutputFreq
+000090d8   _CurrentRefFreq
+000090da   _MainFreqRef
+000090dc   _TorqLmtFwdNegPu
+000090de   _TorqRefPercent
+000090e0   _TrqCurrCmdPercent
+000090e2   _TorqLmtFwdPosPu
+000090e4   _TrqCmdPercent
+000090e6   _MotorRealPower_2
+000090e8   _UsSquare
+000090ea   _MotorRealPower
+000090ec   _MotorRealPower_1
+000090ee   _CntTemp
+000090f0   _pDA1
+000090f2   _ForceAQFinished
+000090f4   _aglVf
+000090f6   _rlSpeedFedLed1
+000090f8   _TorqReal
+000090fa   _rlSpeedFedLed
+000090fc   _pDA2
+000090fe   _InterruptCnt
+00009100   _Speed
+00009101   _DgnsR_ID2
+00009102   _Dgns_ID
+00009103   _SlipCut_timer
+00009104   _DgnsR_ID3
+00009105   _DgnsR_ID1
+00009106   _CANCtrlModeBak
+00009107   _VcuGearGet
+00009108   _CANCtrlMode
+00009109   _InvStatus
+0000910a   _BUS_CMD
+0000910b   _PumbCustomId
+0000910c   _SendCount6
+0000910d   _Torque
+0000910e   _TorqLimitCount2
+0000910f   _LifeSignalClick
+00009110   _TorqLimitCount1
+00009111   _SlipQuit_Clear_Counter
+00009112   _VmsLostDelay
+00009113   _SlipCut_counter
+00009114   _CANControlMode
+00009115   _SlipQuit_flag
+00009116   _EnNormalTrans
+00009117   _DriveState
+00009118   _McuState
+00009119   _CANMotorCmd
+0000911a   _CANRequestTorque1
+0000911b   _err_level
+0000911c   _err_num
+0000911d   _PowerOff12VDelay
+0000911e   _isUpdateMe
+0000911f   _MCUBeat
+00009120   _VmsState
+00009121   _isBrake
+00009122   _GeraErr
+00009123   _Gear
+00009124   _NoSlide
+00009125   _SendCount5
+00009126   _CANRequestTorque
+00009127   _BootWaitTime
+00009128   _CANRequestFreq
+00009129   _LostCount
+0000912a   _CANErrorUpdate
+0000912b   _CtrlMode
+0000912c   _CANDirect
+0000912d   _MCUEnable
+0000912e   _MaxTorque
+0000912f   _SendCount0
+00009130   _RXQueueCount
+00009131   _RXTail
+00009132   _SendCount4
+00009133   _CANProtocol
+00009134   _SendCount2
+00009135   _SendCount3
+00009136   _RXHead
+00009137   _SendCount1
+00009138   _VCUCommand
+0000913a   _CANTorqFed
+0000913c   _CANTorqRealDis
+0000913e   _BusOffResetTime
+00009140   _BusOffTime
+00009142   _CANSpeed
+00009144   _CANTorq
+00009146   _MaxTorqueFilt
+00009148   _GenTorqLimit
+0000914a   _CANTorqErr
+0000914c   _CANTorqReal
+0000914e   _DriveTorqLimit
+00009150   _CANError1
+00009154   _OneMessage
+00009180   _RXQueue
+000091c0   _VoltPr1
+000091c1   _OldThta
+000091c2   _FluxCurrent
+000091c3   _FrqCarry
+000091c4   _Shadw_I_nbak
+000091c5   _Start125usLoop
+000091c6   _Start1msLoop
+000091c7   _Loop4msActive
+000091c8   _Loop56msActive
+000091c9   _FieldWeakenSpeed
+000091ca   _RunFreq
+000091cb   _Start4msLoop
+000091cc   _Start56msLoop
+000091cd   _DecFrq
+000091ce   _SpeedFltCnt2
+000091cf   _Tcal
+000091d0   _ShutPWM
+000091d1   _IdControlMode
+000091d2   _TorqComp
+000091d3   _IqLimitByFuncode
+000091d4   _Loop1msActive
+000091d5   _VoltDCFlt
+000091d6   _Loop125usActive
+000091d7   _ConVdc
+000091d8   _ConVdc15v
+000091d9   _ImReal
+000091da   _IvError
+000091db   _IuError
+000091dc   _RE_ATEXC
+000091dd   _Zb
+000091de   _Lb
+000091df   _Ubase
+000091e0   _InverterCurrent
+000091e1   _IwError
+000091e2   _Ibase
+000091e3   _Ulbase
+000091e4   _SpeedError
+000091e5   _AbsSpeedRef
+000091e6   _SpeedRef1
+000091e7   _Iw
+000091e8   _Iv
+000091e9   _SpeedFed
+000091ea   _IwSample
+000091eb   _UdcSample
+000091ec   _IuSample
+000091ed   _SpeedRef
+000091ee   _CurrentZeroCount
+000091ef   _IvSample
+000091f0   _AbsSpeedFed
+000091f1   _ImFed
+000091f2   _ItFed
+000091f3   _Sina
+000091f4   _Iv1
+000091f5   _Iu2
+000091f6   _Cosa
+000091f7   _IvErrorK
+000091f8   _IwErrorK
+000091f9   _Iw1
+000091fa   _Thta
+000091fb   _ItRef
+000091fc   _Iu1
+000091fd   _IuErrorK
+000091fe   _InverterVoltage
+000091ff   _Umag
+00009200   _UtOut
+00009201   _ImagRms
+00009202   _MotorCurrent
+00009203   _MotorVoltage
+00009204   _Isb
+00009205   _Isa
+00009206   _ItError
+00009207   _UtRef
+00009208   _Imag
+00009209   _ImError
+0000920a   _UmRef
+0000920b   _DisPr4
+0000920c   _DisPr3
+0000920d   _ItRefLim
+0000920e   _ChargeClock
+0000920f   _EnableDischarge
+00009210   _Sliding
+00009211   _UdcFlt
+00009212   _IFedOc
+00009213   _ConVdcFlt
+00009214   _Udc
+00009215   _Udc1Flt
+00009216   _Udc1
+00009217   _Iu
+00009218   _RunStep
+00009219   _CurrentFedFlt
+0000921a   _RunStepOld
+0000921b   _CvdFlt
+0000921c   _MotorNp
+0000921d   _ImRefn
+0000921e   _MotorNps
+0000921f   _ImRef
+00009220   _SpeedFedTorque
+00009222   _TorqAcc
+00009224   _SmoothDelta
+00009226   _UdcFltFilter
+00009228   _MotorFn
+0000922a   _IvErrorAcc
+0000922c   _IuErrorAcc
+0000922e   _ItFedFltAcc
+00009230   _Shadw_P_nbak
+00009232   _IqLong
+00009234   _ImFedFltAcc
+00009236   _IdLong
+00009238   _IwErrorAcc
+0000923a   _rlSpeedFedHigh
+0000923c   _UdcFltFilter2
+0000923e   _lSpeedFed
+00009240   _lSpeedRef
+00009242   _rlSvcSpeedFed
+00009244   _SpeedLedAcc
+00009246   _IfedAcc
+00009248   _MotorRatedSpeed
+0000924a   _Fn
+0000924c   _Fb
+0000924e   _ItFedFlt
+00009250   _rlSpeedFed
+00009252   _MotorRatedFreq
+00009254   _MotorRatedTorque
+00009256   _MotorRatedRotorFreq
+00009258   _ImFedFlt
+0000925a   _SumI
+0000925c   _AI_Sample
+00009262   _AngSearchImax
+00009264   _DriveNomCurrent
+00009265   _TempSearchAng
+00009268   _SEARCH_INIT_ANGLE_FINISHED
+0000926a   _SearchAngControl
+0000926c   _RT_MotSearchAng
+0000926e   _Wait10Second
+00009270   _n_period_1
+00009271   _PwmIndexLimit
+00009272   _M_svm
+00009273   _CMP0
+00009274   _CMP1
+00009275   _CMP2
+00009276   _PotAlphaBeta
+00009278   _UsAlphaBeta_PWM
+0000927a   _POT_ABC
+00009290   _PreDtcStatus
+000092c0   _DtcOccHisOrder
+000092fc   __unlock
+000092fe   __lock
+00009300   _Param_MotorPolePairs
+00009301   _Enc1QuadrantOffset
+00009302   _Param_Enc1PulsesPerRev
+00009303   _Enc1AmpErrCnt
+00009304   _Shadw_Pt_enc2
+00009305   _PosOvlFlags
+00009306   _G1deltaphi_Filtered
+00009307   _SerialAngleGx
+00009308   _Shadw_I_FluxCtrl
+00009309   _Enc1PosRevOvlRev
+0000930a   _Shadw_Pt_enc1
+0000930b   _Enc1AmpErrTime
+0000930c   _VdSetHF
+0000930d   _VaSetHF
+0000930e   _Modulation_tabindex
+0000930f   _IqHFdem
+00009310   _IqHFborrar
+00009311   _Param_PWMIndexMax
+00009312   _Enc1AmpErrTimer
+00009313   _Shadw_Norm_tab_dls
+00009314   _Enc1PosRevOvlAngle
+00009315   _u_Modulation
+00009316   _VbSetHF
+00009317   _Shadw_Norm_LeakInduct
+00009318   _Shadw_P_is
+00009319   _Shadw_Norm_dlsd_Psi
+0000931a   _Shadw_PWM_Tsample
+0000931b   _Shadw_I_n
+0000931c   _Shadw_Norm_dlsq
+0000931d   _Shadw_Norm_emk
+0000931e   _Shadw_Norm_dls
+0000931f   _mess1
+00009320   _Shadw_Norm_dlsd
+00009321   _Shadw_Norm_rs
+00009322   _mess2
+00009323   _Shadw_P_FieldWeak
+00009324   _Shadw_I_FieldWeak
+00009325   _Shadw_Norm_lm
+00009326   _Shadw_P_FluxCtrl
+00009327   _f_Modulation
+00009328   _Shadw_Norm_rho2
+00009329   _Shadw_I_is
+0000932a   _Shadw_DCLinkCtrlVoltSet
+0000932b   _Shadw_Norm_qls
+0000932c   _Shadw_I_DCLinkCtrl
+0000932d   _Shadw_NormMotorSpeed
+0000932e   _Shadw_P_DCLinkCtrl
+0000932f   _Vemf_est
+00009330   _IqHFdem_est
+00009331   _Speedh_est
+00009332   _Shadw_IdSetLLimit
+00009333   _CurrLimitPL
+00009334   _VoltMargin
+00009335   _VqSetLimByMargin
+00009336   _IqF_est
+00009337   _IdF_est
+00009338   _Param_AngSearchPGainScale
+00009339   _DeltaUq_est
+0000933a   _Delta_IdSetLLimit
+0000933b   _Shadw_IdULimit
+0000933c   _Delta_IdSetULimit
+0000933d   _Shadw_IdLLimit
+0000933e   _Param_OldRho
+0000933f   _CurrLimitPH
+00009340   _Norm_us
+00009341   _Param_VdqLimit
+00009342   _USQ_est
+00009343   _Id_est
+00009344   _CosRho_est
+00009345   _SinRho_est
+00009346   _USD_est
+00009347   _Rho_PsiAlphaBeta
+00009348   _DeltaUd_est
+00009349   _IqHF_est
+0000934a   _Rho_est
+0000934b   _Iq_est
+0000934c   _IdHF_est
+0000934e   _SpeedSum
+00009350   _Templong
+00009352   _PowerElectric
+00009354   _PowerRsAlpha
+00009356   _Norm_is
+00009358   _SinTab
+0000935a   _SamplePoint
+0000935c   _ZeroLimit
+0000935e   _Shadw_P_n
+00009360   _PowerRsBeta
+00009362   _ModelStator
+00009364   _Shadw_Norm_speed
+00009366   _Speed_est
+00009368   _PosNeg00007FFF
+0000936c   _PosNeg7FFFFFFF
+0000937c   __cleanup_ptr
+0000937e   __dtors_ptr
+00009380   _rub_FblMgr_StayInBootMsgIsReceived
+00009392   _rul_FblMgr_ResetStayInBootWindowTimer
+000093a1   _rub_E2RamImg_BootAswModeMngt
+00009400   _GetErrOrderNum
+00009401   _StReadErrLog
+00009402   _ErrorNumber
+00009403   _FlagClrErr
+00009404   _FlagShowErr
+00009405   _StClrErrLog
+00009406   _SizeErrLog
+00009407   _FlagUpdateErrorStatus
+00009408   _FirstPowerFlag
+00009409   _wdata
+0000940a   _rdata
+0000940b   _ClrInsideErr
+0000940c   _ReadFisrtErr
+0000940d   _ErrSaveAdr
+0000940e   _Checkdata
+00009410   _Rodata
+00009412   _longfuncpointer
+00009414   _ErrShow
+00009440   _ErrLogStatus
+00009480   _SessionRstStep
+00009481   _ResetDog
+00009482   _SessionDelay
+00009483   _RelucTorqThta
+00009484   _K4_InvPrSqrt3by2
+00009485   _ClrErrLogTmr
+00009486   _RetData
+00009487   _K4_PrSqrt3by2
+00009488   _tempdata
+00009489   _index4ms
+0000948a   _PosNegId00001
+0000948e   _SW_Finger
+00009497   _ECUBootDataVersion
+000094a1   _VIN
+000094c0   _MotCode
+00009500   _Param_FluxCtrl_ITime
+00009501   _Param_FluxCtrl_PGain
+00009502   _MotorOmegaNnenn
+00009503   _Param_FieldWeakCtrl_PGain
+00009504   _Param_DCLinkCtrl_ITime
+00009505   _SmFieldWeakeningCurrent
+00009506   _Norm_tab_tr
+00009507   _NomMagnetCurrent
+00009508   _OldRho
+00009509   _VphaseNormVdc
+0000950a   _Param_FieldWeakCtrl_ITime
+0000950b   _DeltaSlipFreByMotorTemp2_1
+0000950c   _MotorLeakInductQ
+0000950d   _Param_MotorRotorLeakInduct
+0000950e   _Param_CurrentCtrl_PGain
+0000950f   _MotorLeakInductD
+00009510   _MotorDeltaLd
+00009511   _Param_MotorKeFactor
+00009512   _Param_DCLinkCtrlVoltSet
+00009513   _Param_SpeedCtrl_ITime
+00009514   _MotorInduceVolt
+00009515   _Param_CurrentCtrl_ITime
+00009516   _Param_MotorMutualInductance
+00009517   _Param_DCLinkCtrl_PGain
+00009518   _Coff_Ld
+00009519   _Param_CalcMagnetCurrent
+0000951a   _coffld
+0000951b   _Param_MotorMagnetCurrent
+0000951c   _Param_TimeRotorActValue
+0000951d   _Coff_Lq
+0000951e   _DischargeCurrent
+0000951f   _NormTorq
+00009520   _Norm_ts_tr
+00009521   _cofflq
+00009522   _Param_MotorInitAngle
+00009523   _ICoff
+00009524   _MotorNomTrqCurrent
+00009525   _DeltaMotorTemp2_1
+00009526   _Param_MotorNomCurrent
+00009527   _NomSlipFrequency
+00009528   _Param_SpeedCtrl_PGain
+00009529   _OL_SlipFrequency
+0000952a   _Param_MotorNomFrequency
+0000952b   _Param_MotorNomSpeed
+0000952c   _cofflq1
+0000952d   _Param_MotorNomVolt
+0000952e   _DeltaSlipFrequency2_1
+0000952f   _Param_MotorSlipFrequency2
+00009530   _Param_MotorStatorLeakInduct
+00009531   _Param_MotorPowerFactor
+00009532   _Param_MotorStatorResist
+00009533   _Param_MotorNomPower
+00009534   _Shadw_OneByNormEmk
+00009536   _MotorTrqCoeff
+00009538   _StatorFrequencyAct
+0000953a   _MotorNomTrq
+0000953c   _FluxReduceFiltered
+00009540   _LimitTorqDelay
+00009541   _TorqSetFilter_1
+00009542   _TorqCoff
+00009543   _TorqSetFilter_2
+00009544   _TorqSet
+00009545   _TorqSetOffset
+00009546   _TorqSetFilter
+00009547   _TorqSetFilterK
+00009548   _TorqueChange
+00009549   _TorqSetFilterK_1
+0000954a   _TorqSetFilterK_2
+0000954b   _TorqSetK
+0000954c   _TorqSetOffsetBak
+0000954d   _TorqSetK_1
+0000954e   _TorqueTimer
+0000954f   _TorqSetK_2
+00009550   _OldTorque
+00009552   _RegUpLimit
+00009554   _CurrTorqRef9
+00009556   _RegDownLimit
+00009558   _SetTorqueScale
+0000955a   _InitialOutputTorque
+0000955c   _TCurrentAcceleration
+0000955e   _CurrentOutputTorque
+00009560   _TorqDecTime
+00009562   _TorqAccTime
+00009564   _TorqDecTimeBak
+00009566   _TorqAccTimeBak
+00009568   _TorqDCLimit
+0000956a   _TX
+0000956c   _TroqLineLimit
+0000956e   _TorqMotorTempLimit
+00009570   _TorqLmtFlt
+00009581   _CurRxUdsMsgBuf
+00009586   _PreRxUdsMsgBuf1
+00009590   _PreRxUdsMsgBuf0
+0000959a   _PreRxUdsMsgBuf3
+000095a4   _PreRxUdsMsgBuf2
+000095ae   .bss
+000095ae   ___bss__
+000095b2   ___end__
+000095b2   end
+003d7e80   _PartIdRegs
+003e8100   .text
+003e8100   ___text__
+003e8112   _KeyBoard_GetValue
+003e826f   _KeyBoard_SetValue
+003e8cd1   _KeyBoard_ParaProtectD
+003e8cfb   _KeyBoard_ParaInitD
+003e8d7a   _KeyBoard_StopLedParamD
+003e8e1d   _KeyBoard_RunLedParam1D
+003e8e97   _KeyBoard_RunLedParam2D
+003e90b4   _KeyBoard_RatedVolt
+003e9104   _KeyBoard_KB
+003e9345   _SensorlessSM_handle
+003e934a   _SensorlessSmCtrl
+003e9383   _SensorlessSM_Init
+003e93c1   _IdIqLim
+003e9c68   _InitTorqComp
+003e9c89   _TorqueReg
+003e9d29   _InitControlPara
+003e9d40   _IdIqLimByTable
+003e9e71   _DriveControl
+003e9e7c   _CAN_Cfg1939Mail
+003e9f27   _J1939_Initialization
+003e9f69   _J1939_Poll
+003ea06c   _J1939_ReceiveMessages
+003ea0c6   _J1939_DequeueMessage
+003ea0dd   _Request_VCU
+003ea17e   _MCU_RES15
+003ea1e0   _MCU_RES0
+003ea376   _MCU_RES1
+003ea3b4   _MCU_RES2
+003ea3d5   _MCU_RES3
+003ea40c   _MCU_RES4
+003ea41d   _MCU_RES5
+003ea68c   _MCU_RES6
+003ea6b2   _MCU_RES7
+003ea6df   _MCU_RES8
+003ea70b   _MCU_RES9
+003ea737   _MCU_RES10
+003ea763   _MCU_RES11
+003ea788   _MCU_RES12
+003ea7b4   _MCU_RES13
+003ea7e0   _MCU_RES14
+003ea7f5   _VCU_CMD_0
+003ea8f4   _VCU_CMD_2
+003ea90d   _VCU_CMD_4
+003ea91e   _VCU_CMD_7
+003ea95d   _Diagnosis_Res1
+003ea98f   _SendOneMessage
+003ea9ce   _EcanIntHdl
+003eaa1a   _Swap
+003eaa1e   _EnNormComTx
+003eaa25   _DisNormComTx
+003eaa29   _CheckProgramCondition
+003eaa4f   _Diagnosis_poll
+003eaa64   _Anti_Slip
+003eaa69   _ChangePowerFrq
+003eaaab   _CalSin2
+003eaacf   _CtrlInit
+003eaadd   _ForceTZ
+003eaaf1   _ClearTZ
+003eab01   _RunInitial
+003eab52   _PowOnCurrDriftDetect
+003eabc9   _CurrentZeroDrift
+003eac45   _CalCurrentAdResult
+003eadb3   _CalVolAdResult
+003eae45   _InitMem
+003eae5c   _CalMotorParameter
+003eae69   _CalParameter
+003eaea4   _CalFuncPara
+003eaf07   _OverCurrent
+003eaf20   _PowerStep
+003eb004   _Rotate
+003eb01d   _VcoRad
+003eb04c   _WriteFuncode
+003eb058   _Task125usLoop
+003eb130   _SetSwitchFreq
+003eb148   _Discharge
+003eb1b6   _Task1msLoop
+003eb31e   _Epwm7Int_isr
+003eb428   _InitFuncodeParameter
+003eb5eb   _ResolverSignal
+003eb612   _BackUpPI
+003eb61f   _Init_Alarm
+003eb62c   _Init_Error
+003eb63c   _FuncManage_Error
+003eb651   _FuncManage_DetectErr
+003eb674   _Detect_Alaram
+003eb716   _Detect_Warn
+003eb73d   _Error_ErrClass
+003eb76e   _FuncManage_AssertErr
+003eb786   _SetError
+003eb7e9   _GetErrorCode
+003eb7ed   _isAlarmWarn
+003eb7f2   _HardwareFault
+003eb8e5   _TorqErrCheck
+003eb937   _VdcSensorCheck
+003eb964   _FuncManage_ExFaultDetect
+003eb99f   _FuncManage_ResetErr
+003eb9bd   _CopyLogToFuncode
+003eb9cd   _FuncManage_RecordErr
+003ebab0   _ResolverSignalCheck
+003ebc37   _GetDataFlowInfo
+003ebd62   _GetErrInfo
+003ebd65   _GetErrBuffer
+003ebd73   _Asert_Alarm_Warn
+003ebdc2   _Get_Error_Adr
+003ebe0b   _UpdateErrorStatus
+003ebedf   _GenMcuState2
+003ebf4e   _FuncManage_L1ms
+003ebff3   _FuncManage_RUNSTOP
+003ec0ec   _FuncManage_enter_internal_PWMON
+003ec0ff   _FuncManage_exit_internal_PWMON
+003ec24f   _FuncManage_L4ms
+003ec260   _GetMin
+003ec267   _FuncManage_TempDetect
+003ec35a   _FuncManage_IGBTUDetect
+003ec3d2   _FuncManage_IGBTVDetect
+003ec44a   _FuncManage_IGBTWDetect
+003ec4c2   _FuncManage_MotorTempDetect
+003ec58f   _Check_Module
+003ec5ad   _InitEeprom
+003ec5c2   _DealEpData
+003ec5d1   _WriteEeprom
+003ec615   _ReadEeprom
+003ec677   _FuncManage_ReadParameters
+003ec729   _WriteBootPara
+003ec73e   _Read2Para16Bit
+003ec7a8   _CheckEEprom
+003ec7d0   _Save16Func
+003ec817   _SaveErrorIndex
+003ec831   _LoadError
+003ec861   _SaveErrorLog
+003ec8c5   _ClearErrLog
+003ec919   _ShowErrLog
+003ec92d   _SaveParameters
+003ec966   _WritePageEeprom
+003ec9de   _NoticeClearError
+003ec9e4   _GetErrLog
+003ec9fb   _WriteUds
+003eca29   _ReadUds
+003eca55   _WriteDtcOccHisOrder
+003eca6a   _ReadDtcOccHisOrder
+003eca7f   _MakePreDtcStatus
+003eca9c   _InitSysCtrl
+003ecafd   _InitGpio
+003ecc06   _InitEPwm
+003ecdf3   _InitPieCtrl
+003ece23   _DisableDog
+003ece2b   _EnableDog
+003ece33   _KickDog
+003ece3d   _InitAdc
+003ecef7   _InitSci
+003ecf0b   _FuncManage_L1ms_Init_Speed
+003ecf13   _FuncManage_MakeSetFreq
+003ed020   _FuncManage_MakeFreq
+003ed159   _FuncManage_SPEED
+003ed1c1   _FuncManage_exit_internal_SPEED
+003ed1d5   _FuncManage_enter_internal_SPEED
+003ed32c   _FuncManage_GetCurrFreq
+003ed36f   _CanDrv_RxTxMsgPollingMode
+003ed376   _CAN_vInit
+003ed395   _InitCAN
+003ed40e   _CpCoreBaudrate
+003ed445   _CAN_CfgUDSMail
+003ed4a7   _CAN_vGetMsgObj
+003ed50c   _CAN_vTransmit
+003ed565   _CanDrv_GetTxMsgFinishedFlag
+003ed56a   _CanDrv_TransmitMessageRequest
+003ed57b   _CanDrv_SendDebugMsg1
+003ed580   _CanDrv_SendDebugMsg2
+003ed585   _CanDrv_SendDebugMsg3
+003ed58a   _CanDrv_BootLoaderMsg
+003ed6f5   _CanDrv_ReadRxCanMsg
+003ed704   _CanDrv_RxPhyAddrChlByPollingMode
+003ed757   _CanDrv_RxFuncAddrChlByPollingMode
+003ed79b   _CanDrv_TxPhyAddrChlConfirmByPollingMode
+003ed7b0   _Calc_Norm_rs
+003ed7d1   _Calc_Norm_LeakInduct
+003ed802   _Calc_Norm_dls
+003ed865   _Calc_Norm_dlsd_Psi
+003ed8a2   _Calc_Norm_dlsd
+003ed8d3   _Calc_Norm_dlsq
+003ed904   _Calc_Current_PGain
+003ed929   _Calc_Current_IGain
+003ed957   _Calc_PWM_Tsample
+003ed975   _Calc_SpeedCtrl_PGain
+003ed997   _Calc_SpeedCtrl_ITime
+003ed9b7   _Calc_DCLinkCtrlVoltSet
+003ed9cf   _Calc_PI_DCLinkCtrl
+003ed9ef   _Calc_PI_FieldWeak
+003eda19   _Calc_PI_FluxCtrl
+003eda39   _Calc_IdUpLowLimit
+003eda7d   _Calc_NormMotorSpeed
+003edaaf   _Calc_MotorNomTrq
+003edae9   _Calc_TimeRotorActValue
+003edb23   _Calc_Norm_lm
+003edb36   _Calc_Norm_rho2
+003edb57   _Calc_Norm_Psi
+003edb8b   _Calc_Norm_speed
+003edbd4   _Calc_Norm_Paraters
+003edbf1   _UdsApp_ReadDTCInformation
+003edd5a   _UdsApp_19reportNumOfDTCByStatusMask_Pending
+003eddaf   _UdsApp_19reportDTCByStatusMask_Pending
+003ede3c   _UdsApp_19reportDTCSnapshotId_Pending
+003edeaa   _UdsApp_19reportSnapshotRcdByDtcNum_Pending
+003edfa2   _CurrDtcOccOrder
+003edfe9   _SearchCurrDtcSaveOrder
+003edffc   _FblTp_Init
+003ee02a   _FblTp_CyclicTaskEntryPoint
+003ee033   _FblTp_GetReceivedCanMsg
+003ee042   _FblTp_IsTxMessageSent
+003ee046   _FblTp_N_USData_request
+003ee09e   _FblTp_N_USData_indication
+003ee0a5   _FblTp_N_USData_confirm
+003ee0af   _FblTp_L_Data_confirm
+003ee101   _FblTp_L_Data_indication
+003ee369   _FblTp_L_Data_request
+003ee397   _FblTp_GetTpTimer
+003ee39b   _FblTp_TickTpTimer
+003ee3cb   _FblTp_NotifyCBForEndOfTxRsp
+003ee3d6   _FblTp_Get_CurrRxReqChannel
+003ee451   _FblUds_Initialize
+003ee470   _FblUds_MainTaskEntryPoint_CyclicTask
+003ee4ba   _UdsApp_ServiceUnknown
+003ee514   _Uds_generic_IsAPrevReqAlreadyRunning
+003ee5a3   _Uds_generic_SendResp
+003ee74b   _FblUds_SimpleSesnMgr_GetActiveSession
+003ee752   _FblUds_SimpleSesnMgr_SetActiveSession
+003ee75a   _FblUds_SimpleSesnMgr_ChkSesnChangePreCndIsAllow
+003ee775   _FblUds_SimpleSesnMgr_ChangeSession
+003ee78b   _FblUds_SimpleSesnMgr_Reload_S3_SeverTimer
+003ee790   _FblUds_SimpleSesnMgr_SetS3ServerTimerValue
+003ee7b1   _Uds_Get_2ndIndRespBufPtrSet
+003ee7b2   _CheckEnterSlide
+003ee7f7   _RevSlide
+003ee84a   _ExitRevSilde
+003ee91a   _SpdLimitToNormal
+003ee97b   _FwdSlide
+003ee9ce   _ExitFwdSilde
+003eea9d   _FuncManage_SpdLmt
+003eeb4d   _UdsApp_RoutineControl
+003eec9e   _UdsApp_31RtnCtrl_Init
+003eedca   _UdsApp_31RtnCtrl_S3TmrTOHandler
+003eede4   _UdsApp_31RtnCtrl_pending
+003eee4e   _UdsApp_31RtnCtrl_pend_overtime
+003eee52   _Uds_31RtnCtrl_Get_IsRoutineAlreadyRunning
+003eee5f   _InitCommand
+003eee8a   _FuncManage_MakePara
+003ef0b9   _FuncManage_CmdClear
+003ef0ce   _FuncManage_ClearRunStsAndCmd
+003ef0e5   _FuncManage_StartStopMode
+003ef0e6   _main
+003ef1dc   _Task4msLoop
+003ef21b   _InitDrivVariables
+003ef2b0   _LoadDefPara
+003ef2f7   _TaskMain1ms
+003ef322   _GetAllVersion
+003ef368   _UdsApp_SecurityAccess
+003ef4d5   _UdsApp_27SecuAcc_Init
+003ef4ec   _UdsApp_27SecuAcc_SwitchDiagSessionInit
+003ef4fb   _UdsApp_27SecuAcc_CyclicTskEntryPoint
+003ef535   _UdsApp_27SecuAcc_Pending
+003ef536   _UdsApp_27SecuAcc_Pend_Overtime
+003ef561   _UdsApp_27SecuAcc_GetCurrSecurityLevelStatus
+003ef569   _saGetKey
+003ef5b4   _saGetKeyL1
+003ef5d6   _FuncManage_L4ms_Init_Torque
+003ef619   _FuncManage_L4ms_Torque
+003ef61e   _FuncManage_TorqueRef
+003ef708   _TorqueLimitSet
+003ef7d0   _TorqLimitLine
+003ef7ea   _FuncManage_enter_atomic_TORQUE
+003ef7fc   _FuncManage_exit_internal_TORQUE
+003ef800   _FuncManage_enter_Torque
+003ef80d   _MotSearchAngInit
+003ef81d   _MotSearchAng
+003ef984   _MotsearchAngCtrl
+003ef9db   _CANREADTOSEND
+003ef9f0   _READTOSEND
+003efa4a   _LEDDISPLAY
+003efa94   _SCITIMECHK
+003efacc   _CANTIMECHK
+003efb04   _GETKEY
+003efb19   _KBCOMM
+003efba8   _TINT1_ISR
+003efbad   _TINT2_ISR
+003efbb2   _DATALOG_ISR
+003efbb7   _RTOSINT_ISR
+003efbbc   _EMUINT_ISR
+003efbc1   _NMI_ISR
+003efbc6   _ILLEGAL_ISR
+003efbcb   _USER1_ISR
+003efbd0   _USER2_ISR
+003efbd5   _USER3_ISR
+003efbda   _USER4_ISR
+003efbdf   _USER5_ISR
+003efbe4   _USER6_ISR
+003efbe9   _USER7_ISR
+003efbee   _USER8_ISR
+003efbf3   _USER9_ISR
+003efbf8   _USER10_ISR
+003efbfd   _USER11_ISR
+003efc02   _USER12_ISR
+003efc07   _ADCINT1_ISR
+003efc10   _ADCINT2_ISR
+003efc19   _XINT1_ISR
+003efc22   _XINT2_ISR
+003efc2b   _ADCINT9_ISR
+003efc34   _TINT0_ISR
+003efc3d   _WAKEINT_ISR
+003efc46   _EPWM1_TZINT_ISR
+003efc4b   _EPWM2_TZINT_ISR
+003efc50   _EPWM3_TZINT_ISR
+003efc55   _EPWM4_TZINT_ISR
+003efc5a   _EPWM5_TZINT_ISR
+003efc5f   _EPWM6_TZINT_ISR
+003efc64   _EPWM7_TZINT_ISR
+003efc69   _EPWM1_INT_ISR
+003efc72   _EPWM2_INT_ISR
+003efc7b   _EPWM3_INT_ISR
+003efc84   _EPWM4_INT_ISR
+003efc8d   _EPWM5_INT_ISR
+003efc96   _EPWM6_INT_ISR
+003efc9f   _EPWM7_INT_ISR
+003efca8   _ECAP1_INT_ISR
+003efcad   _HRCAP1_INT_ISR
+003efcb2   _HRCAP2_INT_ISR
+003efcb7   _EQEP1_INT_ISR
+003efcbc   _SPIRXINTA_ISR
+003efcc1   _SPITXINTA_ISR
+003efcc6   _SPIRXINTB_ISR
+003efccb   _SPITXINTB_ISR
+003efcd0   _I2CINT1A_ISR
+003efcd5   _I2CINT2A_ISR
+003efcda   _SCIRXINTA_ISR
+003efcdf   _SCITXINTA_ISR
+003efce4   _LIN0INTA_ISR
+003efce9   _LIN1INTA_ISR
+003efcee   _ECAN0INTA_ISR
+003efcf3   _ECAN1INTA_ISR
+003efcf8   _ADCINT3_ISR
+003efcfd   _ADCINT4_ISR
+003efd02   _ADCINT5_ISR
+003efd07   _ADCINT6_ISR
+003efd0c   _ADCINT7_ISR
+003efd11   _ADCINT8_ISR
+003efd16   _CLA1_INT1_ISR
+003efd1b   _CLA1_INT2_ISR
+003efd20   _CLA1_INT3_ISR
+003efd25   _CLA1_INT4_ISR
+003efd2a   _CLA1_INT5_ISR
+003efd2f   _CLA1_INT6_ISR
+003efd34   _CLA1_INT7_ISR
+003efd39   _CLA1_INT8_ISR
+003efd3e   _XINT3_ISR
+003efd43   _LVF_ISR
+003efd48   _LUF_ISR
+003efd4d   _EMPTY_ISR
+003efd52   _PIE_RESERVED
+003efd57   _rsvd_ISR
+003efd5c   _rsvd_ISR1
+003efd65   _rsvd_ISR3
+003efd6e   _FblMgr_Init
+003efd85   _FblMgr_CheckFblStayInBootSpecificMsg
+003efda4   _FblMgr_GetCurrSwImgRunningState
+003efda8   _FblMgr_SetCurrSwImgRunningState
+003efdaf   _FblMgr_CurrRunningSwImgCompare
+003efdb7   _FblMgr_ChkBootSwInRam
+003efdbe   _FblMgr_ChkAppSwInFlash
+003efdc7   _FBLMgr_MainCyclicTaskEntryPoint
+003efdcf   _FblMgr_InitStartStayInBootTimer
+003efdd5   _FblMgr_InitMainEntrypoint
+003efdd6   _FblMgr_ChkIfProgFlgUpdateIsNeeded
+003efddc   _FblMgr_ChkDnldSwPendProgFlgAndAswVldFlg_ForFlash
+003efe91   _FblMgr_ChkDnldSwPendProgFlgAndAswVldFlg_v2
+003efe92   _FblMgr_ChkDnldSwPendProgFlgAndAswVldFlg_v3
+003efe95   _FblMgr_SetBootModeAswModeToggleFlg
+003efe97   _FblMgr_SetPendReProgFlag
+003efe99   _FblMgr_ToggleFromAppSwModeToBootSwMode
+003efe9a   _FblMgr_SetPendProgFlgOnAndAswVldFlgOff
+003eff1b   _encoder1
+003f0093   _Enc1Init
+003f01ad   _Enc1Run
+003f01dc   _Calc_PWM
+003f0300   _UdsApp_IOControlByIdentifier
+003f03fb   _UdsApp_2fIoCtrlByDid_ReturnAllCtrl2ECU
+003f041c   _LoadObserve
+003f0512   _ObserveInit
+003f0534   _UdsApp_ComControl
+003f05a4   _UdsApp_28ComCtrl_ExecuteCommControlAction
+003f05c8   _UdsApp_28ComCtrl_Init
+003f05cb   _UdsApp_28ComCtrl_Pending
+003f0642   _UdsApp_WriteDataByIdentifier
+003f06fb   _UdsApp_2eWtDatByDid_Pending
+003f0723   _UdsApp_2eWtDatByDid_Pend_Overtime
+003f072f   _UdsApp_2eWtDatByDid_Init
+003f0735   _DV32_16
+003f0744   _DV32_32
+003f074d   _DV48_32
+003f075c   _DV3232_32
+003f076e   _DV64_32
+003f0789   _UDV48_32
+003f0795   _MP32_32
+003f07b1   _mult1616_div16_2
+003f07c8   _div3216_TX1TX0TY0_TW2TW1
+003f07df   _mult1632_TY0TX1TX0_TW3TW2TW1
+003f07f8   _mult1648_TY0TX2TX1TX0
+003f0825   _UdsApp_ISO_15031_5_Read01
+003f088e   _UdsApp_ISO_15031_5_Read03
+003f0898   _UdsApp_ISO_15031_5_Read07
+003f08a2   _UdsApp_ISO_15031_5_Read09
+003f08fe   _UdsApp_ReadDataByIdentifier
+003f09cd   _UdsApp_ClearDiagnosticInformation
+003f0a0b   _UdsApp_14ClrDiagInfor_CyclicTskEntryPoint
+003f0a1c   _UdsApp_14ClrDiagInfor_Pend_Overtime
+003f0a27   _UdsApp_14ClrDiagInfor_Init
+003f0a2b   _UdsApp_14ClrDiagInf_Pending
+003f0a42   _UdsApp_DiagSessionControl
+003f0a9b   _UdsApp_10Dsc_TriggerStartNewSessionActions
+003f0aa6   _UdsApp_10Dsc_generic_S3SeverTmrTimeoutEvtHandler
+003f0ab1   _c_int00
+003f0af5   _UdsApp_ControlDTCSetting
+003f0b2a   _UdsApp_85CtrlDtcSet_Init
+003f0b32   _UdsApp_85CtrlDtcSet_Get_CurrDtcSettingFlg
+003f0b36   _check_DID
+003f0b45   _Uds_Generic_DatMgr_Init
+003f0b46   _Uds_Generic_DatMgr_SearchTblByKey
+003f0b6f   _SetModuleTable
+003f0ba6   _UdsApp_EcuReset
+003f0bc1   _UdsApp_11EcuRst_CyclicTskEntryPoint
+003f0bdc   _Uds_MemCopy
+003f0be7   _Uds_MemClear
+003f0bee   _Uds_MemCopyDataFlow
+003f0c06   L$$DIV
+003f0c15   L$$MOD
+003f0c23   UL$$DIV
+003f0c2a   UL$$MOD
+003f0c30   _UdsApp_TesterPresent
+003f0c54   I$$DIV
+003f0c65   I$$MOD
+003f0c76   ___memcpy_ff
+003f0c97   LL$$CMP
+003f0ca9   ULL$$CMP
+003f0cb5   __args_main
+003f0cd0   C$$EXIT
+003f0cd0   _abort
+003f0cd2   _exit
+003f0ce9   _UdsApp_27SecuAcc_IsSpecifiedSALHasUnlocked
+003f0cfa   _DelayUs
+003f0d0a   U$$DIV
+003f0d0f   U$$MOD
+003f0d15   __register_unlock
+003f0d19   __register_lock
+003f0d1d   __nop
+003f0d1e   _Os_Sys_Timer_1000us_task_MainEntryPoint
+003f0d25   ___etext__
+003f0d25   etext
+003f0d26   _IdIqTable
+003f14f6   _UpLimit
+003f16b0   _Uds_g_DidDataTable
+003f17c8   sqrt_tab
+003f18ca   _SinTabMV
+003f19cb   _AutoVersion
+003f19cc   _PieVectTableInit
+003f1acc   _Uds_ServiceTable
+003f1bb4   _OrgValue
+003f1c91   _Para
+003f1d6e   _ErrorInfo
+003f1e04   _AlarmInfo
+003f1e64   _Uds_g_IoCtrlByDidMngtTable
+003f1ec4   _WarnInfo
+003f1f24   _TempPT1000
+003f1f64   _LEDDisData
+003f1fa3   _LibVer
+003f1fe0   _MaxTorqueTable450
+003f2012   _MaxTorqueTable600
+003f2044   _Uds_g_DidEepromDataTable
+003f2076   _DnNoZero
+003f20a6   _Uds_g_RtnCtrlMngtDataTable
+003f20ca   _SegGen
+003f20eb   _CorTabSick
+003f2142   _TemperTabOld
+003f2166   _NumFunc
+003f2175   _NumGroup
+003f2183   _FuncGroup
+003f218d   _SuppID
+003f2197   _Uds_g_IoCtrlByDidIdxTable
+003f21a1   _HW_VER
+003f21aa   _PartNumber
+003f21b3   _SW_VER
+003f21bc   _STARTSPEED
+003f21bd   _MAXSPEED
+003f21be   _TORQUESTEP
+003f21bf   _MAXTORQUE450
+003f21c0   _SPEEDSTEP
+003f21c1   _MAXTORQUE600
+003f21c2   _SpeedPoint
+003f21c3   _TorquePoint
+003f21c4   _BootData
+003f21cc   _Data3EPos
+003f21d4   _TimeOutBootData
+003f21dc   _rub_FblMgr_StayInBootSpecificMsg
+003f21f9   _LdTable
+003f21fd   _LqTable
+003f2209   _UdsParaEpAdr
+003f220e   _caul_AswVldOkFlag
+003f2212   _caul_PendProgFlag
+003f2216   _PRO_DATA
+003f2219   _UpRela
+003f221c   _SumFunc
+003f221d   _SumMsg
+003f221e   _IController
+003f2401   _NCotrller
+003f25b2   _Fluxcon
+003f2741   _GetStack
+003f2743   _LowPassInt32
+003f2755   _sqrtu16
+003f276e   _actan16
+003f279f   _divu16
+003f27aa   _divu32
+003f27b1   _divu64d32
+003f27c3   _mulu32by32
+003f27c8   _mulu32x16
+003f27d6   _mulu32
+003f27d9   _mul32
+003f27dc   _TestCarry
+003f27e0   atan_tab
+003f27e0   sin_tab
+003f2801   cor_tab
+003f2811   cor_tab_fpga
+003f2821   ACTAN_SECT
+003f2829   ___cinit__
+003f2829   cinit
+003f296b   _RamfuncsLoadStart
+003f298a   _RamfuncsLoadEnd
+003f298a   __IQ24sqrt
+003f7ff6   code_start
+003f7ff8   _CsmPwl
+003fe000   _IQsinTable
+003fe100   _IQcosTable
+003fe400   _IQsinTableEnd
+003fe502   _IQcosTableEnd
+003fe502   _IQdivRoundSatTable
+003fe510   _IQdivTable
+003fe712   _IQdivTableEnd
+003fe712   _IQisqrtRoundSatTable
+003fe712   _IQsqrtRoundSatTable
+003fe722   _IQisqrtTable
+003fe722   _IQsqrtTable
+003fe824   _IQatan2HalfPITable
+003fe824   _IQisqrtTableEnd
+003fe824   _IQsqrtTableEnd
+003fe862   _IQatan2Table
+003fe9e8   _IQ30mpyRndSatTable
+003fe9e8   _IQatan2TableEnd
+003fe9e8   _IQmpyRndSatTable
+003fe9f4   _IQ29mpyRndSatTable
+003fea00   _IQ28mpyRndSatTable
+003fea0c   _IQ27mpyRndSatTable
+003fea18   _IQ26mpyRndSatTable
+003fea24   _IQ25mpyRndSatTable
+003fea30   _IQ24mpyRndSatTable
+003fea3c   _IQ23mpyRndSatTable
+003fea48   _IQ22mpyRndSatTable
+003fea54   _IQ21mpyRndSatTable
+003fea60   _IQ20mpyRndSatTable
+003fea6c   _IQ19mpyRndSatTable
+003fea78   _IQ18mpyRndSatTable
+003fea84   _IQ17mpyRndSatTable
+003fea90   _IQ16mpyRndSatTable
+003fea9c   _IQ15mpyRndSatTable
+003feaa8   _IQ14mpyRndSatTable
+003feab4   _IQ13mpyRndSatTable
+003feac0   _IQ12mpyRndSatTable
+003feacc   _IQ11mpyRndSatTable
+003fead8   _IQ10mpyRndSatTable
+003feae4   _IQ9mpyRndSatTable
+003feaf0   _IQ8mpyRndSatTable
+003feafc   _IQ7mpyRndSatTable
+003feb08   _IQ6mpyRndSatTable
+003feb14   _IQ5mpyRndSatTable
+003feb20   _IQ4mpyRndSatTable
+003feb2c   _IQ3mpyRndSatTable
+003feb38   _IQ2mpyRndSatTable
+003feb44   _IQ1mpyRndSatTable
+003feb50   _IQmpyRndSatTableEnd
+ffffffff   ___binit__
+ffffffff   ___c_args__
+ffffffff   ___pinit__
+ffffffff   binit
+ffffffff   pinit
+
+[1756 symbols]

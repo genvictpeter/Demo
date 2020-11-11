@@ -1,0 +1,614 @@
+VERSION ""
+
+
+NS_ : 
+        NS_DESC_
+        CM_
+        BA_DEF_
+        BA_
+        VAL_
+        CAT_DEF_
+        CAT_
+        FILTER
+        BA_DEF_DEF_
+        EV_DATA_
+        ENVVAR_DATA_
+        SGTYPE_
+        SGTYPE_VAL_
+        BA_DEF_SGTYPE_
+        BA_SGTYPE_
+        SIG_TYPE_REF_
+        VAL_TABLE_
+        SIG_GROUP_
+        SIG_VALTYPE_
+        SIGTYPE_VALTYPE_
+        BO_TX_BU_
+        BA_DEF_REL_
+        BA_REL_
+        BA_DEF_DEF_REL_
+        BU_SG_REL_
+        BU_EV_REL_
+        BU_BO_REL_
+        SG_MUL_VAL_
+
+BS_:
+
+BU_: BMS CHG CMU MCU RMS Tester VCU 
+
+
+BO_ 1072 MCU_0x430: 8 MCU
+ SG_ MCU_430_MOT_INIT : 0|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_430_MOT_STA : 2|2@0+ (1,0) [0|3] "" VCU,RMS
+ SG_ MCU_430_MOT_MODE : 4|2@0+ (1,0) [0|3] "" VCU,RMS
+ SG_ MCU_430_MOT_DIR : 6|2@0+ (1,0) [0|3] "" VCU,RMS
+ SG_ MCU_430_HV_CHECK_FLAG : 7|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_430_LV_OFF_REQ_FLAG : 10|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_430_MOT_VCU_REQ : 15|4@0+ (1,0) [0|5] "" VCU,RMS
+ SG_ MCU_430_MOT_SPD : 23|16@0+ (0.25,0) [0|16383.5] "rpm" VCU,RMS
+ SG_ MCU_430_MOT_TOR : 39|16@0+ (0.02,0) [0|1310.7] "Nm" VCU,RMS
+ SG_ MCU_430_COUNTER : 51|4@0+ (1,0) [0|15] "" VCU,RMS
+
+BO_ 1073 MCU_0x431: 8 MCU
+ SG_ MCU_431_DC_VOLT : 7|16@0+ (0.02,0) [0|1310.68] "V" VCU,BMS,RMS
+ SG_ MCU_431_DC_CUR : 23|16@0+ (0.01,0) [0|655.34] "A" VCU,RMS
+ SG_ MCU_431_PHASE_CUR : 39|16@0+ (0.01,0) [0|655.34] "A" VCU,RMS
+
+BO_ 1074 MCU_0x432: 8 MCU
+ SG_ MCU_432_DRIVE_TOR_MAX : 7|16@0+ (0.02,0) [0|1310.7] "Nm" VCU,RMS
+ SG_ MCU_432_BRAKE_TOR_MAX : 23|16@0+ (0.02,0) [0|1310.7] "Nm" VCU,RMS
+
+BO_ 1075 MCU_0x433: 8 MCU
+ SG_ MCU_433_IGBT_TEMP : 15|8@0+ (1,-48) [-48|206] "℃" VCU,RMS
+ SG_ MCU_433_MOT_TEMP : 23|8@0+ (1,-48) [-48|206] "℃" VCU,RMS
+ SG_ MCU_433_MCU_TEMP : 31|8@0+ (1,-48) [-48|206] "℃" RMS
+
+BO_ 1076 MCU_0x434: 8 MCU
+ SG_ MCU_434_MCU_SUPPLIER : 3|4@0+ (1,0) [0|8] "" VCU,RMS
+
+BO_ 1077 MCU_0x435: 8 MCU
+ SG_ MCU_435_MCU_RAM_FAULT : 0|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_ROM_FAULT : 1|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_EEPRROM_FAULT : 2|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_COM_VCU_LOSE : 4|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_TOR_CMD_OVER_RUN : 5|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_FEED_TOR_ORDER_CHE_FAULT : 7|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_SW_CUR_HIGH : 8|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_SW_CUR_HIGH_U : 9|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_SW_CUR_HIGH_V : 10|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_SW_CUR_HIGH_W : 11|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_CUR_SEN_ZERO_DRIFT_U : 15|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_CUR_SEN_ZERO_DRIFT_V : 16|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_CUR_SEN_ZERO_DRIFT_W : 17|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_DC_SEN_DRIFT : 18|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_CUR_SAMP_CIR_U : 19|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_CUR_SAMP_CIR_V : 20|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_CUR_SAMP_CIR_W : 21|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_DC_SAMP_CUR : 22|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_3PHASE_CUR_CHE_FAULT : 23|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_BUSBAR_VOLT_LOW : 24|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_BUSBAR_VOLT_HIGH : 25|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_POSITION_SEN_FAULT : 26|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_BUS_VOLIT_SAMP_FAULT : 27|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_OVER_SPD_FAULT : 28|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_IGBT_TEMP_OVER_U : 29|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_IGBT_TEMP_OVER_V : 30|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_IGBT_TEMP_OVER_W : 31|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_IGBT_TEMP_CHECK_CUR_U : 32|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_IGBT_TEMP_CHECK_CUR_V : 33|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_IGBT_TEMP_CHECK_CUR_W : 34|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_MOTOR_TEMP_OVER : 35|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_MOT_TEMP_CHECK_CUR : 36|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_MCU_TEMP_OVER : 37|1@0+ (1,0) [0|1] "" RMS
+ SG_ MCU_435_MCU_TEMP_CHECK_CUR : 38|1@0+ (1,0) [0|1] "" RMS
+ SG_ MCU_435_BATT_VOLT_LOW : 39|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_BATT_VOLT_HIGH : 40|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_BATT_MODULE_FAULT : 41|1@0+ (1,0) [0|1] "" VCU,RMS
+ SG_ MCU_435_MOTOR_HV_INTERLOCK_ERR : 42|1@0+ (1,0) [0|1] "" VCU,RMS
+
+BO_ 1105 BMS_0x451: 8 BMS
+ SG_ BMS_451_BATT_VOLT_V2 : 39|16@0+ (0.02,0) [0|1310.68] "V" VCU,MCU,RMS
+
+BO_ 1559 VCU_0x617: 8 VCU
+ SG_ VCU_617_VEH_SPD : 23|16@0+ (0.01,0) [0|655.35] "km/h" MCU,BMS,CHG,RMS
+
+BO_ 1599 MCU_0x63F: 8 MCU
+ SG_ MCU_63F_CAL_VERS : 15|8@0+ (1,0) [0|255] "" RMS
+ SG_ MCU_63F_PART_VERS : 23|32@0+ (1,0) [0|4294967295] "" RMS
+ SG_ MCU_63F_HW_VERS : 55|8@0+ (1,1) [1|50] "" RMS
+ SG_ MCU_63F_SW_VERS : 63|8@0+ (1,0) [51|255] "" RMS
+
+BO_ 1718 MCU_0x6B6: 8 MCU
+ SG_ MCU_6B6_Motor_SUM : 7|8@0+ (1,0) [0|255] "" RMS
+ SG_ MCU_6B6_Motor_NUM : 15|8@0+ (1,0) [0|255] "" RMS
+ SG_ MCU_6B6_MCU_F_SUM : 23|8@0+ (1,0) [0|255] "" RMS
+ SG_ MCU_0x6B6_ALARM_LEVEL_H_MAX : 31|8@0+ (1,0) [0|7] "" RMS
+
+BO_ 1719 MCU_0x6B7: 8 MCU
+ SG_ MCU_6B7_MOT_CODE1 : 7|64@0+ (1,0) [0|16777215] "" RMS
+
+BO_ 1720 MCU_0x6B8: 8 MCU
+ SG_ MCU_6B8_MOT_CODE2 : 7|64@0+ (1,0) [0|16777215] "" RMS
+
+BO_ 1721 MCU_0x6B9: 8 MCU
+ SG_ MCU_6B9_MOT_CODE3 : 7|64@0+ (1,0) [0|16777215] "" RMS
+
+BO_ 1722 MCU_0x6BA: 8 MCU
+ SG_ MCU_6BA_MOT_CODE4 : 7|64@0+ (1,0) [0|16777215] "" RMS
+
+BO_ 1723 MCU_0x6BB: 8 MCU
+ SG_ MCU_6BB_VIN_CODE1 : 7|64@0+ (1,0) [0|16777215] "" RMS
+
+BO_ 1724 MCU_0x6BC: 8 MCU
+ SG_ MCU_6BC_VIN_CODE2 : 7|64@0+ (1,0) [0|16777215] "" RMS
+
+BO_ 1725 MCU_0x6BD: 8 MCU
+ SG_ MCU_6BD_VIN_CODE3 : 7|64@0+ (1,0) [0|16777215] "" RMS
+
+BO_ 528 VCU_0x210: 8 VCU
+ SG_ VCU_210_MCU_ENABLE_CMD : 0|1@0+ (1,0) [0|1] "" MCU,RMS
+ SG_ VCU_210_MOT_STA_CMD : 2|2@0+ (1,0) [0|3] "" MCU,RMS
+ SG_ VCU_210_MOT_MODE_CMD : 4|2@0+ (1,0) [0|3] "" MCU,RMS
+ SG_ VCU_210_MOT_DIR_CMD : 6|2@0+ (1,0) [0|3] "" MCU,RMS
+ SG_ VCU_210_MOT_SPD_CMD : 23|16@0+ (0.25,0) [0|16383.75] "rpm" MCU,RMS
+ SG_ VCU_210_MOT_TOR_CMD : 39|16@0+ (0.02,0) [0|1310.7] "Nm" MCU,RMS
+
+BO_ 530 VCU_0x212: 8 VCU
+ SG_ VCU_212_SHIFT_POSITON : 36|3@0+ (1,0) [0|7] "" MCU,RMS
+ SG_ VCU_212_BRAKE_STA : 37|1@0+ (1,0) [0|1] "" MCU,RMS
+ SG_ VCU_212_SHIFT_ERROR_OP : 38|1@0+ (1,0) [0|1] "" MCU,RMS
+ SG_ VCU_212_ANTI_SLIDE_CMD : 39|1@0+ (1,0) [0|1] "" MCU,RMS
+
+BO_ 532 VCU_0x214: 8 VCU
+ SG_ VCU_214_VEH_STATE : 7|16@0+ (1,0) [0|65535] "" MCU,BMS,CHG,RMS,CMU
+
+BO_ 848 SDM_GENERAL_STATUS: 8 VCU
+ SG_ AIRBAG_DEPLOYED : 15|4@0+ (1,0) [0|15] "" MCU,BMS
+ SG_ COUNTER_SDM : 31|4@0+ (1,0) [0|15] "" MCU,BMS
+
+BO_ 2015 Diag_FUN_Req: 8 Tester
+
+BO_ 2016 Diag_MCU_Req: 8 Tester
+
+BO_ 2024 Diag_MCU_Resp: 8 MCU
+
+
+CM_ "Version:V1.0 , Date:2016/2/5 , Author:王道静 , Review: , Approval: , Description:
+1、C33DB-Z02项目FP阶段EVBUS网段报文设计；
+ ;
+Version:V1.0 , Date:2016/2/16 , Author:王道静 , Review: , Approval: , Description:
+2、删除0x212帧0字节0byte0bit“动力电池PTC加热继电器使能信号”，0byte1it新增“SOC修正指令(VCU控制慢充用)”；
+3、删除0x212帧0byte3、4、7bit“直流充电正端继电器状态、直流充电负端继电器状态、动力电池放电模式”信号，0byte3、4bit新增“快充能力识别”信号；
+4、在0x212帧5byte增加“快充能力识别”、6、7byte“快充口温度”信号；
+5、删除0x213帧报文；
+6、删除0x610帧7byte60、61、62bit真空泵相关故障；
+7、重新梳理了6D0、6D1、6D2、6D3与充电机相关报文；
+8、0x453帧0byte增加“电池包归一温度”信号；
+9、0x65F帧1字节增加“BMS此软件版本号”；
+10、0x63F帧1字节增加“MCU次软件版本号后两位”信号；
+11、0x6F0帧1字节增加“RMS次软件版本号后两位”信号；
+12、0x612帧6字节增加“大气压力传感器电压”信号；
+ ;
+Version:V1.0 , Date:2016/2/16 , Author:王道静 , Review: , Approval: , Description:
+13、0x433帧报文周期修改为100ms；
+ ;
+Version:V1.0 , Date:2016/3/4 , Author:王道静 , Review: , Approval: , Description:
+14、0x4542byte15bit帧增加“铜排松动故障”；
+15、增加0x654帧；
+16、0x613帧5byte47bit增加“与CHG通讯丢失故障”
+ ;
+Version:V1.0 , Date:2016/3/15 , Author:王道静 , Review: , Approval: , Description:
+17、删除0x6D3帧“交流充电插座温度1”“交流充电插座温度2”；
+18、在0x61F报文中删除“制冷模式指令”“制热模式指令”“除霜模式指令”，增加“空调模式指令”；
+19、删除VCU_0x214帧中的“远程开关当前状态”信号；（涉变节点VCU、BMS、ICM、TBOX\RMS节点）(变更来源：远程慢充功能定义变更_王娅荣)；
+20、将VCU_0x61F帧中“远程控制结束标志位”信号名称更名为“终端唤醒结束标志位”；（涉变节点VCU、BMS、TBOX\RMS节点）(变更来源：远程慢充功能定义变更_王娅荣)；
+21、删除0x61F帧中的“DCDC使能关闭指令标志位”信号；（涉变节点VCU、TBOX\RMS）(变更来源：DCDC智能启动功能定义3.0_刘方勇)；
+22、删除0x61F帧中的“DC/DC启动计时标志位”信号；（涉变节点VCU、TBOX\RMS）(变更来源：DCDC智能启动功能定义3.0_刘方勇)；
+23、将0x61F帧中的“DC/DC停止工作标志位”信号名称变更为“DCDC智能充电结束标志位”；（涉变节点VCU、TBOX\RMS）(变更来源：DCDC智能启动功能定义3.0_刘方勇)；
+24、在0x61F帧中增加“DCDC智能充电唤醒时间间隔”；（涉变节点VCU、TBOX\RMS）(变更来源：DCDC智能启动功能定义3.0_刘方勇)
+25、将0x61D帧中的“高压下电请求（快/慢充专用）”信号定义修改为：0x00:初始值；0x01:无请求；0x02:有请求；0x03:无效值。（涉变节点VCU、TBOX\RMS）(变更来源：张兆龙、刘淑菊反馈)
+26、新增VCU_0x61B、CMU_0x6D9、CMU_0x6DF帧报文；）(变更来源：满足新国标相关充电功能定义—VCU架构)
+27、在0x613帧中增加“应急解锁故障”；（VCU、TBOX\RMS）(变更来源：满足新国标相关充电功能定义—VCU架构)
+ ;
+Version:V1.0 , Date:2016/3/15 , Author:王道静 , Review: , Approval: , Description:28、在0x613帧中增加“交流充电插座温度传感器故障”和“直流充电插座温度传感器故障”；（VCU、TBOX\RMS）(变更来源：满足新国标相关充电功能定义—VCU架构)
+29、删除0x61D帧中的“电子锁状态”、“电子锁指令状态”；（VCU、TBOX\RMS）(变更来源：满足新国标相关充电功能定义—VCU架构)
+30、在0x614帧中增加“整车远程运行模式上电需求”、“整车远程慢充模式上电需求”、“充电上电引导等待超时”；（远程慢充、远程空调、智能DCDC、充电新国标意见征集阶段张兆龙反馈）；
+ ;
+Version:V1.0 , Date:2016/3/15 , Author:王道静 , Review: , Approval: , Description:
+31、增加0x457帧报文（SK专用）；
+ ;
+Version:V1.0 , Date:2016/3/18 , Author:王道静 , Review: , Approval: , Description:
+32、删除0x61B、0x6D8、0x6D9、0x6DF帧（CMU节点移至VBUS网段）
+33、在0x61D帧中增加“快充充电电流阶段”和“慢充充电电流阶段”；(VCU、BMS、RMS\TBOX)（充电新国标协议变更单反馈）
+34、在0x61C帧中增加“快充请求电流”信号；(VCU、BMS、RMS\TBOX)（充电新国标协议变更单反馈)
+35、0x61C报文中的“车载充电机输出电流指令”的接收节点增加BMS;（充电新国标协议变更单反馈)；
+36、修改0x212帧中“SOC修正指令（VCU控制慢充用）”更名为“快慢充正常充满结束标志位（VCU控制充电用）”并修改信号定义；（充电新国标协议变更单反馈)；
+37、取消BMS节点接收61D“动力电池加热指令”；
+38、增加0x454帧“动力电池内部通讯故障”；
+ ;
+Version:V2.0 , Date:2016/3/25 , Author:王道静 , Review: , Approval: , Description:
+39、在0x613帧中增加“与CMU通讯故障”信号；（VCU、RMS\TBOX）(充电新国标)
+40、删除0x613帧中的“交流充电插座温度传感器故障”；（VCU、RMS\TBOX）(充电新国标)
+ ;
+Version:V2.0 , Date:2016/3/28 , Author:王道静 , Review: , Approval: , Description:
+41、在0x618帧中增加“电池单体电压过低高压下电标志位”和“EEPROM电池单体电压过低高压下电标志位”；
+42、将0x61F帧中的“DCDC智能充电唤醒时间间隔”由Byte3位置换至Byte6；
+43、在0x613帧中增加“CMU解闭锁指令响应超时”信号；(充电新国标)
+ ;
+Version:V2.0 , Date:2016/3/28 , Author:王道静 , Review: , Approval: , Description:
+44、删除0x211帧，相关信号移至VBUS；
+45、删除0x212帧“快充能力识别”“快充口温度”“方向盘转角”信号；
+46、删除0x617帧“驱动电机输出功率百分比”信号，终端在VBUS网段接收；
+47、删除0x619帧中16个通道故障；
+48、删除0x430帧“驱动电机请求整车控制器处理标志位”；
+49、删除0x450帧“紧急开关状态”“动力电池冷却风扇当前状态”；
+50、删除0x61D帧“动力电池加热继电器指令”“动力电池保温状态”“动力电池加热状态”信号；
+51、取消CHG接收0x61C帧“快充请求电流”信号；
+52、0x455帧“动力电池类型”信号描述0x06由“聚合物锂离子电池”改为void；
+53、取消VCU接收0x6D2帧报文；
+54、取消VCU接收0x433帧“MCU温度”信号；
+55、取消BMS接收0x61F帧“空调模式指令”信号；
+
+ ;
+Version:V2.0 , Date:2016/4/8 , Author:王道静 , Review: , Approval: , Description:
+56、取消VCU接收0x435帧“MCU过温故障”信号；
+57、0x430帧增加“驱动电机请求整车控制器处理标志位”；
+58、0x613帧删除“CMU解闭锁指令响应超时”；
+59、删除0x613帧中的“直流充电插座温度传感器故障”，并在0x613帧中增加“直流充电插座温度传感器1故障”、“直流充电插座温度传感器2故障”；
+60、0x618帧中增加“VCU与快充桩握手成功标志位”、“VCU与快充桩配置成功标志位”；
+61、删除0x610、0x613帧驱动通道开路、与电源短路、与地短路等故障；
+62、新增0x4F0帧（远程刷新）；
+63、0x61F帧增加“远程刷新模式使能指令”
+64、取消VCU接收0x63F、0x6F0、0x6D1、0x65F帧控制器软硬件版本相关报文；
+
+ ;
+Version:V2.0 , Date:2016/4/8 , Author:王道静 , Review: , Approval: , Description:
+65、删除0x4F0帧，相关信号移至VBUS网段；
+ ;
+Version:V2.0 , Date:2016/4/11 , Author:王道静 , Review: , Approval: , Description:
+66、增加VCU接收0x457帧“动力电池真实SOC”；（梁瑞反馈）
+67、删除0x61C帧“快充请求电流”（张蓝文反馈）
+ ;
+Version:V3.0 , Date:2016/4/14 , Author:王道静 , Review: , Approval: , Description:
+68、沿用C33DB-Z01扩展版协议；
+ ;
+Version:V3.0 , Date:2016/4/20 , Author:王道静 , Review: , Approval: , Description:
+69、新增0x61B、0x6D8、0x6D9、0x6DF帧报文；（CMU移至EVBUS网段）
+ ;
+Version:V3.0 , Date:2016/4/25 , Author:王道静 , Review: , Approval: , Description:
+70、取消VCU接收0x435帧“MCU温度检测回路故障”；
+71、新增0x61D帧“动力电池加热继电器指令”；
+72、新增0x77F帧报文；
+ ;
+Version:V3.0 , Date:2016/5/4 , Author:王道静 , Review: , Approval: , Description:73、新增21-28号温度采集点；（BMS、RMS）
+74、0x450帧新增“动力电池加热继电器状态”；(BMS、VCU、RMS)
+ ;
+Version:V3.0 , Date:2016/5/12 , Author:王道静 , Review: , Approval: , Description:75、新增0x61C帧“快充请求电流”；（VCU、BMS、RMS） ;
+Version:V3.0 , Date:2016/5/20 , Author:王道静 , Review: , Approval: , Description:75、删除0x457帧（SK专用）（BMS、RMS）
+76、温度采集点修改为24个，电压采集点修改为91个；（BMS、RMS）
+ ;
+Version:V3.0 , Date:2016/6/15 , Author:王道静 , Review: , Approval: , Description:77、新增0x6D4帧；（CHG、VCU、RMS）
+78、修改0x61B帧中“充电照明指示灯控制命令”、“1号充电状态指示灯控制命令”、“2号充电状态指示灯控制命令”、“3号充电状态指示灯控制命令”信号的信号值描述；（VCU、CMU、RMS） ;
+Version:V4.0 , Date:2016/9/2 , Author:王道静 , Review: , Approval: , Description:
+79、0x61C帧新增“快充请求电流”；（VCU、BMS、RMS）
+80、0x61F帧删除“远程充电控制设置状态”
+ ;
+Version:V4.0 , Date:2016/9/5 , Author:王道静 , Review: , Approval: , Description:
+81、在0x61D帧中增加“高压下电请求（充电）”信号；
+82、0x61D帧中原“高压下电请求（快\慢充专用）”信号更名为“高压下电请求（VCU）”；
+ ;
+Version:V4.0 , Date:2016/9/8 , Author:王道静 , Review: , Approval: , Description:
+83、0x6D0帧“电网允许的最大交流供电电流”信号精度由0.1修改为1；
+ ;
+Version:V4.1 , Date:2016/9/22 , Author:王道静 , Review: , Approval: , Description:
+84、新增VCU_0x64E帧报文；（VCU、RMS）;
+85、新增BMS_0x68B、BMS_0x68C；（BMS、RMS）
+86、0x77F帧新增“最低单体电压编号”“最高单体电压包号”“最高温度包号”“最低温度包号”“最低单体电压包号”；（VCU、BMS）
+87、VCU_0x613帧新增“自适应故障”；（VCU、RMS）；
+88、VCU_0x616帧新增“ODO总里程”（VCU、RMS）；
+89、VCU_0x618帧新增“驱动有效”（VCU、RMS）；（新地标）
+ ;
+Version:V4.2 , Date:2016/9/26 , Author:王道静 , Review: , Approval: , Description:
+90、单体温度采集点修改为96，温度采集点修改为27；（曹东林邮件反馈）
+ ;
+Version:V4.3 , Date:2016/9/29 , Author:王道静 , Review: , Approval: , Description:
+91、0x618帧新增“禁止高压上电标志位”（State3.3切换）
+ ;
+Version:V4.4 , Date:2016/10/20 , Author:王道静 , Review: , Approval: , Description:
+92、CMU节点增加接收0x61D帧中的“充电状态”信号；（张龙聪邮件反馈）
+93、修改CMU_0x6D8中的“电子锁状态反馈信号”的描述；（单继正）（CMU、TBOX、VCU）
+ ;
+Version:V4.5 , Date:2016/10/24 , Author:王道静 , Review: , Approval: , Description:
+94、0x454帧新增“预充电失败故障”（VCU、BMS、RMS）
+95、删除0x68B帧“单体最高温度报警”（BMS、RMS）
+96、新增VCU接收0x68B帧“动力蓄电池过充报警”“动力电池欠压故障”“单体欠压故障”（VCU）
+97、0x68B帧1Byte10bit新增“单体欠压故障”，原9bit新增备注“失效故障”（VCU、BMS、RMS）（王文俊邮件反馈）
+ ;
+Version:V4.5 , Date:2016/10/26 , Author:王道静 , Review: , Approval: , Description:
+98、0x458帧新增“充电末端SOC修正电流控制标志位”
+99、新增0x623帧；
+ ;
+Version:V5.0 , Date:2016/11/11 , Author:王道静 , Review: , Approval: , Description:
+100、沿用C33DB-Z03项目2016/10/26版协议；
+101、电池温度采集点修改为91,、电压采集点修改为24；（BMS、RMS）
+102、0x450帧“动力电池正端继电器当前状态”“动力电池负端继电器当前状态”“动力电池预充电继电器当前状态”信号名称修改为“动力电池正端继电器当前控制指令状态”“动力电池负端继电器当前控制指令状态”“动力电池预充电继电器当前控制指令状态”（王文俊提更改说明，涉变节点：BMS、VCU、RMS）
+ ;
+Version:V5.1 , Date:2016/11/22 , Author:王道静 , Review: , Approval: , Description:
+103、0x68B帧周期由1000ms修改为100ms；
+ ;
+Version:V5.2 , Date:2016/12/8 , Author:王道静 , Review: , Approval: , Description:
+104、修改0x455帧“动力电池供应商”信号描述；
+ ;
+Version:V5.3 , Date:2016/12/22 , Author:王道静 , Review: , Approval: , Description:
+105、0x61F帧删除“DCDC智能充电结束标志位”“DCDC智能充电唤醒时间间隔”；
+ ;
+Version:V5.4 , Date:2017/2/28 , Author:王道静 , Review: , Approval: , Description:西山监控平台要求
+106、新增0x6B1、0x6B2、0x6B3、0x6B4、0x6B5、（BMS、RMS）0x6B6、0x6B7、0x6B8、0x6B9、0x6BA（MCU、RMS）报文，周期均为5000ms；
+107、0x64E新增信号“运行模式”和“SOC过高报警”（VCU、RMS）
+108、新增0x615帧报文；（VCU、RMS）
+109、0x617帧新增“整车瞬时能量消耗”（VCU、RMS）
+110、0x612帧新增“VCU系统最高报警等级（国标）”（VCU、RMS）
+111、新增VCU接收0x68B帧“单体最低温度报警”（策略万继云提需求） ;
+Version:V5.5 , Date:2017/3/10 , Author:王道静 , Review: , Approval: , Description:
+112、新增0x6BB、0x6BC、0x6BD帧（VIN）
+ ; ";
+
+CM_ SG_ 1072 MCU_430_MOT_INIT "MCU初始化状态";
+CM_ SG_ 1072 MCU_430_MOT_STA "驱动电机当前状态";
+CM_ SG_ 1072 MCU_430_MOT_MODE "驱动电机当前工作模式";
+CM_ SG_ 1072 MCU_430_MOT_DIR "驱动电机当前旋转方向";
+CM_ SG_ 1072 MCU_430_HV_CHECK_FLAG "驱动电机控制器高压检测完成标志位";
+CM_ SG_ 1072 MCU_430_LV_OFF_REQ_FLAG "驱动电机控制器低压下电请求标志位";
+CM_ SG_ 1072 MCU_430_MOT_VCU_REQ "驱动电机请求整车控制器处理标志位";
+CM_ SG_ 1072 MCU_430_MOT_SPD "驱动电机当前转速";
+CM_ SG_ 1072 MCU_430_MOT_TOR "驱动电机当前转矩";
+CM_ SG_ 1072 MCU_430_COUNTER "MCU 生命信号";
+CM_ SG_ 1073 MCU_431_DC_VOLT "直流母线电压";
+CM_ SG_ 1073 MCU_431_DC_CUR "直流母线电流";
+CM_ SG_ 1073 MCU_431_PHASE_CUR "驱动电机相电流（有效值）";
+CM_ SG_ 1074 MCU_432_DRIVE_TOR_MAX "驱动电机最大驱动转矩";
+CM_ SG_ 1074 MCU_432_BRAKE_TOR_MAX "驱动电机最大制动转矩";
+CM_ SG_ 1075 MCU_433_IGBT_TEMP "驱动电机控制器IGBT温度";
+CM_ SG_ 1075 MCU_433_MOT_TEMP "驱动电机温度";
+CM_ SG_ 1075 MCU_433_MCU_TEMP "MCU温度";
+CM_ SG_ 1076 MCU_434_MCU_SUPPLIER "驱动电机控制器供应商";
+CM_ SG_ 1077 MCU_435_MCU_RAM_FAULT "驱动电机控制器RAM故障_P060444C_E00";
+CM_ SG_ 1077 MCU_435_ROM_FAULT "驱动电机控制器ROM故障_P060545C_E00";
+CM_ SG_ 1077 MCU_435_EEPRROM_FAULT "驱动电机控制器EEPROM故障_P062F46C_E00";
+CM_ SG_ 1077 MCU_435_COM_VCU_LOSE "与VCU通讯丢失故障_U010087_E00";
+CM_ SG_ 1077 MCU_435_TOR_CMD_OVER_RUN "扭矩命令超限故障_U040186_E03";
+CM_ SG_ 1077 MCU_435_FEED_TOR_ORDER_CHE_FAULT "MCU反馈转矩与转矩指令校验错误_P113064_E03";
+CM_ SG_ 1077 MCU_435_SW_CUR_HIGH "MCU相电流过流故障_P113519_E03";
+CM_ SG_ 1077 MCU_435_SW_CUR_HIGH_U "MCU内部IGBT驱动电路过流故障(U相)_P116016_E03";
+CM_ SG_ 1077 MCU_435_SW_CUR_HIGH_V "MCU内部IGBT驱动电路过流故障(V相)_P116116_E03";
+CM_ SG_ 1077 MCU_435_SW_CUR_HIGH_W "MCU内部IGBT驱动电路过流故障(W相)_P116216_E03";
+CM_ SG_ 1077 MCU_435_CUR_SEN_ZERO_DRIFT_U "MCU相电流传感器零漂故障(U相)_P118A28_E00";
+CM_ SG_ 1077 MCU_435_CUR_SEN_ZERO_DRIFT_V "MCU相电流传感器零漂故障(V相)_P118B28_E00";
+CM_ SG_ 1077 MCU_435_CUR_SEN_ZERO_DRIFT_W "MCU相电流传感器零漂故障(W相)_P118C28_E00";
+CM_ SG_ 1077 MCU_435_DC_SEN_DRIFT "MCU直流电流传感器零漂故障_P118D28_E00";
+CM_ SG_ 1077 MCU_435_CUR_SAMP_CIR_U "MCU相电流采样回路故障(U相)_P118A12_E03";
+CM_ SG_ 1077 MCU_435_CUR_SAMP_CIR_V "MCU相电流采样回路故障(V相)_P118B12_E03";
+CM_ SG_ 1077 MCU_435_CUR_SAMP_CIR_W "MCU相电流采样回路故障(W相)_P118C12_E03";
+CM_ SG_ 1077 MCU_435_DC_SAMP_CUR "MCU直流电流采样回路故障_P0A5101_E00";
+CM_ SG_ 1077 MCU_435_3PHASE_CUR_CHE_FAULT "驱动电机三相电流校验故障_P112164_E03";
+CM_ SG_ 1077 MCU_435_BUSBAR_VOLT_LOW "MCU直流母线欠压故障_P114016_E03";
+CM_ SG_ 1077 MCU_435_BUSBAR_VOLT_HIGH "MCU直流母线过压故障_P114017_E03";
+CM_ SG_ 1077 MCU_435_POSITION_SEN_FAULT "MCU位置传感器检测回路故障_P0A3F00_E03";
+CM_ SG_ 1077 MCU_435_BUS_VOLIT_SAMP_FAULT "直流母线电压采样回路故障_P11841C_E03";
+CM_ SG_ 1077 MCU_435_OVER_SPD_FAULT "驱动电机超速故障_P0A4400_E03";
+CM_ SG_ 1077 MCU_435_IGBT_TEMP_OVER_U "MCU内部IGBT过温故障(U相)_P117098_E03";
+CM_ SG_ 1077 MCU_435_IGBT_TEMP_OVER_V "MCU内部IGBT过温故障(V相)_P117198_E03";
+CM_ SG_ 1077 MCU_435_IGBT_TEMP_OVER_W "MCU内部IGBT过温故障(W相)_P117298_E00";
+CM_ SG_ 1077 MCU_435_IGBT_TEMP_CHECK_CUR_U "MCU内部IGBT温度检测回路故障(U相)_P11801C_E00";
+CM_ SG_ 1077 MCU_435_IGBT_TEMP_CHECK_CUR_V "MCU内部IGBT温度检测回路故障(V相)_P11811C_E00";
+CM_ SG_ 1077 MCU_435_IGBT_TEMP_CHECK_CUR_W "MCU内部IGBT温度检测回路故障(W相)_P11821C_E00";
+CM_ SG_ 1077 MCU_435_MOTOR_TEMP_OVER "驱动电机过温故障_P0A2F98_E00";
+CM_ SG_ 1077 MCU_435_MOT_TEMP_CHECK_CUR "驱动电机温度检测回路故障_P0A001C_E00";
+CM_ SG_ 1077 MCU_435_MCU_TEMP_OVER "MCU过温故障_P117F98_E00";
+CM_ SG_ 1077 MCU_435_MCU_TEMP_CHECK_CUR "MCU温度检测回路故障_P11881C_E00";
+CM_ SG_ 1077 MCU_435_BATT_VOLT_LOW "低压电源欠压故障_U300316C_E03";
+CM_ SG_ 1077 MCU_435_BATT_VOLT_HIGH "低压电源过压故障_U300317C_E03";
+CM_ SG_ 1077 MCU_435_BATT_MODULE_FAULT "MCU电源模块故障_P11A01C_E03";
+CM_ SG_ 1077 MCU_435_MOTOR_HV_INTERLOCK_ERR "驱动电机系统高压暴露故障_P0A0A94C_E03";
+CM_ SG_ 1599 MCU_63F_CAL_VERS "MCU次软件版本号后两位";
+CM_ SG_ 1599 MCU_63F_PART_VERS "MCU零部件号";
+CM_ SG_ 1599 MCU_63F_HW_VERS "MCU硬件版本号后两位";
+CM_ SG_ 1599 MCU_63F_SW_VERS "MCU主软件版本号后两位";
+CM_ SG_ 1718 MCU_6B6_Motor_SUM "驱动电机总数";
+CM_ SG_ 1718 MCU_6B6_Motor_NUM "驱动电机序号";
+CM_ SG_ 1718 MCU_6B6_MCU_F_SUM "驱动电机故障总数";
+CM_ SG_ 1718 MCU_0x6B6_ALARM_LEVEL_H_MAX "最高报警等级";
+CM_ SG_ 1719 MCU_6B7_MOT_CODE1 "驱动电机编号1(表示编号中1到8个ASC码值)";
+CM_ SG_ 1720 MCU_6B8_MOT_CODE2 "驱动电机编号2(表示编号中9到16个ASC码值)";
+CM_ SG_ 1721 MCU_6B9_MOT_CODE3 "驱动电机编号3(表示编号中17到24个ASC码值)";
+CM_ SG_ 1722 MCU_6BA_MOT_CODE4 "驱动电机编号4(表示编号中25到32个ASC码值)";
+CM_ SG_ 1723 MCU_6BB_VIN_CODE1 "VIN编码1(表示编号中1到8个ASC码值)";
+CM_ SG_ 1724 MCU_6BC_VIN_CODE2 "VIN编码2(表示编号中9到16个ASC码值)";
+CM_ SG_ 1725 MCU_6BD_VIN_CODE3 "VIN编码3(表示编号中17到24个ASC码值)";
+CM_ SG_ 528 VCU_210_MCU_ENABLE_CMD "MCU使能命令";
+CM_ SG_ 528 VCU_210_MOT_STA_CMD "驱动电机状态命令";
+CM_ SG_ 528 VCU_210_MOT_MODE_CMD "驱动电机工作模式命令";
+CM_ SG_ 528 VCU_210_MOT_DIR_CMD "驱动电机旋转方向命令";
+CM_ SG_ 528 VCU_210_MOT_SPD_CMD "驱动电机目标转速指令";
+CM_ SG_ 528 VCU_210_MOT_TOR_CMD "驱动电机目标转矩指令";
+CM_ SG_ 530 VCU_212_SHIFT_POSITON "挡位信号";
+CM_ SG_ 530 VCU_212_BRAKE_STA "制动信号";
+CM_ SG_ 530 VCU_212_SHIFT_ERROR_OP "挡位误操作";
+CM_ SG_ 530 VCU_212_ANTI_SLIDE_CMD "防溜车功能使能指令";
+CM_ SG_ 532 VCU_214_VEH_STATE "整车State状态（状态机编码）";
+CM_ SG_ 1559 VCU_617_VEH_SPD "车速信号";
+CM_ SG_ 1105 BMS_451_BATT_VOLT_V2 "动力电池外部总电压V2";
+CM_ SG_ 848 AIRBAG_DEPLOYED "Set after the airbag has been deployed.
+This signal's transmit type is on event.
+Within 30ms after deployed crash, the signal will send every 20ms for 10 times. And then the signal will be sent every 100ms with the last value  in this ignition cycle.
+0";
+CM_ SG_ 848 COUNTER_SDM "Rolling counter
+After reaching the maximum, recount from 0";
+
+
+BA_DEF_ BO_  "NmMessage" ENUM "No","Yes";
+BA_DEF_ BO_  "DiagState" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagRequest" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagResponse" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cycle","NoSendType","IfActive";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "cycle","OnChange","OnWrite","IfActive","OnChangeWithRepetition","OnWriteWithRepetition","IfActiveWithRepetition";
+BA_DEF_ SG_  "GenSigStartValue" INT 0 0;
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 0;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 0;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 0;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 0;
+BA_DEF_  "DBName" STRING ;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ SG_  "GenSigTimeoutValue" INT 0 1000000000;
+BA_DEF_ BO_  "GenMsgCycleTimeActive" INT 0 0;
+BA_DEF_ BU_  "ILUsed" ENUM  "No","Yes";
+BA_DEF_ BU_  "DiagStationAddress" HEX 0 255;
+BA_DEF_ BU_  "NmNode" ENUM  "Not","Yes";
+BA_DEF_ BU_  "NmStationAddress" HEX 0 65535;
+BA_DEF_ BU_  "NmCAN" INT 0 2;
+BA_DEF_  "Manufacturer" STRING ;
+BA_DEF_  "NmType" STRING ;
+BA_DEF_  "NmMessageCount" INT 0 255;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v3_0" INT 0 0;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v2_3" INT 0 0;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v3_1" INT 0 0;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v2_2" INT 0 0;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v2_1" INT 0 0;
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 65535;
+BA_DEF_  "BusType" STRING ;
+
+
+BA_DEF_DEF_  "NmMessage" "No";
+BA_DEF_DEF_  "DiagState" "No";
+BA_DEF_DEF_  "DiagRequest" "No";
+BA_DEF_DEF_  "DiagResponse" "No";
+BA_DEF_DEF_  "GenMsgSendType" "cycle";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenSigSendType" "cycle";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "DBName" "";
+BA_DEF_DEF_  "NodeLayerModules" "CANoeILNLVector.dll";
+BA_DEF_DEF_  "GenSigTimeoutValue" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeActive" 0;
+BA_DEF_DEF_  "ILUsed" "No";
+BA_DEF_DEF_  "DiagStationAddress" 0;
+BA_DEF_DEF_  "NmNode" "Not";
+BA_DEF_DEF_  "NmStationAddress" 0;
+BA_DEF_DEF_  "NmCAN" 0;
+BA_DEF_DEF_  "Manufacturer" "";
+BA_DEF_DEF_  "NmType" "";
+BA_DEF_DEF_  "NmMessageCount" 128;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v3_0" 0;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v2_3" 0;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v3_1" 0;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v2_2" 0;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v2_1" 0;
+BA_DEF_DEF_  "GenMsgILSupport" "No";
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "BusType" "CAN";
+BA_ "DBName" "EVBUS";
+BA_ "GenMsgCycleTime" BO_ 1072 10;
+BA_ "GenMsgCycleTime" BO_ 1073 20;
+BA_ "GenMsgCycleTime" BO_ 1074 100;
+BA_ "GenMsgCycleTime" BO_ 1075 100;
+BA_ "GenSigStartValue" SG_ 1075 MCU_433_IGBT_TEMP 48;
+BA_ "GenSigStartValue" SG_ 1075 MCU_433_MOT_TEMP 48;
+BA_ "GenSigStartValue" SG_ 1075 MCU_433_MCU_TEMP 48;
+BA_ "GenMsgCycleTime" BO_ 1076 1000;
+BA_ "GenMsgCycleTime" BO_ 1077 100;
+BA_ "GenMsgCycleTime" BO_ 1105 10;
+BA_ "GenMsgCycleTime" BO_ 1559 100;
+BA_ "GenMsgCycleTime" BO_ 1599 1000;
+BA_ "GenSigStartValue" SG_ 1599 MCU_63F_PART_VERS 1;
+BA_ "GenSigStartValue" SG_ 1599 MCU_63F_HW_VERS 1;
+BA_ "GenSigStartValue" SG_ 1599 MCU_63F_SW_VERS 51;
+BA_ "GenMsgCycleTime" BO_ 1718 5000;
+BA_ "GenMsgCycleTime" BO_ 1719 5000;
+BA_ "GenMsgCycleTime" BO_ 1720 5000;
+BA_ "GenMsgCycleTime" BO_ 1721 5000;
+BA_ "GenMsgCycleTime" BO_ 1722 5000;
+BA_ "GenMsgCycleTime" BO_ 1723 5000;
+BA_ "GenMsgCycleTime" BO_ 1724 5000;
+BA_ "GenMsgCycleTime" BO_ 1725 5000;
+BA_ "GenMsgCycleTime" BO_ 528 10;
+BA_ "GenMsgCycleTime" BO_ 530 10;
+BA_ "GenMsgCycleTime" BO_ 532 10;
+BA_ "GenMsgCycleTime" BO_ 848 100;
+BA_ "DiagState" BO_ 2015 1;
+BA_ "DiagRequest" BO_ 2015 1;
+BA_ "GenMsgSendType" BO_ 2015 1;
+BA_ "DiagState" BO_ 2016 1;
+BA_ "DiagRequest" BO_ 2016 1;
+BA_ "GenMsgSendType" BO_ 2016 1;
+BA_ "DiagState" BO_ 2024 1;
+BA_ "DiagResponse" BO_ 2024 1;
+BA_ "GenMsgSendType" BO_ 2024 1;
+VAL_ 1072 MCU_430_MOT_INIT 1 "初始化已完成" 0 "初始化未完成" ;
+VAL_ 1072 MCU_430_MOT_STA 3 "Void" 2 "发电状态" 1 "电动状态" 0 "待机状态" ;
+VAL_ 1072 MCU_430_MOT_MODE 3 "Void" 2 "转速模式" 1 "转矩模式" 0 "待机状态" ;
+VAL_ 1072 MCU_430_MOT_DIR 3 "Void" 2 "反转（倒车模式）" 1 "正转（前进模式）" 0 "待机状态" ;
+VAL_ 1072 MCU_430_HV_CHECK_FLAG 1 "已完成" 0 "未完成" ;
+VAL_ 1072 MCU_430_LV_OFF_REQ_FLAG 1 "已完成" 0 "未完成" ;
+VAL_ 1072 MCU_430_MOT_VCU_REQ 5 "降功率" 4 "零转矩" 3 "Void" 2 "不使能" 1 "断高压" 0 "Void" ;
+VAL_ 1072 MCU_430_MOT_SPD 65535 "Invalid" ;
+VAL_ 1073 MCU_431_DC_VOLT 65535 "Invalid" ;
+VAL_ 1073 MCU_431_DC_CUR 65535 "Invalid" ;
+VAL_ 1073 MCU_431_PHASE_CUR 65535 "Invalid" ;
+VAL_ 1075 MCU_433_IGBT_TEMP 255 "Invalid" ;
+VAL_ 1075 MCU_433_MOT_TEMP 255 "Invalid" ;
+VAL_ 1075 MCU_433_MCU_TEMP 255 "Invalid" ;
+VAL_ 1076 MCU_434_MCU_SUPPLIER 8 "和鑫电机" 7 "联创" 6 "BJEV" 5 "西门子电机" 4 "上海电驱动" 3 "大连电机" 2 "大郡电机" 1 "大洋电机" 0 "其他" ;
+VAL_ 1077 MCU_435_MCU_RAM_FAULT 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_ROM_FAULT 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_EEPRROM_FAULT 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_COM_VCU_LOSE 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_TOR_CMD_OVER_RUN 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_FEED_TOR_ORDER_CHE_FAULT 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_SW_CUR_HIGH 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_SW_CUR_HIGH_U 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_SW_CUR_HIGH_V 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_SW_CUR_HIGH_W 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_CUR_SEN_ZERO_DRIFT_U 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_CUR_SEN_ZERO_DRIFT_V 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_CUR_SEN_ZERO_DRIFT_W 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_DC_SEN_DRIFT 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_CUR_SAMP_CIR_U 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_CUR_SAMP_CIR_V 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_CUR_SAMP_CIR_W 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_DC_SAMP_CUR 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_3PHASE_CUR_CHE_FAULT 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_BUSBAR_VOLT_LOW 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_BUSBAR_VOLT_HIGH 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_POSITION_SEN_FAULT 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_BUS_VOLIT_SAMP_FAULT 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_OVER_SPD_FAULT 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_IGBT_TEMP_OVER_U 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_IGBT_TEMP_OVER_V 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_IGBT_TEMP_OVER_W 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_IGBT_TEMP_CHECK_CUR_U 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_IGBT_TEMP_CHECK_CUR_V 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_IGBT_TEMP_CHECK_CUR_W 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_MOTOR_TEMP_OVER 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_MOT_TEMP_CHECK_CUR 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_MCU_TEMP_OVER 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_MCU_TEMP_CHECK_CUR 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_BATT_VOLT_LOW 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_BATT_VOLT_HIGH 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_BATT_MODULE_FAULT 1 "异常" 0 "正常" ;
+VAL_ 1077 MCU_435_MOTOR_HV_INTERLOCK_ERR 1 "异常" 0 "正常" ;
+VAL_ 1718 MCU_0x6B6_ALARM_LEVEL_H_MAX 3 "三级故障" 2 "二级故障" 1 "一级故障" 0 "无故障" ;
+VAL_ 528 VCU_210_MCU_ENABLE_CMD 1 "Enable" 0 "Disable" ;
+VAL_ 528 VCU_210_MOT_STA_CMD 3 "Void" 2 "发电状态" 1 "电动状态" 0 "待机状态" ;
+VAL_ 528 VCU_210_MOT_MODE_CMD 3 "Void" 2 "转速模式" 1 "转矩模式" 0 "待机状态" ;
+VAL_ 528 VCU_210_MOT_DIR_CMD 3 "Void" 2 "反转（倒车模式）" 1 "正转（前进模式）" 0 "待机状态" ;
+VAL_ 530 VCU_212_SHIFT_POSITON 7 "S挡" 6 "E挡" 5 "Void" 4 "D挡" 3 "R挡" 2 "N挡" 1 "P挡" 0 "Void" ;
+VAL_ 530 VCU_212_BRAKE_STA 1 "已踩制动踏板" 0 "未踩制动踏板" ;
+VAL_ 530 VCU_212_SHIFT_ERROR_OP 1 "异常" 0 "正常" ;
+VAL_ 530 VCU_212_ANTI_SLIDE_CMD 1 "Enable" 0 "Disable" ;
+VAL_ 1105 BMS_451_BATT_VOLT_V2 65535 "Invalid" ;
+VAL_ 848 AIRBAG_DEPLOYED 15 "SRD+SLD+FAD+FBTD" 14 "SRD+SLD+FAD" 13 "SRD+SLD+FBTD" 12 "SRD+SLD" 11 "SRD+FAD+FBTD" 10 "SRD+FAD" 9 "SRD+FBTD" 8 "Side right deloyment" 7 "SLD+FAD+FBTD" 6 "SLD+FAD" 5 "SLD+FBTD" 4 "Side left deployment" 3 "FAD+FBTD" 2 "Front Airbag deployment" 1 "Front Belt_tensioner deployment" 0 "No Crash" ;

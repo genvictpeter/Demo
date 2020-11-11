@@ -1,0 +1,81 @@
+/**
+*
+* \file
+*
+* \brief Definitions the basic type definition to the TCxxx target
+*
+* Copyright ETAS GmbH, Stuttgart.
+*
+* This file is covered by the licence and disclaimer document which is attached in
+* the UDS software package.
+*
+* \version $Id: Version 1.0 Revision 1 2013-11-11 Yongqiang Deng $
+*
+*============================================================================*
+*                               REVERSION HISTORY                            *
+*============================================================================*
+*  REVISION     |   DATE        |                         |      AUTHOR      *
+*----------------------------------------------------------------------------*
+*----------------------------------------------------------------------------*
+* UDS_1.0 Rev1 | Nov/11/2013    |                         | Yongqiang Deng   *
+* Delivery_001                                                               *
+*    to define the unified basic type : uint8_t , uint16_t,                  *
+*    uint32_t, uint64_t                                                      *
+*                                                                            *
+*----------------------------------------------------------------------------*
+******************************************************************************/
+
+#ifndef _APP_DEFINE_H_
+#define _APP_DEFINE_H_
+
+
+/*******************************Version  Define ***********************************************/
+
+#define LED_0	0
+#define LED_1	1
+#define LED_2	2
+#define LED_3	3
+#define LED_4	4
+#define LED_5	5
+#define LED_6	6
+#define LED_7	7
+#define LED_8	8
+#define LED_9	9
+#define LED_A	10
+#define LED_B	11
+#define LED_C	12
+#define LED_D	13
+#define LED_E	14
+#define LED_F	15
+#define LED_I	31
+		
+
+
+
+#define MCUCALVER               0x0001
+#define UDS_MCUCALVER1		        '0'
+#define UDS_MCUCALVER2		        '1'
+
+#define MCUVER					0x0100 + MCU_SOFT_VER					//0x02 Hardware 
+	
+#define MCUIDH					0x0001	
+#define MCUIDL					0x9297
+		
+//Keyborad Display date after power ON
+#define SoftVer1	LED_9
+#define SoftVer2	LED_0
+#define SoftVer3	LED_6
+#define SoftVer4	LED_2
+#define SoftVer5	LED_4
+
+//Version date  040811 is  the lib build in 20140811
+#define		SrcLinkDate				(uint16)((SoftVer1<<12) + (SoftVer3<<8) + (SoftVer4<<4) +SoftVer5)
+
+
+
+
+
+//P98.01 SoftWareVer ????????汾,????????????
+
+#endif /* end of #ifndef _TYPEDEFS_H_ */
+

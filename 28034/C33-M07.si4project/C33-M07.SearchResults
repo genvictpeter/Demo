@@ -1,0 +1,11 @@
+---- Mcu_Configuration Matches (11 in 5 files) ----
+CANProtocal.C (app\source) line 92 : extern uint8_t  Mcu_Configuration[2];
+J1939_Poll in CANProtocal.C (app\source) : 	if(4u == (Mcu_Configuration[1]&0x00ff))
+J1939_Poll in CANProtocal.C (app\source) : 			if(4u == (Mcu_Configuration[1]&0x00ff))			
+MCU_RES0 in CANProtocal.C (app\source) : 	if(4u == (Mcu_Configuration[1]&0x00ff))
+VCU_CMD_0 in CANProtocal.C (app\source) : 	if(((Mcu_Configuration[1]&0x00ff)==0x04u)||((Mcu_Configuration[1]&0x00ff)==0x02u))
+EepromManage.c (app\source) line 50 : extern uint8_t  Mcu_Configuration[2];
+FunctionManage.c (app\source) line 74 : extern uint8_t  Mcu_Configuration[2];
+FuncManage_F01Refresh in FunctionManage.c (app\source) : 	if(4u == (Mcu_Configuration[1]&0x00ff))
+uds_confdefs.h (app\include) line 467 : #define UDS_ITF_IMP_DAT_PTR_02FE           (&Mcu_Configuration[0]) // E2_ITF_I_DP_APP_SW_FNGR_PRINT
+uds_srvX_ISO_15031_5_Read.c (uds\src) line 148 : extern uint8_t Mcu_Configuration[2];

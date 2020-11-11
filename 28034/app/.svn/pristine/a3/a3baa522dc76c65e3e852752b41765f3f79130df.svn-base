@@ -1,0 +1,64 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="F:\Drive0X\trunk\16-PEU11C33\03-C33M07-ABS\app\project\"
+ProjectType=Executable
+CPUFamily=TMS320C28XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="..\lib\Auto.lib"
+Source="..\lib\drive.lib"
+Source="..\lib\IQmath.lib"
+Source="..\lib\UdsLib.lib"
+Source="..\source\CAN.c"
+Source="..\source\CANProtocal.C"
+Source="..\source\CodeStartBranch.asm"
+Source="..\source\Command.c"
+Source="..\source\DelayUs.asm"
+Source="..\source\DSP2803x_DefaultIsr.c"
+Source="..\source\DSP2803x_GlobalVariableDefs.c"
+Source="..\source\EepromManage.c"
+Source="..\source\Error.c"
+Source="..\source\Ev72main.c"
+Source="..\source\FunctionManage.c"
+Source="..\source\KeyBoard.c"
+Source="..\source\KeyBoard_Sci.c"
+Source="..\source\Passwords.asm"
+Source="..\source\SpeedFunc.c"
+Source="..\source\SysCtrl.c"
+Source="..\cmd\DSP2803x_Headers_nonBIOS.cmd"
+Source="..\cmd\F28035.cmd"
+
+["Debug" Settings]
+FinalBuildCmd=COFF2BIN.bat;Run=Always
+
+["Compiler" Settings: "Debug"]
+Options=-g -k -q -ss -as -o0 -fr"..\obj\" -fs"..\obj\" -i"..\include" -i"..\" -i"..\..\include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28
+
+["Compiler" Settings: "Release"]
+Options=-q -o3 -fr"F:\Drive0X\trunk\16-PEU11C33\03-C33M07-ABS\app\project\Release" -d"LARGE_MODEL" -ml -v28
+
+["Linker" Settings: "Debug"]
+Options=-q -c -m".\Debug\BeiQi.map" -o".\Debug\C50DaYang.out" -stack0x400 -x -i"..\source\" -i"..\lib" -l"rts2800_ml.lib" -l"IQmath.lib"
+
+["Linker" Settings: "Release"]
+Options=-q -c -m".\Release\sv3000.map" -o".\Release\sv3000.out" -x
+
+["..\cmd\DSP2803x_Headers_nonBIOS.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["..\cmd\DSP2803x_Headers_nonBIOS.cmd" Settings: "Release"]
+LinkOrder=1
+
+["..\cmd\F28035.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["..\cmd\F28035.cmd" Settings: "Release"]
+LinkOrder=1
+

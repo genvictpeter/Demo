@@ -1,0 +1,55 @@
+-----------------------------  UdsLib.pjt - Debug  -----------------------------
+[FblMgr.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "FblMgr.c"
+"FblMgr.c", line 53: warning: variable "rub_FblMgr_State" was set but never used
+"FblMgr.c", line 62: warning: variable "rup_AppSwStartAddr" was set but never used
+
+[FblSimpleUds.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "FblSimpleUds.c"
+"FblSimpleUds.c", line 84: warning: type qualifier specified more than once
+"FblSimpleUds.c", line 1261: warning: parameter "o_Ind2ndPtr" was set but never used
+"FblSimpleUds.c", line 1262: warning: parameter "o_Resp2ndPtr" was set but never used
+"FblSimpleUds.c", line 134: warning: variable "rub_RspSendCanExitDpPend" was set but never used
+
+[FblTp.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "FblTp.c"
+
+[Task.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "Task.c"
+
+[uds_callbacks.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "uds_callbacks.c"
+
+[uds_srv10_diagsessioncontrol.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "uds_srv10_diagsessioncontrol.c"
+
+[uds_srv11_ecureset.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "uds_srv11_ecureset.c"
+
+[uds_srv14_cleardiaginformation.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "uds_srv14_cleardiaginformation.c"
+
+[uds_srv19_readdtcinformation.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "uds_srv19_readdtcinformation.c"
+
+[uds_srv22_readdatabyidentifier.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "uds_srv22_readdatabyidentifier.c"
+
+[uds_srv27_securityaccess.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "uds_srv27_securityaccess.c"
+"uds_srv27_securityaccess.c", line 695: warning: variable "Key" was set but never used
+"uds_srv27_securityaccess.c", line 733: warning: variable "key" was set but never used
+
+[uds_srv28_comcontrol.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "uds_srv28_comcontrol.c"
+
+[uds_srv2e_writedatabyidentifier.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "uds_srv2e_writedatabyidentifier.c"
+
+[uds_srv2f_iocontrolbyidentifier.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "uds_srv2f_iocontrolbyidentifier.c"
+
+[uds_srv31_routinecontrol.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "uds_srv31_routinecontrol.c"
+
+[uds_srv3e_testerpresent.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "uds_srv3e_testerpresent.c"
+
+[uds_srv85_controldtcsetting.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "uds_srv85_controldtcsetting.c"
+
+[uds_srvX_ISO_15031_5_Read.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "uds_srvX_ISO_15031_5_Read.c"
+
+[uds_svc_dataMngr.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "uds_svc_dataMngr.c"
+
+[uds_target.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -pdsw225 -o0 -fr"F:/Drive0X/trunk/16-PEU11C33/03-C33M07-ABS/uds/UdsLib/Debug" -i"../../app/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 -@"../UdsLib/Debug.lkf" "uds_target.c"
+
+[Archiving...] "C:\CCStudio_v3.3\C2000\cgtools\bin\ar2000" @"Debug.lkf"
+  ==>  new archive 'F:\Drive0X\trunk\16-PEU11C33\03-C33M07-ABS\app\lib\UdsLib.lib'
+  ==>  building archive 'F:\Drive0X\trunk\16-PEU11C33\03-C33M07-ABS\app\lib\UdsLib.lib'
+
+Build Complete,
+  0 Errors, 8 Warnings, 0 Remarks.

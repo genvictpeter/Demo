@@ -1,0 +1,983 @@
+/****************************************************************************
+ 	@Module       
+ 	@Filename      uds_srv19_readdtcinformation.c
+ 	@Project       BQApp
+----------------------------------------------------------------------------
+ 	@Controller    TI 28034
+
+ 	@Compiler      V5.211
+
+ 	@Codegenerator CCS 3.3
+
+ 	@Description   
+
+----------------------------------------------------------------------------
+	 @Date          12/19/2014
+
+******Copyright Auto Group , Shenzhen Megmeet Drive Technology Co.,LTD*****
+
+****************************************************************************/
+
+#include "uds_target.h"
+#include "uds_confpriv.h"
+#include "uds_confdefs.h"
+#include "uds_priv.h"
+#include "uds_inf.h"
+#include "Error.h"
+#include "EepromManage.h"
+#include "Error.h"
+
+
+#ifdef UDS_ENABLE_READDTCINFORMATION
+
+//==========================================================
+#define UDS_SRV19_DEBUG               0
+#define UDS_C_MAX_SUPPORTED_DTC_NUM   (5u)  /*TODO */
+#define DTC_MAX_NUM                   30
+#define STATUS_RECORD_OF_DTC          0xFF
+#define VIR_MSG_LENGTH                8
+#define SNAP_DATA_NUM                 24
+#define SNAP_DATA_ST_ORDER_AT_DDT     9
+#define GET_HI_BYTE                   1
+#define GET_LOW_BYTE                  0
+#define CURRENT_DTC                   0x01
+#define HISTORY_DTC                   0x08
+#define ERROR_INFO_NUM                15
+#define ALARM_INFO_NUM                9
+#define WARN_INFO_NUM                 11
+#define DTC_STATUS_AVAIL_MASK         0x09
+#define DTC_IS_NONE                   0xFFFF
+#define DTC_OCC_HIS_ORDER_NUM         (DTC_MAX_NUM * 2)
+
+//==========================================================
+typedef enum
+{
+	RDBSM_ExeStep1,RDBSM_ExeStep2
+}En_RDBSM_ExeStep;
+
+typedef struct
+{
+	Uint16 ProgBar;
+	En_RDBSM_ExeStep RDBSM_ExeStep;
+}St_RDBSM_Flow;
+
+typedef enum
+{
+	RDSI_ExeStep1,RDSI_ExeStep2
+}En_RDSI_ExeStep;
+
+typedef struct
+{
+	Uint16 ProgBar;
+	En_RDSI_ExeStep RDSI_ExeStep;
+}St_RDSI_Flow;
+
+typedef enum
+{
+	RSRBDN_ExeStep1,RSRBDN_ExeStep2
+}En_RSRBDN_ExeStep;
+
+typedef struct
+{
+	Uint16 ProgBar;
+	En_RSRBDN_ExeStep RSRBDN_ExeStep;
+}St_RSRBDN_Flow;
+
+//==========================================================
+extern ErrorStates ErrorCode;
+extern const ErrorInfo_s ErrorInfo[];
+extern const ErrorInfo_s AlarmInfo[];
+extern const ErrorInfo_s WarnInfo[];
+extern uint16 UpdateErrorStatus();
+
+//==========================================================
+static Uds_APduData_t * pSavedAPduInd;
+static Uds_APduData_t * pSavedAPduResp;
+static Uint16 pSavedMsgLength;
+static uint8_t rub_19reportNumOfDTCByStatusMask_Pending;
+static uint8_t rub_19reportDTCByStatusMask_Pending;
+static uint8_t rub_19reportDTCSnapshotId_Pending;
+static uint8_t rub_19reportSnapshotRcdByDtcNum_Pending;
+static St_RDBSM_Flow RDBSM_Flow;
+static St_RDSI_Flow RDSI_Flow;
+static St_RSRBDN_Flow RSRBDN_Flow;
+Uint16 DtcOccHisOrder[DTC_OCC_HIS_ORDER_NUM];
+Uint16 PreDtcStatus[DTC_MAX_NUM];
+
+//==========================================================
+static const uint32_t SupportedDtcTbl[DTC_MAX_NUM] = 
+{
+	0x00116016,	// 1
+	0x00113519, // 2
+	0x00116116, // 3
+	0x00F00317, // 4
+	0x00F00316, // 5
+	0x00118A28,	// 6
+	0x00118B28, // 7
+	0x00118C28,	// 8
+	0x00062F46, // 9
+	0x00114017,	// 10
+	0x00114016,	// 11
+	0x000A3F00, // 12
+	0x00112164,	// 13
+	0x0011841C, // 14
+	0x00116216, // 15
+    0x000A0A94, // 16
+	0x00118A12,	// 17
+	0x00118B12, // 18
+	0x00118C12, // 19
+	0x00117098,	// 20
+	0x00117198, // 21
+	0x00117298, // 22
+	0x00C10087,	// 23
+	0x00C40186,	// 24
+	0x000A4400, // 25
+	0x000A2F98, // 26
+	0x0011801C,	// 27
+	0x0011811C,	// 28
+	0x0011821C,	// 29
+	0x000A001C	// 30	
+};
+
+/* Sun-Function parameter for ReadDTCInformation(ISO15765-3 limited)
+ */
+
+/* NRC for EcuReset
+ * 	0x12	UDS_NRC_SUBFUNCTIONNOTSUPPORTED
+ * 	0x13	UDS_NRC_INCORRECTMESSAGELENGTHORINVALIDFORMAT
+ * 	0x22	UDS_NRC_CONDITIONSNOTCORRECT
+ *	0x33	UDS_NRC_SECUTITYACCESSDENIED
+ */
+static Std_UdsReturnType UDS_FN_TYPE Uds_19RdDtcInfo_reportNumOfDTCByStatusMask(Uds_APduData_t* pAPduInd, 
+                                                                                Uds_APduData_t* pAPduResp );
+static Std_UdsReturnType UDS_FN_TYPE Uds_19RdDtcInfo_reportDTCByStatusMask(Uds_APduData_t* pAPduInd, 
+                                                                           Uds_APduData_t* pAPduResp );
+static Std_UdsReturnType UDS_FN_TYPE Uds_19RdDtcInfo_reportDTCSnapshotId(Uds_APduData_t* pAPduInd, 
+                                                                               Uds_APduData_t* pAPduResp );
+static Std_UdsReturnType UDS_FN_TYPE Uds_19RdDtcInfo_reportSnapshotRcdByDtcNum(Uds_APduData_t* pAPduInd, 
+                                                                               Uds_APduData_t* pAPduResp );
+/*
+static Std_UdsReturnType UDS_FN_TYPE Uds_19RdDtcInfo_reportExtDatRcdByDTCNum(Uds_APduData_t* pAPduInd, 
+                                                                             Uds_APduData_t* pAPduResp );
+*/
+static Std_UdsReturnType UDS_FN_TYPE Uds_19RdDtcInfo_reportSupportedDTC(Uds_APduData_t* pAPduInd, 
+                                                                        Uds_APduData_t* pAPduResp );
+
+Uint16 CurrDtcOccOrder(Uint16 CurrDtcSaveOrder, Uint16 pErrorNumber);
+
+Uint16 SearchCurrDtcSaveOrder(Uint16 CurrDtcOccHisOrder);
+
+
+//==========================================================
+Std_UdsReturnType UDS_FN_TYPE UdsApp_ReadDTCInformation(Uds_APduData_t* pAPduInd, 
+                                                     Uds_APduData_t* pAPduResp )
+{
+	uint8_t lub_response = UDS_POSITIVE_RESPONSE;
+
+    if ((pAPduInd->msgLength != 0x03)
+        && (pAPduInd->msgLength != 0x02)
+        && (pAPduInd->msgLength != 0x06)) {
+        lub_response = UDS_NRC_INCORRECTMESSAGELENGTHORINVALIDFORMAT;
+
+        return lub_response;
+    }
+	 
+	if (READDTC_REPORT_NUMDTC_BYSTATUSMSK == (pAPduInd->pduData[0x01u] & UDS_C_SUB_FUNC_MASK_NO_SPRB7)) {
+		if (pAPduInd->msgLength != 0x03) {
+			/* the request message length is invalid*/
+			lub_response = UDS_NRC_INCORRECTMESSAGELENGTHORINVALIDFORMAT;
+
+			return lub_response;
+		}
+	}
+	else if (READDTC_REPORT_DTC_BYSTATUSMSK == (pAPduInd->pduData[0x01u] & UDS_C_SUB_FUNC_MASK_NO_SPRB7)) {
+		if (pAPduInd->msgLength != 0x03) {
+			/* the request message length is invalid*/
+			lub_response = UDS_NRC_INCORRECTMESSAGELENGTHORINVALIDFORMAT;
+
+			return lub_response;
+		}
+	}
+	else if (READDTC_REPORT_DTC_SNAPSHOT_ID == (pAPduInd->pduData[0x01u] & UDS_C_SUB_FUNC_MASK_NO_SPRB7)) {
+		if (pAPduInd->msgLength != 0x02) {
+			/* the request message length is invalid*/
+			lub_response = UDS_NRC_INCORRECTMESSAGELENGTHORINVALIDFORMAT;
+
+			return lub_response;
+		}
+	}
+	else if (READDTC_REPORT_DTCSNAPSHOT_BYDTCNUM == (pAPduInd->pduData[0x01u] & UDS_C_SUB_FUNC_MASK_NO_SPRB7)) {
+		if (pAPduInd->msgLength != 0x06) {
+			/* the request message length is invalid*/
+			lub_response = UDS_NRC_INCORRECTMESSAGELENGTHORINVALIDFORMAT;
+
+			return lub_response;
+		}
+	}
+	else if (READDTC_REPORT_SUPPORTED_DTC == (pAPduInd->pduData[0x01u] & UDS_C_SUB_FUNC_MASK_NO_SPRB7)) {
+		if (pAPduInd->msgLength != 0x02) {
+			/* the request message length is invalid*/
+			lub_response = UDS_NRC_INCORRECTMESSAGELENGTHORINVALIDFORMAT;
+
+			return lub_response;
+		}
+	}
+	else 
+	{
+			lub_response = UDS_NRC_SUBFUNCTIONNOTSUPPORTED;
+
+			return lub_response;
+	}
+	 
+	//switch (((pAPduInd->pduData[0x01u]) & UDS_C_SUB_FUNC_MASK_NO_SPRB7))
+	switch (pAPduInd->pduData[0x01u])
+	{
+		default:
+		   lub_response = UDS_NRC_SUBFUNCTIONNOTSUPPORTED;
+		   break;
+		   /* reportNumberOfDTCByStatusMask */
+		case READDTC_REPORT_NUMDTC_BYSTATUSMSK:
+		   lub_response = Uds_19RdDtcInfo_reportNumOfDTCByStatusMask(pAPduInd, 
+															         pAPduResp);
+		   break;
+		   /* reportDTCByStatusMask */
+		case READDTC_REPORT_DTC_BYSTATUSMSK:
+		   lub_response = Uds_19RdDtcInfo_reportDTCByStatusMask(pAPduInd, 
+														        pAPduResp);
+		   break;
+		  /*report DTCSnapShotIdentification ¿ìÕÕ*/ 	
+		case READDTC_REPORT_DTC_SNAPSHOT_ID:
+		   lub_response = Uds_19RdDtcInfo_reportDTCSnapshotId(pAPduInd, 
+														        pAPduResp);
+		   break;
+		   
+		   /* reportDTCSnapshotRecordByDTCNumber */
+		case READDTC_REPORT_DTCSNAPSHOT_BYDTCNUM:
+		   lub_response = Uds_19RdDtcInfo_reportSnapshotRcdByDtcNum(pAPduInd, 
+															        pAPduResp);
+		   break;
+
+		case READDTC_REPORT_SUPPORTED_DTC:
+		   lub_response = Uds_19RdDtcInfo_reportSupportedDTC(pAPduInd, 
+															 pAPduResp);
+		   break;
+	}
+
+	return lub_response;
+}
+
+static Std_UdsReturnType UDS_FN_TYPE Uds_19RdDtcInfo_reportNumOfDTCByStatusMask(Uds_APduData_t* pAPduInd, 
+                                                                                Uds_APduData_t* pAPduResp )
+{
+	uint8_t  lub_response = UDS_POSITIVE_RESPONSE;
+	uint16_t luw_nbDTC;
+	
+	uint8_t lub_ReqDtcStMask;
+    Uint16 CurrDtcSaveOrder;
+	Uint16 CurrDtcStatus;
+	Uint16 i;
+   
+    luw_nbDTC = ErrorNumber;
+	if (luw_nbDTC == 0u) {
+    	pAPduResp->pduData[0x02u] = DTC_STATUS_AVAIL_MASK;
+    	pAPduResp->pduData[0x03u] = UDS_C_DTC_CODE_FORMAT_ISO15031_6_FMT;
+    	pAPduResp->pduData[0x04u] = (luw_nbDTC >> 0x08u) & (uint16_t)0x00FF;
+    	pAPduResp->pduData[0x05u] = luw_nbDTC & (uint16_t)0x00FF;
+    	(pAPduResp->msgLength) = 0x06u; 
+	}
+	else {
+		//
+		FlagUpdateErrorStatus = TRUE;
+
+		//
+		pSavedAPduInd = pAPduInd;
+		pSavedAPduResp = pAPduResp;
+
+		#if 0
+		lub_response = UDS_NRC_REQUESTCORRECTLYRECEIVED_RESPPENDING;
+		rub_19reportNumOfDTCByStatusMask_Pending = TRUE;
+		#else
+		UpdateErrorStatus();
+
+		luw_nbDTC = 0u;
+		for (i = 0u; i < DTC_MAX_NUM; i++) {
+			CurrDtcSaveOrder = i << 1;
+			if ((DtcOccHisOrder[CurrDtcSaveOrder] == DTC_IS_NONE) && (DtcOccHisOrder[CurrDtcSaveOrder + 1] == DTC_IS_NONE)) {
+				//
+			}
+			else {		
+				//
+				#if 1
+				CurrDtcSaveOrder = i;
+				
+				if (ErrLogStatus[CurrDtcSaveOrder] == 0x500) {
+					CurrDtcStatus = CURRENT_DTC | HISTORY_DTC;
+				}
+				else {
+					CurrDtcStatus = HISTORY_DTC;
+				}
+				#else
+				if ((DtcOccHisOrder[CurrDtcSaveOrder + 1] != DTC_IS_NONE) || (PreDtcStatus[i])) {
+					CurrDtcStatus = HISTORY_DTC;
+				}
+				else {
+					CurrDtcStatus = 0u;
+				}
+
+				CurrDtcSaveOrder = i;
+				if (ErrLogStatus[CurrDtcSaveOrder] == 0x500) {
+					CurrDtcStatus |= CURRENT_DTC;
+				}
+				#endif
+		
+				//
+				lub_ReqDtcStMask = pSavedAPduInd->pduData[0x02u];
+				if (CurrDtcStatus & lub_ReqDtcStMask) {
+					luw_nbDTC++;
+				}
+			}
+		}
+		
+		//
+		lub_response = UDS_POSITIVE_RESPONSE;
+		
+		//
+		pSavedAPduResp->pduData[0] = 0x19;
+		pSavedAPduResp->pduData[1] = 0x01;
+		pSavedAPduResp->pduData[2] = DTC_STATUS_AVAIL_MASK;
+		pSavedAPduResp->pduData[3] = UDS_C_DTC_CODE_FORMAT_ISO15031_6_FMT;
+		pSavedAPduResp->pduData[4] = (luw_nbDTC >> 0x08u) & (uint16_t)0x00FF;
+		pSavedAPduResp->pduData[5] = luw_nbDTC & (uint16_t)0x00FF;
+		pSavedAPduResp->msgLength = 0x06u;
+		#endif
+	}
+
+	return lub_response;
+}
+
+static Std_UdsReturnType UDS_FN_TYPE Uds_19RdDtcInfo_reportDTCByStatusMask(Uds_APduData_t* pAPduInd, 
+                                                                           Uds_APduData_t* pAPduResp )
+{
+	uint8_t   lub_response;
+
+    lub_response = UDS_POSITIVE_RESPONSE ;
+
+    //
+	if (ErrorNumber == 0) {
+		//
+		pAPduResp->pduData[0] = 0x19;
+		pAPduResp->pduData[1] = 0x02;
+		pAPduResp->pduData[2] = DTC_STATUS_AVAIL_MASK;
+		pAPduResp->msgLength = 3;
+	}
+	else {
+		//
+		FlagUpdateErrorStatus = TRUE;
+
+		//
+		RDBSM_Flow.ProgBar = 0;
+		RDBSM_Flow.RDBSM_ExeStep = RDBSM_ExeStep1;
+
+		//
+		pSavedAPduInd = pAPduInd;
+		pSavedAPduResp = pAPduResp;
+		pSavedMsgLength = VIR_MSG_LENGTH;
+		lub_response = UDS_NRC_REQUESTCORRECTLYRECEIVED_RESPPENDING;
+		rub_19reportDTCByStatusMask_Pending = TRUE;
+	}
+
+	return lub_response;
+}
+
+static Std_UdsReturnType UDS_FN_TYPE Uds_19RdDtcInfo_reportDTCSnapshotId(Uds_APduData_t* pAPduInd, 
+                                                                               Uds_APduData_t* pAPduResp )
+{
+	uint8_t lub_response;
+
+	//
+	lub_response = UDS_POSITIVE_RESPONSE;
+
+    //
+	if (ErrorNumber == 0) {
+		//
+		pAPduResp->pduData[0] = 0x19;
+		pAPduResp->pduData[1] = 0x03;
+		pAPduResp->msgLength = 2;
+	}
+	else {    	
+		//
+		RDSI_Flow.ProgBar = 0;
+		RDSI_Flow.RDSI_ExeStep = RDSI_ExeStep1;
+
+		//
+		pSavedAPduInd = pAPduInd;
+		pSavedAPduResp = pAPduResp;
+		pSavedMsgLength = VIR_MSG_LENGTH;
+		lub_response = UDS_NRC_REQUESTCORRECTLYRECEIVED_RESPPENDING;
+		rub_19reportDTCSnapshotId_Pending = TRUE;
+	}
+
+	//
+	return lub_response;
+}
+
+static Std_UdsReturnType UDS_FN_TYPE Uds_19RdDtcInfo_reportSnapshotRcdByDtcNum(Uds_APduData_t* pAPduInd, 
+                                                                               Uds_APduData_t* pAPduResp )
+{
+	uint8_t lub_response;
+	uint8_t lub_ReqDtcSnapRecNum;
+
+	//
+	lub_response = UDS_POSITIVE_RESPONSE;
+
+	//
+	lub_ReqDtcSnapRecNum = pAPduInd->pduData[5];
+	if ((lub_ReqDtcSnapRecNum < 1) || (lub_ReqDtcSnapRecNum > ErrorNumber)) {
+		lub_response = UDS_NRC_REQUESTOUTOFRANGE;
+	}
+	else {
+		//
+		FlagUpdateErrorStatus = TRUE;
+
+		//
+		RSRBDN_Flow.ProgBar = 0;
+		RSRBDN_Flow.RSRBDN_ExeStep = RSRBDN_ExeStep1;
+
+		//
+		pSavedAPduInd = pAPduInd;
+		pSavedAPduResp = pAPduResp;
+		pSavedMsgLength = VIR_MSG_LENGTH;
+		lub_response = UDS_NRC_REQUESTCORRECTLYRECEIVED_RESPPENDING;
+		rub_19reportSnapshotRcdByDtcNum_Pending = TRUE;
+	}
+
+	//
+	return lub_response;
+}
+
+/*
+static Std_UdsReturnType UDS_FN_TYPE Uds_19RdDtcInfo_reportExtDatRcdByDTCNum(Uds_APduData_t* pAPduInd, 
+                                                                             Uds_APduData_t* pAPduResp )
+{
+  
+   return UDS_POSITIVE_RESPONSE;
+}
+*/
+
+static Std_UdsReturnType UDS_FN_TYPE Uds_19RdDtcInfo_reportSupportedDTC(Uds_APduData_t* pAPduInd, 
+                                                                        Uds_APduData_t* pAPduResp )
+{
+	uint8_t lub_response;
+	Uint16 i;
+	Uint32 UDSErrCode;
+	Uint16 CurrDtcStatus;
+
+	//
+	lub_response = UDS_POSITIVE_RESPONSE;
+
+	//
+	FlagUpdateErrorStatus = TRUE;
+	UpdateErrorStatus();
+
+	//
+	pAPduResp->pduData[0] = 0x19;
+	pAPduResp->pduData[1] = 0x0A;
+	pAPduResp->pduData[2] = DTC_STATUS_AVAIL_MASK;
+	pAPduResp->msgLength = 3;
+
+	//
+	for (i = 0; i < DTC_MAX_NUM; i++) {
+        //
+		UDSErrCode = SupportedDtcTbl[i];
+        pAPduResp->pduData[pAPduResp->msgLength] = (UDSErrCode >> 16) & (Uint32)0xFF;
+        pAPduResp->msgLength++;
+        pAPduResp->pduData[pAPduResp->msgLength] = (UDSErrCode >> 8) & (Uint32)0xFF;
+        pAPduResp->msgLength++;
+        pAPduResp->pduData[pAPduResp->msgLength] = UDSErrCode & (Uint32)0xFF;
+        pAPduResp->msgLength++;
+		
+		//
+        if (DtcOccHisOrder[i << 1] == DTC_IS_NONE) {
+		    pAPduResp->pduData[pAPduResp->msgLength] = 0;
+		    pAPduResp->msgLength++;
+        }
+        else {
+			//
+			#if 1
+			if (ErrLogStatus[i] == 0x500) {
+                pAPduResp->pduData[pAPduResp->msgLength] = CURRENT_DTC | HISTORY_DTC;
+                pAPduResp->msgLength++;
+			}
+			else {
+                pAPduResp->pduData[pAPduResp->msgLength] = HISTORY_DTC;
+                pAPduResp->msgLength++;
+			}
+			#else
+			if ((DtcOccHisOrder[(i << 1) + 1] != DTC_IS_NONE) || (PreDtcStatus[i])) {
+				CurrDtcStatus = HISTORY_DTC;
+			}
+			else {
+				CurrDtcStatus = 0u;
+			}
+			
+			if (ErrLogStatus[i] == 0x500) {
+				CurrDtcStatus |= CURRENT_DTC;
+			}
+
+			pAPduResp->pduData[pAPduResp->msgLength] = CurrDtcStatus;
+			pAPduResp->msgLength++;			
+			#endif			
+        }
+	}
+
+	return lub_response;
+}
+
+//============================================================================================================
+uint8_t UDS_FN_TYPE UdsApp_19reportNumOfDTCByStatusMask_Pending(void)
+{
+	uint8_t lub_response = UDS_NRC_REQUESTCORRECTLYRECEIVED_RESPPENDING;
+	uint8_t lub_ReqDtcStMask;
+    Uint16 CurrDtcSaveOrder;
+	Uint16 CurrDtcStatus;
+	Uint16 luw_nbDTC;
+	Uint16 i;
+
+    if (rub_19reportNumOfDTCByStatusMask_Pending == TRUE) {     
+		if (FlagUpdateErrorStatus == FALSE) {
+			//
+			luw_nbDTC = 0u;
+			for (i = 0u; i < DTC_MAX_NUM; i++) {
+				CurrDtcSaveOrder = i << 1;
+				if ((DtcOccHisOrder[CurrDtcSaveOrder] == DTC_IS_NONE) && (DtcOccHisOrder[CurrDtcSaveOrder + 1] == DTC_IS_NONE)) {
+					//
+				}
+				else {					
+					//
+					#if 1
+					CurrDtcSaveOrder = i;
+					
+					if (ErrLogStatus[CurrDtcSaveOrder] == 0x500) {
+						CurrDtcStatus = CURRENT_DTC | HISTORY_DTC;
+					}
+					else {
+						CurrDtcStatus = HISTORY_DTC;
+					}
+					#else
+					if ((DtcOccHisOrder[CurrDtcSaveOrder + 1] != DTC_IS_NONE) || (PreDtcStatus[i])) {
+						CurrDtcStatus = HISTORY_DTC;
+					}
+					else {
+						CurrDtcStatus = 0u;
+					}
+					
+					CurrDtcSaveOrder = i;
+					if (ErrLogStatus[CurrDtcSaveOrder] == 0x500) {
+						CurrDtcStatus |= CURRENT_DTC;
+					}
+					#endif					
+
+					//
+					lub_ReqDtcStMask = pSavedAPduInd->pduData[0x02u];
+					if (CurrDtcStatus & lub_ReqDtcStMask) {
+						luw_nbDTC++;
+					}
+				}
+			}
+
+			//
+			rub_19reportNumOfDTCByStatusMask_Pending = FALSE;
+			lub_response = UDS_POSITIVE_RESPONSE;
+			
+			//
+			pSavedAPduResp->pduData[0] = 0x19;
+			pSavedAPduResp->pduData[1] = 0x01;
+			pSavedAPduResp->pduData[2] = DTC_STATUS_AVAIL_MASK;
+			pSavedAPduResp->pduData[3] = UDS_C_DTC_CODE_FORMAT_ISO15031_6_FMT;
+			pSavedAPduResp->pduData[4] = (luw_nbDTC >> 0x08u) & (uint16_t)0x00FF;
+			pSavedAPduResp->pduData[5] = luw_nbDTC & (uint16_t)0x00FF;
+			pSavedAPduResp->msgLength = 0x06u;
+		}
+		else {
+			//
+			lub_response = UDS_NRC_REQUESTCORRECTLYRECEIVED_RESPPENDING;
+		}
+    }
+
+	return lub_response;
+}
+
+uint8_t UDS_FN_TYPE UdsApp_19reportDTCByStatusMask_Pending(void)
+{
+	uint8_t lub_response = UDS_NRC_REQUESTCORRECTLYRECEIVED_RESPPENDING;
+	Uint32 UDSErrCode;
+	uint8_t lub_ReqDtcStMask;
+    Uint16 CurrDtcSaveOrder;
+	Uint16 CurrDtcStatus;
+	Uint16 i,j;
+
+    if (rub_19reportDTCByStatusMask_Pending == TRUE) {     
+		if (FlagUpdateErrorStatus == FALSE) {
+			// 
+			if (RDBSM_Flow.ProgBar < DTC_MAX_NUM) {
+	            //
+				if (RDBSM_Flow.RDBSM_ExeStep == RDBSM_ExeStep1) {
+                    //
+                    CurrDtcSaveOrder = RDBSM_Flow.ProgBar << 1;
+                    if ((DtcOccHisOrder[CurrDtcSaveOrder] == DTC_IS_NONE) && (DtcOccHisOrder[CurrDtcSaveOrder + 1] == DTC_IS_NONE)) {
+                        RDBSM_Flow.ProgBar++;
+                    }
+                    else {
+                        RDBSM_Flow.RDBSM_ExeStep = RDBSM_ExeStep2;
+                    }
+				}
+				else if (RDBSM_Flow.RDBSM_ExeStep == RDBSM_ExeStep2) {
+					//
+					#if 1
+                    //
+                    CurrDtcSaveOrder = RDBSM_Flow.ProgBar;
+
+					//
+					if (ErrLogStatus[CurrDtcSaveOrder] == 0x500) {
+                        CurrDtcStatus = CURRENT_DTC | HISTORY_DTC;
+					}
+					else {
+                        CurrDtcStatus = HISTORY_DTC;
+					}
+					#else
+					CurrDtcSaveOrder = RDBSM_Flow.ProgBar << 1;
+					if ((DtcOccHisOrder[CurrDtcSaveOrder + 1] != DTC_IS_NONE) || (PreDtcStatus[RDBSM_Flow.ProgBar])) {
+						CurrDtcStatus = HISTORY_DTC;
+					}
+					else {
+						CurrDtcStatus = 0u;
+					}
+					
+					CurrDtcSaveOrder = RDBSM_Flow.ProgBar;
+					if (ErrLogStatus[CurrDtcSaveOrder] == 0x500) {
+						CurrDtcStatus |= CURRENT_DTC;
+					}
+					#endif
+
+					//
+					lub_ReqDtcStMask = pSavedAPduInd->pduData[0x02u];
+					if (CurrDtcStatus & lub_ReqDtcStMask) {                            
+						//
+						UDSErrCode = SupportedDtcTbl[CurrDtcSaveOrder];
+					
+						//
+                    	pSavedAPduResp->pduData[pSavedMsgLength] = (UDSErrCode >> 16) & (Uint32)0xFF;
+                    	pSavedMsgLength++;
+                    	pSavedAPduResp->pduData[pSavedMsgLength] = (UDSErrCode >> 8) & (Uint32)0xFF;
+                    	pSavedMsgLength++;
+                    	pSavedAPduResp->pduData[pSavedMsgLength] = UDSErrCode & (Uint32)0xFF;
+                    	pSavedMsgLength++;
+
+						//
+                        pSavedAPduResp->pduData[pSavedMsgLength] = CurrDtcStatus;
+                        pSavedMsgLength++;
+					}
+
+					//
+					RDBSM_Flow.ProgBar++;
+					RDBSM_Flow.RDBSM_ExeStep = RDBSM_ExeStep1;
+				}
+
+				//
+				lub_response = UDS_NRC_REQUESTCORRECTLYRECEIVED_RESPPENDING;
+			}
+			else {
+				//
+				rub_19reportDTCByStatusMask_Pending = FALSE;
+				lub_response = UDS_POSITIVE_RESPONSE;
+
+				//
+				pSavedAPduResp->pduData[0] = 0x19;
+				pSavedAPduResp->pduData[1] = 0x02;
+				pSavedAPduResp->pduData[2] = DTC_STATUS_AVAIL_MASK;
+				pSavedAPduResp->msgLength = 3;
+
+				//
+				j = pSavedMsgLength - VIR_MSG_LENGTH;
+				for (i = 0; i < j; i++) {
+					pSavedAPduResp->pduData[pSavedAPduResp->msgLength] = pSavedAPduResp->pduData[VIR_MSG_LENGTH + i];
+					pSavedAPduResp->msgLength++;
+				}
+			}
+		}
+		else {
+			//
+			lub_response = UDS_NRC_REQUESTCORRECTLYRECEIVED_RESPPENDING;
+		}
+    }
+
+	return lub_response;
+}
+
+uint8_t UDS_FN_TYPE UdsApp_19reportDTCSnapshotId_Pending(void)
+{
+	uint8_t lub_response = UDS_NRC_REQUESTCORRECTLYRECEIVED_RESPPENDING;
+	Uint32 UDSErrCode;
+    Uint16 CurrDtcSaveOrder;
+	Uint16 i,j;
+
+    if (rub_19reportDTCSnapshotId_Pending == TRUE) {  
+    	// 
+		if (RDSI_Flow.ProgBar < ErrorNumber) {
+			//
+			if (RDSI_Flow.RDSI_ExeStep == RDSI_ExeStep1) {
+				//
+
+				//
+				RDSI_Flow.RDSI_ExeStep = RDSI_ExeStep2; 
+			}
+			else if (RDSI_Flow.RDSI_ExeStep == RDSI_ExeStep2) {
+					//
+				    CurrDtcSaveOrder = SearchCurrDtcSaveOrder(RDSI_Flow.ProgBar + 1);
+				    CurrDtcSaveOrder = CurrDtcSaveOrder >> 1;
+					UDSErrCode = SupportedDtcTbl[CurrDtcSaveOrder];
+					
+					//
+                    pSavedAPduResp->pduData[pSavedMsgLength] = (UDSErrCode >> 16) & (Uint32)0xFF;
+                    pSavedMsgLength++;
+                    pSavedAPduResp->pduData[pSavedMsgLength] = (UDSErrCode >> 8) & (Uint32)0xFF;
+                    pSavedMsgLength++;
+                    pSavedAPduResp->pduData[pSavedMsgLength] = UDSErrCode & (Uint32)0xFF;
+                    pSavedMsgLength++;
+                    pSavedAPduResp->pduData[pSavedMsgLength] = RDSI_Flow.ProgBar + 1;
+                    pSavedMsgLength++;
+
+					//
+					RDSI_Flow.ProgBar++;
+					RDSI_Flow.RDSI_ExeStep = RDSI_ExeStep1;
+			}
+
+			//
+			lub_response = UDS_NRC_REQUESTCORRECTLYRECEIVED_RESPPENDING;
+		}
+		else {
+			//
+			rub_19reportDTCSnapshotId_Pending = FALSE;
+			lub_response = UDS_POSITIVE_RESPONSE;
+
+			//
+			pSavedAPduResp->pduData[0] = 0x19;
+			pSavedAPduResp->pduData[1] = 0x03;
+			pSavedAPduResp->msgLength = 2;
+
+			//
+			j = pSavedMsgLength - VIR_MSG_LENGTH;
+			for (i = 0; i < j; i++) {
+				pSavedAPduResp->pduData[pSavedAPduResp->msgLength] = pSavedAPduResp->pduData[VIR_MSG_LENGTH + i];
+				pSavedAPduResp->msgLength++;
+			}
+		}
+    }
+
+	return lub_response;
+}
+
+uint8_t UDS_FN_TYPE UdsApp_19reportSnapshotRcdByDtcNum_Pending(void)
+{
+	uint8_t lub_response = UDS_NRC_REQUESTCORRECTLYRECEIVED_RESPPENDING;
+	uint8_t lub_ReqDtcSnapRecNum;
+	uint32_t lub_ReqDtcMaskRec;
+	Uint32 UDSErrCode;
+    Uint16 GetSnapDataOrder;
+    Uint16 CurrDtcSaveOrder;
+	Uint16 CurrDtcStatus;
+	Uint16 i;
+
+    if (rub_19reportSnapshotRcdByDtcNum_Pending == TRUE) {
+		if (FlagUpdateErrorStatus == FALSE) {
+            // 
+			if (RSRBDN_Flow.RSRBDN_ExeStep == RSRBDN_ExeStep1) {
+				//
+				lub_ReqDtcSnapRecNum = pSavedAPduInd->pduData[5];
+				
+				//
+				StReadErrLog = TRUE;
+				GetErrOrderNum = SearchCurrDtcSaveOrder(lub_ReqDtcSnapRecNum);
+
+				//
+				RSRBDN_Flow.RSRBDN_ExeStep = RSRBDN_ExeStep2;
+
+				//
+				lub_response = UDS_NRC_REQUESTCORRECTLYRECEIVED_RESPPENDING;
+			}
+			else if (RSRBDN_Flow.RSRBDN_ExeStep == RSRBDN_ExeStep2) {
+				//
+				if (StReadErrLog == FALSE) {
+					//
+					CurrDtcSaveOrder = GetErrOrderNum >> 1;
+					UDSErrCode = SupportedDtcTbl[CurrDtcSaveOrder];
+
+					//
+					lub_ReqDtcMaskRec = ((Uint32)pSavedAPduInd->pduData[2] << 16) + ((Uint32)pSavedAPduInd->pduData[3] << 8) + pSavedAPduInd->pduData[4];
+					if (lub_ReqDtcMaskRec != UDSErrCode) {
+						//
+						rub_19reportSnapshotRcdByDtcNum_Pending = FALSE;
+						lub_response = UDS_POSITIVE_RESPONSE;
+
+						//
+						pSavedAPduResp->pduData[0] = 0x19;
+						pSavedAPduResp->pduData[1] = 0x04;
+						pSavedAPduResp->pduData[2] = pSavedAPduInd->pduData[2];
+						pSavedAPduResp->pduData[3] = pSavedAPduInd->pduData[3];
+						pSavedAPduResp->pduData[4] = pSavedAPduInd->pduData[4];
+
+						//
+						pSavedAPduResp->pduData[5] = 0;
+
+						//
+						pSavedAPduResp->msgLength = 6;
+
+					}
+					else {
+						//
+						rub_19reportSnapshotRcdByDtcNum_Pending = FALSE;
+						lub_response = UDS_POSITIVE_RESPONSE;
+
+						//
+						pSavedAPduResp->pduData[0] = 0x19;
+						pSavedAPduResp->pduData[1] = 0x04;
+						pSavedAPduResp->pduData[2] = pSavedAPduInd->pduData[2];
+						pSavedAPduResp->pduData[3] = pSavedAPduInd->pduData[3];
+						pSavedAPduResp->pduData[4] = pSavedAPduInd->pduData[4];
+						
+						//
+						#if 1
+						//
+						if (ErrLogStatus[CurrDtcSaveOrder] == 0x500) {
+                            pSavedAPduResp->pduData[5] = CURRENT_DTC | HISTORY_DTC;
+						}
+						else {
+                            pSavedAPduResp->pduData[5] = HISTORY_DTC;
+						}						
+						#else
+						if ((DtcOccHisOrder[(CurrDtcSaveOrder<<1) + 1] != DTC_IS_NONE) || (PreDtcStatus[CurrDtcSaveOrder])){
+							CurrDtcStatus = HISTORY_DTC;
+						}
+						else {
+							CurrDtcStatus = 0u;
+						}
+						
+						if (ErrLogStatus[CurrDtcSaveOrder] == 0x500) {
+							CurrDtcStatus |= CURRENT_DTC;
+						}
+
+						pSavedAPduResp->pduData[5] = CurrDtcStatus;
+						#endif
+
+						//
+						pSavedAPduResp->pduData[6] = pSavedAPduInd->pduData[5];
+						pSavedAPduResp->pduData[7] = SNAP_DATA_NUM;					
+						pSavedAPduResp->msgLength = 8;
+
+						//
+						for (i = 0; i < SNAP_DATA_NUM; i++) {
+							// DataId
+							pSavedAPduResp->pduData[pSavedAPduResp->msgLength] = (Uds_g_DidDataTable[SNAP_DATA_ST_ORDER_AT_DDT + i].dataIdentifier >> 8) & (Uint16)0xFF;
+							pSavedAPduResp->msgLength++;
+							pSavedAPduResp->pduData[pSavedAPduResp->msgLength] = Uds_g_DidDataTable[SNAP_DATA_ST_ORDER_AT_DDT + i].dataIdentifier & (Uint16)0xFF;
+							pSavedAPduResp->msgLength++;
+
+							// Data
+	   	                    GetSnapDataOrder = SNAP_DATA_ST_ORDER_AT_DDT + i;
+	   	                    Uds_MemCopyDataFlow( & pSavedAPduResp->pduData[pSavedAPduResp->msgLength],
+	   	                                        Uds_g_DidDataTable[GetSnapDataOrder].pDataBuf,
+	   						                    Uds_g_DidDataTable[GetSnapDataOrder].DataSize);
+                            pSavedAPduResp->msgLength += Uds_g_DidDataTable[GetSnapDataOrder].DataSize;
+						}
+					}
+				}
+				else {
+					//
+					lub_response = UDS_NRC_REQUESTCORRECTLYRECEIVED_RESPPENDING;
+				}
+			}
+		}
+		else {
+			//
+			lub_response = UDS_NRC_REQUESTCORRECTLYRECEIVED_RESPPENDING;
+		}
+    }
+
+	return lub_response;
+}
+
+Uint16 CurrDtcOccOrder(Uint16 CurrDtcSaveOrder, Uint16 pErrorNumber)
+{
+    Uint16 CurrDtcOccHisOrder;
+    Uint16 i;
+
+    //
+    if (CurrDtcSaveOrder < 1) {
+        CurrDtcSaveOrder = 1;
+    }
+    else if (CurrDtcSaveOrder > DTC_MAX_NUM) {
+        CurrDtcSaveOrder = DTC_MAX_NUM;
+    }
+
+    //
+    CurrDtcSaveOrder = CurrDtcSaveOrder - 1;
+    CurrDtcSaveOrder = CurrDtcSaveOrder << 1;
+    
+    //
+    if (DtcOccHisOrder[CurrDtcSaveOrder] == DTC_IS_NONE) {
+        DtcOccHisOrder[CurrDtcSaveOrder] = pErrorNumber;
+        
+        return 1;
+    }
+    else if (DtcOccHisOrder[CurrDtcSaveOrder + 1] == DTC_IS_NONE) {
+        DtcOccHisOrder[CurrDtcSaveOrder + 1] = pErrorNumber;
+
+        return 2;
+    }
+    else {
+        //
+        CurrDtcOccHisOrder = DtcOccHisOrder[CurrDtcSaveOrder + 1];
+        DtcOccHisOrder[CurrDtcSaveOrder + 1] = DTC_IS_NONE;
+        
+        // ´æ´¢ÀúÊ·ÐòºÅÔÚ"CurrDtcOccHisOrder + 1" µ½ "pErrorNumber - 1" ¼ä¼ÒªÍùÇ°Ò»Î»
+        CurrDtcOccHisOrder++;
+        pErrorNumber--;
+        for (i = 0; i < DTC_OCC_HIS_ORDER_NUM; i++) {
+            if ((DtcOccHisOrder[i] >= CurrDtcOccHisOrder) && (DtcOccHisOrder[i] <= pErrorNumber)) {
+                DtcOccHisOrder[i]--;
+            }
+        }
+
+        //
+        DtcOccHisOrder[CurrDtcSaveOrder + 1] = pErrorNumber;
+
+        return 3;
+    }
+}
+
+Uint16 SearchCurrDtcSaveOrder(Uint16 CurrDtcOccHisOrder)
+{
+    Uint16 CurrDtcSaveOrder;
+    Uint16 i;
+
+    for(i = 0; i < DTC_OCC_HIS_ORDER_NUM; i++) {
+        //
+        if (DtcOccHisOrder[i] == CurrDtcOccHisOrder) {
+            CurrDtcSaveOrder = i;
+            break;
+        }
+
+        //
+        if (i == (DTC_OCC_HIS_ORDER_NUM - 1)) {
+            CurrDtcSaveOrder = 0;
+        }            
+    }
+
+    return CurrDtcSaveOrder;
+}
+
+
+#endif /* UDS_ENABLE_READDTCINFORMATION */
+/******************************************************************************
+*                               end of file                                   *
+******************************************************************************/

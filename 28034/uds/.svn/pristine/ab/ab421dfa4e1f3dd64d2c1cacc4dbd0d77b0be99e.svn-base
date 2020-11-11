@@ -1,0 +1,190 @@
+/****************************************************************************
+ 	@Module       
+ 	@Filename     
+ 	@Project       BQApp
+----------------------------------------------------------------------------
+ 	@Controller    TI 28034
+
+ 	@Compiler      V5.211
+
+ 	@Codegenerator CCS 3.3
+
+ 	@Description   
+----------------------------------------------------------------------------
+	 @Date          15/03/2018
+******Copyright Auto Group , Shenzhen Megmeet Drive Technology Co.,LTD*****
+****************************************************************************/
+//#include "MAIN.h"
+#include "uds_target.h"
+#include "uds_confpriv.h"
+#include "uds_confdefs.h"
+#include "uds_priv.h"
+#include "uds_inf.h"
+
+static Std_UdsReturnType UDS_FN_TYPE UdsApp_Read09_GetData(Uds_APduData_t* pAPduInd, 
+                                                               Uds_APduData_t* pAPduResp );
+
+/* NRC for ReadDataByIdentifier
+ * 	0x13	UDS_NRC_INCORRECTMESSAGELENGTHORINVALIDFORMAT
+ * 	0x22	UDS_NRC_CONDITIONSNOTCORRECT
+ * 	0x31	UDS_NRC_REQUESTOUTOFRANGE
+ *	0x33	UDS_NRC_SECUTITYACCESSDENIED
+ */
+
+static const uint8_t Read01RespMsg[4][6] = {
+	{0x41u, 0x00u, 0xBEu, 0x1Fu, 0xA8u, 0x13u},
+	{0x41u, 0x01u, 0x00u, 0x07u, 0xE1u, 0x00u},
+	{0x41u, 0x20u, 0x90u, 0x05u, 0x80u, 0x11u},
+	{0x41u, 0x40u, 0xFAu, 0xDCu, 0x80u, 0x00u}
+};
+
+Std_UdsReturnType UDS_FN_TYPE UdsApp_ISO_15031_5_Read01(Uds_APduData_t* pAPduInd, 
+                                                       Uds_APduData_t* pAPduResp )
+{
+	uint8_t lub_error = UDS_POSITIVE_RESPONSE;
+	uint8_t lub_InPtrDid;
+	Uint16 i;
+
+	if (0x02u != pAPduInd->msgLength)
+	{
+		lub_error = UDS_NRC_INCORRECTMESSAGELENGTHORINVALIDFORMAT ;
+	}
+	else
+	{
+		lub_InPtrDid = pAPduInd->pduData[0x01u];
+		if (lub_InPtrDid == 0x00u) {
+			for (i = 0u; i < 5u; i++) {
+				pAPduResp->pduData[i+1u] = Read01RespMsg[0u][i+1u];
+			}
+			pAPduResp->msgLength = 6u;
+		}
+		else if (lub_InPtrDid == 0x01u) {
+			for (i = 0u; i < 5u; i++) {
+				pAPduResp->pduData[i+1u] = Read01RespMsg[1u][i+1u];
+			}
+			pAPduResp->msgLength = 6u;			
+		}
+		else if (lub_InPtrDid == 0x20u) {
+			for (i = 0u; i < 5u; i++) {
+				pAPduResp->pduData[i+1u] = Read01RespMsg[2u][i+1u];
+			}
+			pAPduResp->msgLength = 6u;			
+		}
+		else if (lub_InPtrDid == 0x40u) {
+			for (i = 0u; i < 5u; i++) {
+				pAPduResp->pduData[i+1u] = Read01RespMsg[3u][i+1u];
+			}
+			pAPduResp->msgLength = 6u;			
+		}
+		else {
+			lub_error = UDS_NRC_REQUESTOUTOFRANGE;
+		}
+	}
+
+	return lub_error;
+}
+
+Std_UdsReturnType UDS_FN_TYPE UdsApp_ISO_15031_5_Read03(Uds_APduData_t* pAPduInd, 
+                                                       Uds_APduData_t* pAPduResp )
+{
+   uint8_t lub_error = UDS_POSITIVE_RESPONSE;
+
+   if (0x01u != pAPduInd->msgLength)
+   {
+	     lub_error = UDS_NRC_INCORRECTMESSAGELENGTHORINVALIDFORMAT ;
+   }
+   else
+   {
+       lub_error = UDS_POSITIVE_RESPONSE;
+       pAPduResp->pduData[1u] = 0x00u;
+	   pAPduResp->msgLength = 2u;
+   }
+
+   return lub_error;
+}
+
+Std_UdsReturnType UDS_FN_TYPE UdsApp_ISO_15031_5_Read07(Uds_APduData_t* pAPduInd, 
+                                                       Uds_APduData_t* pAPduResp )
+{
+   uint8_t lub_error = UDS_POSITIVE_RESPONSE;
+
+   if (0x01u != pAPduInd->msgLength)
+   {
+	     lub_error = UDS_NRC_INCORRECTMESSAGELENGTHORINVALIDFORMAT ;
+   }
+   else
+   {
+       lub_error = UDS_POSITIVE_RESPONSE;
+       pAPduResp->pduData[1u] = 0x00u;
+	   pAPduResp->msgLength = 2u;
+   }
+
+   return lub_error;
+}
+
+Std_UdsReturnType UDS_FN_TYPE UdsApp_ISO_15031_5_Read09(Uds_APduData_t* pAPduInd, 
+                                                       Uds_APduData_t* pAPduResp )
+{
+   uint8_t lub_error = UDS_POSITIVE_RESPONSE;
+
+   if (0x02u != pAPduInd->msgLength)
+   {
+	     lub_error = UDS_NRC_INCORRECTMESSAGELENGTHORINVALIDFORMAT ;
+   }
+   else
+   {
+       lub_error = UdsApp_Read09_GetData(pAPduInd, 
+                                             pAPduResp );
+   }
+
+   return lub_error;
+}
+
+static const uint8_t Read09RespMsg[6] = {0x49u, 0x00u, 0x55u, 0x40u, 0x00u, 0x00u};
+static const uint8_t Char0904[16] = {0x31u, 0x34u, 0x46u, 0x50u, 0x34u, 0x41u, 0x00u, 0x00u,
+									 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u};
+static const uint8_t Char0906[4] = {0x0Au, 0x2Fu, 0xE8u, 0xC9u};
+extern uint8_t VIN[];
+extern uint8_t Mcu_Configuration[2];
+extern uint8_t check_DID(uint8_t *checkdata);
+
+static Std_UdsReturnType UDS_FN_TYPE UdsApp_Read09_GetData(Uds_APduData_t* pAPduInd, 
+                                                               Uds_APduData_t* pAPduResp )
+{
+	uint8_t lub_response = UDS_POSITIVE_RESPONSE;
+	uint8_t lub_InPtrDid;
+	Uint16 i;
+
+	lub_InPtrDid = pAPduInd->pduData[0x01u];
+	if (lub_InPtrDid == 0x00u) {
+		for (i = 0u; i < 5u; i++) {
+			pAPduResp->pduData[i+1u] = Read09RespMsg[i+1u];
+		}
+		pAPduResp->msgLength = 6u;
+	}
+	else if (lub_InPtrDid == 0x02u) {
+		pAPduResp->pduData[0x01u] = 0x02u;
+		pAPduResp->pduData[0x02u] = 0x01u;
+		Uds_MemCopy(&pAPduResp->pduData[0x03u],VIN,17u);
+		pAPduResp->msgLength = 3u + 17u;
+	}
+	else if (lub_InPtrDid == 0x04u) {
+		pAPduResp->pduData[0x01u] = 0x04u;
+		pAPduResp->pduData[0x02u] = 0x01u;
+		Uds_MemCopy(&pAPduResp->pduData[0x03u],Char0904,16u);
+		pAPduResp->msgLength = 3u + 16u;
+	}
+	else if (lub_InPtrDid == 0x06u) {
+		pAPduResp->pduData[0x01u] = 0x06u;
+		pAPduResp->pduData[0x02u] = 0x01u;
+		Uds_MemCopy(&pAPduResp->pduData[0x03u],Char0906,4u);
+		pAPduResp->msgLength = 3u + 4u;
+	}
+	else {
+		lub_response = UDS_NRC_REQUESTOUTOFRANGE;
+	}
+	
+    return lub_response;
+}
+
+
